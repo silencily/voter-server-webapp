@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ivote</title>
+    <title>voter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="./static/css/bootstrap.css">
@@ -13,6 +13,13 @@
     <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
     <script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+    <style>
+        .inner-col{
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -22,7 +29,7 @@
     <div class="row">
         <div class="col-md-3">
             <div class="panel panel-warning">
-                <div class="panel-heading">header</div>
+                <div class="panel-heading">self</div>
                 <div class="panel-body">
                     Basic panel example
                 </div>
@@ -30,15 +37,54 @@
         </div>
         <div class="col-md-6">
             <div class="panel panel-primary">
-                <div class="panel-heading">header</div>
+                <div class="panel-heading">votes</div>
                 <div class="panel-body">
-                    Basic panel example
+                    <div class="row">
+                        <div class="col-md-12 inner-col">
+                            <div class="panel panel-warning">
+                                <div class="panel-heading">silencily</div>
+                                <div class="panel-body">
+                                    Basic panel example
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 inner-col">
+                            <div class="panel panel-warning">
+                                <div class="panel-heading">silencily</div>
+                                <div class="panel-body">
+                                    Basic panel example
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 inner-col">
+                            <div class="panel panel-warning">
+                                <div class="panel-heading">silencily</div>
+                                <div class="panel-body">
+                                    Basic panel example
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 inner-col">
+                            <div class="panel panel-warning">
+                                <div class="panel-heading">silencily</div>
+                                <div class="panel-body">
+                                    Basic panel example
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="panel panel-info">
-                <div class="panel-heading">header</div>
+                <div class="panel-heading">news</div>
                 <div class="panel-body">
                     Basic panel example
                 </div>
