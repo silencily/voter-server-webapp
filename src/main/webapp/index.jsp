@@ -42,7 +42,17 @@
                     <div class="row">
                         <div class="col-md-12 inner-col">
                             <div class="panel panel-warning">
-                                <div class="panel-heading">silencily</div>
+                                <div class="panel-heading vote-pannel-heading">
+                                    <div class="media">
+                                        <a class="pull-left" href="#">
+                                            <img class="media-object img-circle" src="./static/imgs/silencily.jpg" alt="silencily">
+                                        </a>
+                                        <div class="media-body">
+                                            <h5 class="media-heading vote-media-heading">Silencily</h5>
+                                            <small>2014/06/27 18:02</small>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="panel-body">
                                     <div class="radio">
                                         <label>
@@ -87,13 +97,14 @@
                     <div class="row">
                         <div class="col-md-12 inner-col">
                             <div class="panel panel-warning">
-                                <div class="panel-heading">
+                                <div class="panel-heading vote-pannel-heading">
                                     <div class="media">
                                         <a class="pull-left" href="#">
-                                            <img class="media-object" src="..." alt="...">
+                                            <img class="media-object img-circle" src="./static/imgs/silencily.jpg" alt="silencily">
                                         </a>
                                         <div class="media-body">
-                                            <h5 class="media-heading">Media heading</h5>
+                                            <h5 class="media-heading vote-media-heading">Silencily</h5>
+                                            <small>2014/06/27 18:02</small>
                                         </div>
                                     </div>
                                 </div>
@@ -106,7 +117,17 @@
                     <div class="row">
                         <div class="col-md-12 inner-col">
                             <div class="panel panel-warning">
-                                <div class="panel-heading">silencily</div>
+                                <div class="panel-heading vote-pannel-heading">
+                                    <div class="media">
+                                        <a class="pull-left" href="#">
+                                            <img class="media-object img-circle" src="./static/imgs/silencily.jpg" alt="silencily">
+                                        </a>
+                                        <div class="media-body">
+                                            <h5 class="media-heading vote-media-heading">Silencily</h5>
+                                            <small>2014/06/27 18:02</small>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="panel-body">
                                     Basic panel example
                                 </div>
@@ -116,7 +137,17 @@
                     <div class="row">
                         <div class="col-md-12 inner-col">
                             <div class="panel panel-warning">
-                                <div class="panel-heading">silencily</div>
+                                <div class="panel-heading vote-pannel-heading">
+                                    <div class="media">
+                                        <a class="pull-left" href="#">
+                                            <img class="media-object img-circle" src="./static/imgs/silencily.jpg" alt="silencily">
+                                        </a>
+                                        <div class="media-body">
+                                            <h5 class="media-heading vote-media-heading">Silencily</h5>
+                                            <small>2014/06/27 18:02</small>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="panel-body">
                                     Basic panel example
                                 </div>
