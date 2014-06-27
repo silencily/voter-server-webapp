@@ -44,7 +44,42 @@
                             <div class="panel panel-warning">
                                 <div class="panel-heading">silencily</div>
                                 <div class="panel-body">
-                                    Basic panel example
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+                                            Option one is this and that&mdash;be sure to include why it's great
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                            Option two can be something else and selecting it will deselect option one
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+                                            Option three is disabled
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios4" value="option1" checked>
+                                            Option one is this and that&mdash;be sure to include why it's great
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios5" value="option2" checked>
+                                            Option two can be something else and selecting it will deselect option one
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios6" value="option3">
+                                            Option three is disabled
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -52,7 +87,16 @@
                     <div class="row">
                         <div class="col-md-12 inner-col">
                             <div class="panel panel-warning">
-                                <div class="panel-heading">silencily</div>
+                                <div class="panel-heading">
+                                    <div class="media">
+                                        <a class="pull-left" href="#">
+                                            <img class="media-object" src="..." alt="...">
+                                        </a>
+                                        <div class="media-body">
+                                            <h5 class="media-heading">Media heading</h5>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="panel-body">
                                     Basic panel example
                                 </div>
