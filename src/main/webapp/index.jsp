@@ -13,13 +13,6 @@
     <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
     <script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-    <style>
-        .inner-col{
-            padding-left: 0px;
-            padding-right: 0px;
-        }
-
-    </style>
 </head>
 <body>
 
@@ -43,50 +36,62 @@
                         <div class="col-md-12 inner-col">
                             <div class="panel panel-warning">
                                 <div class="panel-heading vote-pannel-heading">
-                                    <div class="media">
+                                    <div class="media pull-left">
                                         <a class="pull-left" href="#">
-                                            <img class="media-object img-circle" src="./static/imgs/silencily.jpg" alt="silencily">
+                                            <img class="media-object img-circle" src="./static/imgs/silencily.jpg"
+                                                 alt="silencily">
                                         </a>
+
                                         <div class="media-body">
                                             <h5 class="media-heading vote-media-heading">Silencily</h5>
                                             <small>2014/06/27 18:02</small>
                                         </div>
                                     </div>
+                                    <div class="vote-actions">
+                                        <span class="glyphicon glyphicon-search">ss</span>
+                                        <span class="glyphicon glyphicon-search">22</span>
+                                    </div>
                                 </div>
                                 <div class="panel-body">
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios1"
+                                                   value="option1">
                                             Option one is this and that&mdash;be sure to include why it's great
                                         </label>
                                     </div>
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios2"
+                                                   value="option2">
                                             Option two can be something else and selecting it will deselect option one
                                         </label>
                                     </div>
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios3"
+                                                   value="option3">
                                             Option three is disabled
                                         </label>
                                     </div>
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="optionsRadios" id="optionsRadios4" value="option1" checked>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios4" value="option1"
+                                                   checked>
                                             Option one is this and that&mdash;be sure to include why it's great
                                         </label>
                                     </div>
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="optionsRadios" id="optionsRadios5" value="option2" checked>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios5" value="option2"
+                                                   checked>
                                             Option two can be something else and selecting it will deselect option one
                                         </label>
                                     </div>
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="optionsRadios" id="optionsRadios6" value="option3">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios6"
+                                                   value="option3">
                                             Option three is disabled
                                         </label>
                                     </div>
@@ -98,18 +103,65 @@
                         <div class="col-md-12 inner-col">
                             <div class="panel panel-warning">
                                 <div class="panel-heading vote-pannel-heading">
-                                    <div class="media">
+                                    <div class="media pull-left">
                                         <a class="pull-left" href="#">
-                                            <img class="media-object img-circle" src="./static/imgs/silencily.jpg" alt="silencily">
+                                            <img class="media-object img-circle" src="./static/imgs/silencily.jpg"
+                                                 alt="silencily">
                                         </a>
+
                                         <div class="media-body">
                                             <h5 class="media-heading vote-media-heading">Silencily</h5>
                                             <small>2014/06/27 18:02</small>
                                         </div>
                                     </div>
+                                    <div class="vote-actions">
+                                        <span class="glyphicon glyphicon-search">ss</span>
+                                        <span class="glyphicon glyphicon-search">22</span>
+                                    </div>
                                 </div>
                                 <div class="panel-body">
-                                    Basic panel example
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios1"
+                                                   value="option1">
+                                            Option one is this and that&mdash;be sure to include why it's great
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios2"
+                                                   value="option2">
+                                            Option two can be something else and selecting it will deselect option one
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios3"
+                                                   value="option3">
+                                            Option three is disabled
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios4" value="option1"
+                                                   checked>
+                                            Option one is this and that&mdash;be sure to include why it's great
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios5" value="option2"
+                                                   checked>
+                                            Option two can be something else and selecting it will deselect option one
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios6"
+                                                   value="option3">
+                                            Option three is disabled
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -118,18 +170,65 @@
                         <div class="col-md-12 inner-col">
                             <div class="panel panel-warning">
                                 <div class="panel-heading vote-pannel-heading">
-                                    <div class="media">
+                                    <div class="media pull-left">
                                         <a class="pull-left" href="#">
-                                            <img class="media-object img-circle" src="./static/imgs/silencily.jpg" alt="silencily">
+                                            <img class="media-object img-circle" src="./static/imgs/silencily.jpg"
+                                                 alt="silencily">
                                         </a>
+
                                         <div class="media-body">
                                             <h5 class="media-heading vote-media-heading">Silencily</h5>
                                             <small>2014/06/27 18:02</small>
                                         </div>
                                     </div>
+                                    <div class="vote-actions">
+                                        <span class="glyphicon glyphicon-search">ss</span>
+                                        <span class="glyphicon glyphicon-search">22</span>
+                                    </div>
                                 </div>
                                 <div class="panel-body">
-                                    Basic panel example
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios1"
+                                                   value="option1">
+                                            Option one is this and that&mdash;be sure to include why it's great
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios2"
+                                                   value="option2">
+                                            Option two can be something else and selecting it will deselect option one
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios3"
+                                                   value="option3">
+                                            Option three is disabled
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios4" value="option1"
+                                                   checked>
+                                            Option one is this and that&mdash;be sure to include why it's great
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios5" value="option2"
+                                                   checked>
+                                            Option two can be something else and selecting it will deselect option one
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios6"
+                                                   value="option3">
+                                            Option three is disabled
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -138,18 +237,65 @@
                         <div class="col-md-12 inner-col">
                             <div class="panel panel-warning">
                                 <div class="panel-heading vote-pannel-heading">
-                                    <div class="media">
+                                    <div class="media pull-left">
                                         <a class="pull-left" href="#">
-                                            <img class="media-object img-circle" src="./static/imgs/silencily.jpg" alt="silencily">
+                                            <img class="media-object img-circle" src="./static/imgs/silencily.jpg"
+                                                 alt="silencily">
                                         </a>
+
                                         <div class="media-body">
                                             <h5 class="media-heading vote-media-heading">Silencily</h5>
                                             <small>2014/06/27 18:02</small>
                                         </div>
                                     </div>
+                                    <div class="vote-actions">
+                                        <span class="glyphicon glyphicon-search">ss</span>
+                                        <span class="glyphicon glyphicon-search">22</span>
+                                    </div>
                                 </div>
                                 <div class="panel-body">
-                                    Basic panel example
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios1"
+                                                   value="option1">
+                                            Option one is this and that&mdash;be sure to include why it's great
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios2"
+                                                   value="option2">
+                                            Option two can be something else and selecting it will deselect option one
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios3"
+                                                   value="option3">
+                                            Option three is disabled
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios4" value="option1"
+                                                   checked>
+                                            Option one is this and that&mdash;be sure to include why it's great
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios5" value="option2"
+                                                   checked>
+                                            Option two can be something else and selecting it will deselect option one
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios6"
+                                                   value="option3">
+                                            Option three is disabled
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
