@@ -21,3 +21,7 @@ body {
     overflow: hidden;
     margin: 5px 0px;
 }
+
+.vote-actions > .glyphicon {
+    margin-left: 15px;
+}
