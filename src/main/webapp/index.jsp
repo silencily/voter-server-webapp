@@ -49,7 +49,7 @@
                                     </div>
                                     <div class="vote-actions">
                                         <span class="glyphicon glyphicon-hand-up"></span> <small>(777)</small>
-                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <span class="glyphicon glyphicon-star-empty vote-actions-star" onclick=""></span>
                                     </div>
                                 </div>
                                 <div class="panel-body">

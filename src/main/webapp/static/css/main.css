@@ -25,3 +25,7 @@ body {
 .vote-actions > .glyphicon {
     margin-left: 15px;
 }
+
+.vote-actions-star {
+    cursor: pointer;
+}
