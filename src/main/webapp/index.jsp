@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="./static/css/bootstrap.css">
-    <link rel="stylesheet" href="./static/css/main.css">
+    <link rel="stylesheet" href="./static/css/voter.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -74,11 +74,11 @@
 <div class="col-md-6">
 <div class="panel panel-primary">
 <div class="panel-heading">votes</div>
-<div class="panel-body">
+<div class="panel-body vote-panel-body">
 <div class="row">
     <div class="col-md-12 inner-col">
-        <div class="panel panel-warning">
-            <div class="panel-heading vote-pannel-heading">
+        <div class="panel panel-warning vote-panel">
+            <div class="panel-heading vote-panel-heading">
                 <div class="media pull-left">
                     <a class="pull-left" href="#">
                         <img class="media-object img-circle" src="./static/imgs/silencily.jpg"
@@ -96,7 +96,7 @@
                     <span class="glyphicon glyphicon-star vote-actions-star" onclick=""></span>
                 </div>
             </div>
-            <div class="panel-body">
+            <div class="panel-body vote-panel-body">
                 <div class="radio">
                     <label>
                         <input type="radio" name="optionsRadios" id="optionsRadios1"
@@ -131,8 +131,8 @@
 </div>
 <div class="row">
     <div class="col-md-12 inner-col">
-        <div class="panel panel-warning">
-            <div class="panel-heading vote-pannel-heading">
+        <div class="panel panel-warning vote-panel">
+            <div class="panel-heading vote-panel-heading">
                 <div class="media pull-left">
                     <a class="pull-left" href="#">
                         <img class="media-object img-circle" src="./static/imgs/silencily.jpg"
@@ -150,7 +150,7 @@
                     <span class="glyphicon glyphicon-star-empty"></span>
                 </div>
             </div>
-            <div class="panel-body">
+            <div class="panel-body vote-panel-body">
                 <div class="radio">
                     <label>
                         <input type="radio" name="optionsRadios" id="optionsRadios21"
@@ -185,8 +185,8 @@
 </div>
 <div class="row">
     <div class="col-md-12 inner-col">
-        <div class="panel panel-warning">
-            <div class="panel-heading vote-pannel-heading">
+        <div class="panel panel-warning vote-panel">
+            <div class="panel-heading vote-panel-heading">
                 <div class="media pull-left">
                     <a class="pull-left" href="#">
                         <img class="media-object img-circle" src="./static/imgs/silencily.jpg"
@@ -204,7 +204,7 @@
                     <span class="glyphicon glyphicon-star-empty"></span>
                 </div>
             </div>
-            <div class="panel-body">
+            <div class="panel-body vote-panel-body">
                 <div class="radio">
                     <label>
                         <input type="radio" name="optionsRadios" id="optionsRadios31"
@@ -239,8 +239,8 @@
 </div>
 <div class="row">
     <div class="col-md-12 inner-col">
-        <div class="panel panel-warning">
-            <div class="panel-heading vote-pannel-heading">
+        <div class="panel panel-warning vote-panel">
+            <div class="panel-heading vote-panel-heading">
                 <div class="media pull-left">
                     <a class="pull-left" href="#">
                         <img class="media-object img-circle" src="./static/imgs/silencily.jpg"
@@ -258,7 +258,7 @@
                     <span class="glyphicon glyphicon-star-empty"></span>
                 </div>
             </div>
-            <div class="panel-body">
+            <div class="panel-body vote-panel-body">
                 <div class="radio">
                     <label>
                         <input type="radio" name="optionsRadios" id="optionsRadios41"

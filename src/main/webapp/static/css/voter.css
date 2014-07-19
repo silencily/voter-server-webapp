@@ -7,8 +7,16 @@ body {
     padding-right: 0px;
 }
 
-.vote-pannel-heading {
+.vote-panel {
+    margin-bottom: 0px;
+}
+
+.vote-panel-heading {
     padding: 5px 15px;
+}
+
+.vote-panel-body {
+    padding: 0px 15px;
 }
 
 .vote-media-heading {
