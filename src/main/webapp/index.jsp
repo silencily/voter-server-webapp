@@ -97,6 +97,7 @@
                 </div>
             </div>
             <div class="panel-body vote-panel-body">
+                <h4><span class="glyphicon glyphicon-hand-right"></span> This is the title of the vote.</h4>
                 <div class="radio">
                     <label>
                         <input type="radio" name="optionsRadios" id="optionsRadios1"
@@ -154,30 +155,31 @@
                 </div>
             </div>
             <div class="panel-body vote-panel-body">
+                <h4><span class="glyphicon glyphicon-hand-right"></span> This is the title of the vote.</h4>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios21"
+                        <input type="radio" name="optionsRadios1" id="optionsRadios21"
                                value="option1">
                         Option one is this and that&mdash;be sure to include why it's great
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios22"
+                        <input type="radio" name="optionsRadios1" id="optionsRadios22"
                                value="option2">
                         Option two can be something else and selecting it will deselect option one
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios23"
+                        <input type="radio" name="optionsRadios1" id="optionsRadios23"
                                value="option3">
                         Option three is disabled
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios24" value="option1"
+                        <input type="radio" name="optionsRadios1" id="optionsRadios24" value="option1"
                                checked>
                         Option one is this and that&mdash;be sure to include why it's great
                     </label>
@@ -211,30 +213,31 @@
                 </div>
             </div>
             <div class="panel-body vote-panel-body">
+                <h4><span class="glyphicon glyphicon-hand-right"></span> This is the title of the vote.</h4>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios31"
+                        <input type="radio" name="optionsRadios2" id="optionsRadios31"
                                value="option1">
                         Option one is this and that&mdash;be sure to include why it's great
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios32"
+                        <input type="radio" name="optionsRadios2" id="optionsRadios32"
                                value="option2">
                         Option two can be something else and selecting it will deselect option one
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios33"
+                        <input type="radio" name="optionsRadios2" id="optionsRadios33"
                                value="option3">
                         Option three is disabled
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios34" value="option1"
+                        <input type="radio" name="optionsRadios2" id="optionsRadios34" value="option1"
                                checked>
                         Option one is this and that&mdash;be sure to include why it's great
                     </label>
@@ -268,30 +271,31 @@
                 </div>
             </div>
             <div class="panel-body vote-panel-body">
+                <h4><span class="glyphicon glyphicon-hand-right"></span> This is the title of the vote.</h4>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios41"
+                        <input type="radio" name="optionsRadios3" id="optionsRadios41"
                                value="option1">
                         Option one is this and that&mdash;be sure to include why it's great
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios42"
+                        <input type="radio" name="optionsRadios3" id="optionsRadios42"
                                value="option2">
                         Option two can be something else and selecting it will deselect option one
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios43"
+                        <input type="radio" name="optionsRadios3" id="optionsRadios43"
                                value="option3">
                         Option three is disabled
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios44" value="option1"
+                        <input type="radio" name="optionsRadios3" id="optionsRadios44" value="option1"
                                checked>
                         Option one is this and that&mdash;be sure to include why it's great
                     </label>
