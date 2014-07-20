@@ -67,7 +67,7 @@
     <div class="panel panel-warning">
         <div class="panel-heading">self</div>
         <div class="panel-body">
-            Basic panel example
+            This is a self panel.
         </div>
     </div>
 </div>
@@ -324,7 +324,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="panel-footer">Panel footer</div>
+    <div class="panel-footer">Auto loading...</div>
 </div>
 </div>
 </div>
@@ -333,7 +333,7 @@
     <div class="panel panel-info">
         <div class="panel-heading">news</div>
         <div class="panel-body">
-            Basic panel example
+            This is a news panel.
         </div>
     </div>
 </div>
