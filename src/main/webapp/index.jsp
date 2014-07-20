@@ -98,28 +98,32 @@
             </div>
             <div class="panel-body vote-panel-body">
                 <h4><span class="glyphicon glyphicon-hand-right"></span> This is the title of the vote.</h4>
-                <div class="radio">
+                <div class="radio vote-radio">
+                    <span class="vote-order">1.</span>
                     <label>
                         <input type="radio" name="optionsRadios" id="optionsRadios1"
                                value="option1">
                         Option one is this and that&mdash;be sure to include why it's great
                     </label>
                 </div>
-                <div class="radio">
+                <div class="radio vote-radio">
+                    <span class="vote-order">2.</span>
                     <label>
                         <input type="radio" name="optionsRadios" id="optionsRadios2"
                                value="option2">
                         Option two can be something else and selecting it will deselect option one
                     </label>
                 </div>
-                <div class="radio">
+                <div class="radio vote-radio">
+                    <span class="vote-order">3.</span>
                     <label>
                         <input type="radio" name="optionsRadios" id="optionsRadios3"
                                value="option3">
                         Option three is disabled
                     </label>
                 </div>
-                <div class="radio">
+                <div class="radio vote-radio">
+                    <span class="vote-order">4.</span>
                     <label>
                         <input type="radio" name="optionsRadios" id="optionsRadios4" value="option1"
                                checked>
@@ -156,28 +160,32 @@
             </div>
             <div class="panel-body vote-panel-body">
                 <h4><span class="glyphicon glyphicon-hand-right"></span> This is the title of the vote.</h4>
-                <div class="radio">
+                <div class="radio vote-radio">
+                    <span class="vote-order">1.</span>
                     <label>
                         <input type="radio" name="optionsRadios1" id="optionsRadios21"
                                value="option1">
                         Option one is this and that&mdash;be sure to include why it's great
                     </label>
                 </div>
-                <div class="radio">
+                <div class="radio vote-radio">
+                    <span class="vote-order">2.</span>
                     <label>
                         <input type="radio" name="optionsRadios1" id="optionsRadios22"
                                value="option2">
                         Option two can be something else and selecting it will deselect option one
                     </label>
                 </div>
-                <div class="radio">
+                <div class="radio vote-radio">
+                    <span class="vote-order">3.</span>
                     <label>
                         <input type="radio" name="optionsRadios1" id="optionsRadios23"
                                value="option3">
                         Option three is disabled
                     </label>
                 </div>
-                <div class="radio">
+                <div class="radio vote-radio">
+                    <span class="vote-order">4.</span>
                     <label>
                         <input type="radio" name="optionsRadios1" id="optionsRadios24" value="option1"
                                checked>
@@ -214,28 +222,32 @@
             </div>
             <div class="panel-body vote-panel-body">
                 <h4><span class="glyphicon glyphicon-hand-right"></span> This is the title of the vote.</h4>
-                <div class="radio">
+                <div class="radio vote-radio">
+                    <span class="vote-order">1.</span>
                     <label>
                         <input type="radio" name="optionsRadios2" id="optionsRadios31"
                                value="option1">
                         Option one is this and that&mdash;be sure to include why it's great
                     </label>
                 </div>
-                <div class="radio">
+                <div class="radio vote-radio">
+                    <span class="vote-order">2.</span>
                     <label>
                         <input type="radio" name="optionsRadios2" id="optionsRadios32"
                                value="option2">
                         Option two can be something else and selecting it will deselect option one
                     </label>
                 </div>
-                <div class="radio">
+                <div class="radio vote-radio">
+                    <span class="vote-order">3.</span>
                     <label>
                         <input type="radio" name="optionsRadios2" id="optionsRadios33"
                                value="option3">
                         Option three is disabled
                     </label>
                 </div>
-                <div class="radio">
+                <div class="radio vote-radio">
+                    <span class="vote-order">4.</span>
                     <label>
                         <input type="radio" name="optionsRadios2" id="optionsRadios34" value="option1"
                                checked>
@@ -272,28 +284,32 @@
             </div>
             <div class="panel-body vote-panel-body">
                 <h4><span class="glyphicon glyphicon-hand-right"></span> This is the title of the vote.</h4>
-                <div class="radio">
+                <div class="radio vote-radio">
+                    <span class="vote-order">1.</span>
                     <label>
                         <input type="radio" name="optionsRadios3" id="optionsRadios41"
                                value="option1">
                         Option one is this and that&mdash;be sure to include why it's great
                     </label>
                 </div>
-                <div class="radio">
+                <div class="radio vote-radio">
+                    <span class="vote-order">2.</span>
                     <label>
                         <input type="radio" name="optionsRadios3" id="optionsRadios42"
                                value="option2">
                         Option two can be something else and selecting it will deselect option one
                     </label>
                 </div>
-                <div class="radio">
+                <div class="radio vote-radio">
+                    <span class="vote-order">3.</span>
                     <label>
                         <input type="radio" name="optionsRadios3" id="optionsRadios43"
                                value="option3">
                         Option three is disabled
                     </label>
                 </div>
-                <div class="radio">
+                <div class="radio vote-radio">
+                    <span class="vote-order">4.</span>
                     <label>
                         <input type="radio" name="optionsRadios3" id="optionsRadios44" value="option1"
                                checked>

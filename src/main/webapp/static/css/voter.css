@@ -44,3 +44,12 @@ body {
 .vote-actions-star {
     cursor: pointer;
 }
+
+.vote-radio {
+    padding-left: 15px;
+}
+
+.vote-order {
+    position: absolute;
+    margin-left: -15px;
+}
