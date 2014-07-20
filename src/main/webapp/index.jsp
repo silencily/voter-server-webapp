@@ -73,7 +73,7 @@
 </div>
 <div class="col-md-6">
 <div class="panel panel-primary">
-<div class="panel-heading">votes</div>
+<div class="panel-heading">Votes</div>
 <div class="panel-body vote-panel-body">
 <div class="row">
     <div class="col-md-12 inner-col">
@@ -125,6 +125,9 @@
                         Option one is this and that&mdash;be sure to include why it's great
                     </label>
                 </div>
+            </div>
+            <div class="panel-footer vote-panel-footer">
+                <a href="#"><span class="glyphicon glyphicon-eye-open"></span> Expand...</a>
             </div>
         </div>
     </div>
@@ -180,6 +183,9 @@
                     </label>
                 </div>
             </div>
+            <div class="panel-footer vote-panel-footer">
+                <a href="#"><span class="glyphicon glyphicon-eye-open"></span> Expand...</a>
+            </div>
         </div>
     </div>
 </div>
@@ -233,6 +239,9 @@
                         Option one is this and that&mdash;be sure to include why it's great
                     </label>
                 </div>
+            </div>
+            <div class="panel-footer vote-panel-footer">
+                <a href="#"><span class="glyphicon glyphicon-eye-open"></span> Expand...</a>
             </div>
         </div>
     </div>
@@ -288,8 +297,14 @@
                     </label>
                 </div>
             </div>
+            <div class="panel-footer vote-panel-footer">
+                <a href="#"><span class="glyphicon glyphicon-eye-open"></span> Expand...</a>
+            </div>
         </div>
     </div>
+</div>
+<div class="row">
+    <div class="panel-footer">Panel footer</div>
 </div>
 </div>
 </div>
