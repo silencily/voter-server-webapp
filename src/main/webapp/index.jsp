@@ -98,6 +98,7 @@
             </div>
             <div class="panel-body vote-panel-body">
                 <h4><span class="glyphicon glyphicon-hand-right"></span> This is the title of the vote.</h4>
+
                 <div class="radio vote-radio">
                     <span class="vote-order">1.</span>
                     <label>
@@ -131,7 +132,7 @@
                     </label>
                 </div>
             </div>
-            <div class="panel-footer vote-panel-footer">
+            <div class="vote-panel-tools">
                 <a href="#"><span class="glyphicon glyphicon-eye-open"></span> Expand...</a>
             </div>
         </div>
@@ -160,6 +161,7 @@
             </div>
             <div class="panel-body vote-panel-body">
                 <h4><span class="glyphicon glyphicon-hand-right"></span> This is the title of the vote.</h4>
+
                 <div class="radio vote-radio">
                     <span class="vote-order">1.</span>
                     <label>
@@ -193,8 +195,61 @@
                     </label>
                 </div>
             </div>
+            <div class="vote-panel-tools">
+                <a href="#"><span class="glyphicon glyphicon-eye-close"></span> Collapse...</a>
+            </div>
             <div class="panel-footer vote-panel-footer">
-                <a href="#"><span class="glyphicon glyphicon-eye-open"></span> Expand...</a>
+                <h4><span class="glyphicon glyphicon-stats"></span> Result</h4>
+
+                <div>
+                    <div class="vote-panel-footer-result">
+                        <span>1.</span>
+
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10" aria-valuemin="0"
+                                 aria-valuemax="100" style="width: 10%;">
+                                10%
+                            </div>
+                            <span class="badge  pull-right">50v</span>
+                        </div>
+                    </div>
+                    <div class="vote-panel-footer-result">
+                        <span>2.</span>
+
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0"
+                                 aria-valuemax="100" style="width: 20%;">
+                                20%
+                            </div>
+                            <span class="badge  pull-right">50v</span>
+                        </div>
+                    </div>
+                    <div class="vote-panel-footer-result">
+                        <span>3.</span>
+
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                                 aria-valuemax="100" style="width: 40%;">
+                                40%
+                            </div>
+                            <span class="badge  pull-right">50v</span>
+                        </div>
+                    </div>
+                    <div class="vote-panel-footer-result">
+                        <span>4.</span>
+
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="12" aria-valuemin="0"
+                                 aria-valuemax="100" style="width: 12%;">
+                                12%
+                            </div>
+                            <span class="badge pull-right">110v</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="vote-panel-footer-action">
+                    <button type="button" class="btn btn-default btn-block">Vote</button>
+                </div>
             </div>
         </div>
     </div>
@@ -222,6 +277,7 @@
             </div>
             <div class="panel-body vote-panel-body">
                 <h4><span class="glyphicon glyphicon-hand-right"></span> This is the title of the vote.</h4>
+
                 <div class="radio vote-radio">
                     <span class="vote-order">1.</span>
                     <label>
@@ -255,7 +311,7 @@
                     </label>
                 </div>
             </div>
-            <div class="panel-footer vote-panel-footer">
+            <div class="panel-footer vote-panel-tools">
                 <a href="#"><span class="glyphicon glyphicon-eye-open"></span> Expand...</a>
             </div>
         </div>
@@ -284,6 +340,7 @@
             </div>
             <div class="panel-body vote-panel-body">
                 <h4><span class="glyphicon glyphicon-hand-right"></span> This is the title of the vote.</h4>
+
                 <div class="radio vote-radio">
                     <span class="vote-order">1.</span>
                     <label>
@@ -317,7 +374,7 @@
                     </label>
                 </div>
             </div>
-            <div class="panel-footer vote-panel-footer">
+            <div class="panel-footer vote-panel-tools">
                 <a href="#"><span class="glyphicon glyphicon-eye-open"></span> Expand...</a>
             </div>
         </div>

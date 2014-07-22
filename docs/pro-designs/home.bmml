@@ -149,13 +149,12 @@
       <controlProperties>
         <icon>EyeIcon%7Cxsmall</icon>
         <labelPosition>right</labelPosition>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22257%2C302%2C321%2C323%22%20href%3D%22home.bmml%22%20alt%3D%22home%22%20id%3D%2254%22/%3E</map>
         <markup>true</markup>
         <text>Expand...</text>
         <underline>true</underline>
       </controlProperties>
     </control>
-    <control controlID="55" controlTypeID="com.balsamiq.mockups::Canvas" x="327" y="388" w="496" h="390" measuredW="100" measuredH="70" zOrder="28" locked="false" isInGroup="-1">
+    <control controlID="55" controlTypeID="com.balsamiq.mockups::Canvas" x="327" y="388" w="496" h="401" measuredW="100" measuredH="70" zOrder="28" locked="false" isInGroup="-1">
       <controlProperties>
         <borderStyle>square</borderStyle>
       </controlProperties>
@@ -266,7 +265,7 @@
         <scrollBarValue>9</scrollBarValue>
       </controlProperties>
     </control>
-    <control controlID="95" controlTypeID="com.balsamiq.mockups::Button" x="746" y="737" w="61" h="27" measuredW="48" measuredH="27" zOrder="52" locked="false" isInGroup="-1">
+    <control controlID="95" controlTypeID="com.balsamiq.mockups::Button" x="348" y="748" w="459" h="27" measuredW="48" measuredH="27" zOrder="52" locked="false" isInGroup="-1">
       <controlProperties>
         <text>vote</text>
       </controlProperties>
@@ -378,5 +377,6 @@
         <text>1%25</text>
       </controlProperties>
     </control>
+    <control controlID="122" controlTypeID="com.balsamiq.mockups::HRule" x="327" y="738" w="492" h="-1" measuredW="100" measuredH="10" zOrder="74" locked="false" isInGroup="-1"/>
   </controls>
 </mockup>

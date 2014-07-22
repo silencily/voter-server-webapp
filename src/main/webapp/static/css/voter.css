@@ -19,11 +19,47 @@ body {
     padding: 0px 15px;
 }
 
-.vote-panel-footer {
+.vote-panel-tools {
     padding: 0px 15px 5px;
     text-align: center;
     background-color: #fff;
     border-top: 0px;
+}
+
+.vote-panel-footer {
+    padding-top: 0px;
+    background-color: #fff;
+}
+
+.vote-panel-footer > h4 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.vote-panel-footer-result{
+    margin-bottom: 5px;
+}
+
+.vote-panel-footer-result > span {
+    position: absolute;
+}
+.vote-panel-footer-result > .progress{
+    margin-left: 20px;
+    margin-bottom: 0px;
+    margin-right: 100px;
+    overflow: visible;
+}
+.vote-panel-footer-result > .progress > span{
+    margin-right: -100px;
+    width: 90px;
+}
+.vote-panel-footer-action{
+    margin-right: -15px;
+    margin-left: -15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-top: 1px solid #ddd;
+    padding-top: 5px;
 }
 
 .vote-media-heading {
