@@ -65,9 +65,34 @@
 <div class="row">
 <div class="col-md-3">
     <div class="panel panel-warning">
-        <div class="panel-heading">self</div>
+        <div class="panel-heading">
+            <div class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object img-rounded vote-self-img" src="./static/imgs/silencily.jpg"
+                         alt="silencily">
+                </a>
+
+                <div class="media-body vote-self-name">
+                    <h4 class="media-heading vote-media-heading">Silencily Seven</h4>
+                </div>
+            </div>
+        </div>
         <div class="panel-body">
-            This is a self panel.
+            <table class="table vote-self-table">
+                <thead>
+                <tr>
+                    <th>VOTES</th>
+                    <th>FAVORITES</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><a href="#">22</a></td>
+                    <td><a href="#">26</a></td>
+                </tr>
+                </tbody>
+            </table>
+
         </div>
     </div>
 </div>
@@ -206,7 +231,8 @@
                         <span>1.</span>
 
                         <div class="progress">
-                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10" aria-valuemin="0"
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10"
+                                 aria-valuemin="0"
                                  aria-valuemax="100" style="width: 10%;">
                                 10%
                             </div>
@@ -217,7 +243,8 @@
                         <span>2.</span>
 
                         <div class="progress">
-                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0"
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
+                                 aria-valuemin="0"
                                  aria-valuemax="100" style="width: 20%;">
                                 20%
                             </div>
@@ -228,7 +255,8 @@
                         <span>3.</span>
 
                         <div class="progress">
-                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                                 aria-valuemin="0"
                                  aria-valuemax="100" style="width: 40%;">
                                 40%
                             </div>
@@ -239,7 +267,8 @@
                         <span>4.</span>
 
                         <div class="progress">
-                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="12" aria-valuemin="0"
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="12"
+                                 aria-valuemin="0"
                                  aria-valuemax="100" style="width: 12%;">
                                 12%
                             </div>

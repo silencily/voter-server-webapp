@@ -40,7 +40,7 @@
         <icon>YIMIcon%7Csmall</icon>
       </controlProperties>
     </control>
-    <control controlID="8" controlTypeID="com.balsamiq.mockups::Canvas" x="145" y="158" w="174" h="152" measuredW="100" measuredH="70" zOrder="8" locked="false" isInGroup="-1">
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Canvas" x="145" y="158" w="174" h="136" measuredW="100" measuredH="70" zOrder="8" locked="false" isInGroup="-1">
       <controlProperties>
         <borderStyle>roundedSolid</borderStyle>
       </controlProperties>
@@ -378,5 +378,38 @@
       </controlProperties>
     </control>
     <control controlID="122" controlTypeID="com.balsamiq.mockups::HRule" x="327" y="738" w="492" h="-1" measuredW="100" measuredH="10" zOrder="74" locked="false" isInGroup="-1"/>
+    <control controlID="123" controlTypeID="com.balsamiq.mockups::HRule" x="145" y="208" w="170" h="-1" measuredW="100" measuredH="10" zOrder="75" locked="false" isInGroup="-1"/>
+    <control controlID="124" controlTypeID="com.balsamiq.mockups::RoundButton" x="158" y="168" w="47" h="39" measuredW="32" measuredH="32" zOrder="76" locked="false" isInGroup="-1">
+      <controlProperties>
+        <markup>true</markup>
+        <shape>roundRect</shape>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="125" controlTypeID="com.balsamiq.mockups::Label" x="211" y="177" w="-1" h="-1" measuredW="89" measuredH="21" zOrder="77" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Silencily%20Seven</text>
+      </controlProperties>
+    </control>
+    <control controlID="127" controlTypeID="com.balsamiq.mockups::Label" x="158" y="229" w="-1" h="-1" measuredW="42" measuredH="21" zOrder="78" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>VOTES</text>
+      </controlProperties>
+    </control>
+    <control controlID="128" controlTypeID="com.balsamiq.mockups::Label" x="158" y="250" w="-1" h="-1" measuredW="25" measuredH="21" zOrder="79" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>200</text>
+      </controlProperties>
+    </control>
+    <control controlID="129" controlTypeID="com.balsamiq.mockups::Label" x="236" y="229" w="-1" h="-1" measuredW="69" measuredH="21" zOrder="80" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>FAVORITES</text>
+      </controlProperties>
+    </control>
+    <control controlID="130" controlTypeID="com.balsamiq.mockups::Label" x="236" y="252" w="-1" h="-1" measuredW="17" measuredH="21" zOrder="81" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>20</text>
+      </controlProperties>
+    </control>
   </controls>
 </mockup>

@@ -36,24 +36,27 @@ body {
     margin-bottom: 5px;
 }
 
-.vote-panel-footer-result{
+.vote-panel-footer-result {
     margin-bottom: 5px;
 }
 
 .vote-panel-footer-result > span {
     position: absolute;
 }
-.vote-panel-footer-result > .progress{
+
+.vote-panel-footer-result > .progress {
     margin-left: 20px;
     margin-bottom: 0px;
     margin-right: 100px;
     overflow: visible;
 }
-.vote-panel-footer-result > .progress > span{
+
+.vote-panel-footer-result > .progress > span {
     margin-right: -100px;
     width: 90px;
 }
-.vote-panel-footer-action{
+
+.vote-panel-footer-action {
     margin-right: -15px;
     margin-left: -15px;
     padding-left: 15px;
@@ -88,4 +91,23 @@ body {
 .vote-order {
     position: absolute;
     margin-left: -15px;
+}
+
+.vote-self-img {
+    height: 50px;
+    width: 50px;
+}
+
+.vote-self-name {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.vote-self-table {
+    margin-bottom: 0px;
+}
+
+.vote-self-table > thead > tr > th,
+.vote-self-table > tbody > tr > td {
+    padding: 0px;
 }
