@@ -401,9 +401,9 @@
         <text>200</text>
       </controlProperties>
     </control>
-    <control controlID="80" controlTypeID="com.balsamiq.mockups::Label" x="250" y="214" w="-1" h="-1" measuredW="69" measuredH="21" zOrder="80" locked="false" isInGroup="-1">
+    <control controlID="80" controlTypeID="com.balsamiq.mockups::Label" x="250" y="214" w="-1" h="-1" measuredW="42" measuredH="21" zOrder="80" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>FAVORITES</text>
+        <text>STARS</text>
       </controlProperties>
     </control>
     <control controlID="81" controlTypeID="com.balsamiq.mockups::Label" x="250" y="237" w="-1" h="-1" measuredW="17" measuredH="21" zOrder="81" locked="false" isInGroup="-1">

@@ -120,6 +120,7 @@
                     <span class="glyphicon glyphicon-hand-up"></span>
                     <span class="badge">777</span>
                     <span class="glyphicon glyphicon-star vote-actions-star" onclick=""></span>
+                    <span class="badge">77</span>
                 </div>
             </div>
             <div class="panel-body vote-panel-body">
@@ -183,6 +184,7 @@
                     <span class="glyphicon glyphicon-hand-up"></span>
                     <span class="badge">777</span>
                     <span class="glyphicon glyphicon-star-empty"></span>
+                    <span class="badge">77</span>
                 </div>
             </div>
             <div class="panel-body vote-panel-body">
@@ -303,6 +305,7 @@
                     <span class="glyphicon glyphicon-hand-up"></span>
                     <span class="badge">777</span>
                     <span class="glyphicon glyphicon-star-empty"></span>
+                    <span class="badge">77</span>
                 </div>
             </div>
             <div class="panel-body vote-panel-body">
@@ -366,6 +369,7 @@
                     <span class="glyphicon glyphicon-hand-up"></span>
                     <span class="badge">777</span>
                     <span class="glyphicon glyphicon-star-empty"></span>
+                    <span class="badge">77</span>
                 </div>
             </div>
             <div class="panel-body vote-panel-body">
