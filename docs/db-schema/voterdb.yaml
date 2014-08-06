@@ -1,3 +1,6 @@
 #collection : user
-username: string
-email: string
+user:
+  username: string
+  email: string
+  password: string
+
