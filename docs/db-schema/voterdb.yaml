@@ -13,3 +13,20 @@ user:
     voted: int
     starred: int
 
+#collection : vote
+vote:
+  title: string
+  creator: obejct(user)
+  createtime: date
+  voted: int
+  starred: int
+  isMulti: boolean
+  choices:
+    - no: int
+      content: string
+      votes: int
+
+
+
+
+
