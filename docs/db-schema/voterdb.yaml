@@ -4,11 +4,11 @@ user:
   email: string
   password: string
   fullname: string
-  smphoto: bytes
-  lgphoto: bytes
+  smPhoto: bytes
+  lgPhoto: bytes
   location: string
-  joineddate: date
-  votecounter:
+  joinedDate: date
+  voteCounter:
     votes: int
     voted: int
     starred: int
@@ -16,15 +16,44 @@ user:
 #collection : vote
 vote:
   title: string
-  creator: obejct(user)
-  createtime: date
+  creator: object(user)
+  createTime: date
   voted: int
   starred: int
   isMulti: boolean
+  isDel: boolean
+  delTime: date
   choices:
     - no: int
       content: string
-      votes: int
+      voted: int
+      ratio: float
+
+#collection : notification
+notification:
+  to: object(user)
+  type: int #0:sys
+  notiTime: date
+  isReaded: boolean
+  content: string
+  isDel: boolean
+  delTime: date
+
+#collection : voted
+voted:
+  voter: object(user)
+  vote: object(vote)
+  voteTime: date
+
+#collection : starred
+starred:
+  voter: object(user)
+  vote: object(vote)
+  starredTime: date
+
+
+
+
 
 
 
