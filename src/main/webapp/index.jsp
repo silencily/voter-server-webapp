@@ -14,424 +14,106 @@
     <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
     <script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+    <style>
+        body {
+            padding-top: 50px;
+        }
+    </style>
 </head>
 <body>
 
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display
+        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
             <a class="navbar-brand" href="#">Voter</a>
         </div>
-        -->
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-globe"></span> Discover</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Me</a></li>
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-bell"></span> </a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-cog"></span> </a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> </a></li>
-            </ul>
-            <form class="navbar-form navbar-right" role="search">
-                <div class="form-group">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="submit"><span
-                                    class="glyphicon glyphicon-search"></span></button>
-                        </span>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->
 </nav>
 
 <div class="container">
-<div class="row">
-<div class="col-md-3">
-    <div class="panel panel-warning">
-        <div class="panel-heading">
-            <div class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object img-rounded vote-self-img" src="./static/imgs/silencily.jpg"
-                         alt="silencily">
-                </a>
-
-                <div class="media-body vote-self-name">
-                    <h4 class="media-heading vote-media-heading">Silencily Seven</h4>
-                </div>
-            </div>
-        </div>
-        <div class="panel-body">
-            <table class="table vote-self-table">
-                <thead>
-                <tr>
-                    <th>VOTES</th>
-                    <th>FAVORITES</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><a href="#">22</a></td>
-                    <td><a href="#">26</a></td>
-                </tr>
-                </tbody>
-            </table>
-
-        </div>
+    <div class="front-bg">
+        <img class="front-image" src="./static/imgs/frontbg/a.jpg"
+             alt="" style="display: block;">
     </div>
-</div>
-<div class="col-md-6">
-<div class="panel panel-primary">
-<div class="panel-heading">Votes</div>
-<div class="panel-body vote-panel-body">
-<div class="row">
-    <div class="col-md-12 inner-col">
-        <div class="panel panel-warning vote-panel">
-            <div class="panel-heading vote-panel-heading">
-                <div class="media pull-left">
-                    <a class="pull-left" href="#">
-                        <img class="media-object img-circle" src="./static/imgs/silencily.jpg"
-                             alt="silencily">
-                    </a>
+    <div class="row front-welcome">
+        <div class="col-md-5 col-md-offset-1">
+            <div class="welcome-text">
+                <h1>Welcome to Voter.</h1>
 
-                    <div class="media-body">
-                        <h5 class="media-heading vote-media-heading">Silencily</h5>
-                        <small>2014/06/27 18:02</small>
-                    </div>
-                </div>
-                <div class="vote-actions">
-                    <span class="glyphicon glyphicon-hand-up"></span>
-                    <span class="badge">777</span>
-                    <span class="glyphicon glyphicon-star vote-actions-star" onclick=""></span>
-                    <span class="badge">77</span>
-                </div>
-            </div>
-            <div class="panel-body vote-panel-body">
-                <h4><span class="glyphicon glyphicon-hand-right"></span> This is the title of the vote.</h4>
-
-                <div class="radio vote-radio">
-                    <span class="vote-order">1.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios1"
-                               value="option1">
-                        Option one is this and that&mdash;be sure to include why it's great
-                    </label>
-                </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">2.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios2"
-                               value="option2">
-                        Option two can be something else and selecting it will deselect option one
-                    </label>
-                </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">3.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios3"
-                               value="option3">
-                        Option three is disabled
-                    </label>
-                </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">4.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios4" value="option1"
-                               checked>
-                        Option one is this and that&mdash;be sure to include why it's great
-                    </label>
-                </div>
-            </div>
-            <div class="vote-panel-tools">
-                <a href="#"><span class="glyphicon glyphicon-eye-open"></span> Expand...</a>
+                <p>
+                    Connect with your friends — and other fascinating people. Get in-the-moment updates on the things
+                    that
+                    interest you. And watch events unfold, in real time, from every angle.
+                </p>
             </div>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12 inner-col">
-        <div class="panel panel-warning vote-panel">
-            <div class="panel-heading vote-panel-heading">
-                <div class="media pull-left">
-                    <a class="pull-left" href="#">
-                        <img class="media-object img-circle" src="./static/imgs/silencily.jpg"
-                             alt="silencily">
-                    </a>
-
-                    <div class="media-body">
-                        <h5 class="media-heading vote-media-heading">Silencily</h5>
-                        <small>2014/06/27 18:02</small>
-                    </div>
-                </div>
-                <div class="vote-actions">
-                    <span class="glyphicon glyphicon-hand-up"></span>
-                    <span class="badge">777</span>
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                    <span class="badge">77</span>
-                </div>
-            </div>
-            <div class="panel-body vote-panel-body">
-                <h4><span class="glyphicon glyphicon-hand-right"></span> This is the title of the vote.</h4>
-
-                <div class="radio vote-radio">
-                    <span class="vote-order">1.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios1" id="optionsRadios21"
-                               value="option1">
-                        Option one is this and that&mdash;be sure to include why it's great
-                    </label>
-                </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">2.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios1" id="optionsRadios22"
-                               value="option2">
-                        Option two can be something else and selecting it will deselect option one
-                    </label>
-                </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">3.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios1" id="optionsRadios23"
-                               value="option3">
-                        Option three is disabled
-                    </label>
-                </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">4.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios1" id="optionsRadios24" value="option1"
-                               checked>
-                        Option one is this and that&mdash;be sure to include why it's great
-                    </label>
-                </div>
-            </div>
-            <div class="vote-panel-tools">
-                <a href="#"><span class="glyphicon glyphicon-eye-close"></span> Collapse...</a>
-            </div>
-            <div class="panel-footer vote-panel-footer">
-                <h4><span class="glyphicon glyphicon-stats"></span> Result</h4>
-
-                <div>
-                    <div class="vote-panel-footer-result">
-                        <span>1.</span>
-
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10"
-                                 aria-valuemin="0"
-                                 aria-valuemax="100" style="width: 10%;">
-                                10%
-                            </div>
-                            <span class="badge  pull-right">50v</span>
+        <div class="col-md-4 col-md-offset-1 front-sign">
+            <div class="front-signin">
+                <form role="form" id="signin-form">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control" id="signin-username"
+                                   placeholder="Username or email">
                         </div>
                     </div>
-                    <div class="vote-panel-footer-result">
-                        <span>2.</span>
-
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
-                                 aria-valuemin="0"
-                                 aria-valuemax="100" style="width: 20%;">
-                                20%
-                            </div>
-                            <span class="badge  pull-right">50v</span>
+                    <div class="row">
+                        <div class="col-xs-8 col-signin-password">
+                            <input type="password" class="form-control" id="signin-password" placeholder="Password">
+                        </div>
+                        <div class="col-xs-4">
+                            <button type="submit" class="form-control btn btn-primary">Sign in</button>
                         </div>
                     </div>
-                    <div class="vote-panel-footer-result">
-                        <span>3.</span>
-
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
-                                 aria-valuemin="0"
-                                 aria-valuemax="100" style="width: 40%;">
-                                40%
-                            </div>
-                            <span class="badge  pull-right">50v</span>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label>
+                                <input type="checkbox"> Remember me
+                            </label>
+                            <span>-</span>
+                            <a href="#">Forgot password?</a>
                         </div>
                     </div>
-                    <div class="vote-panel-footer-result">
-                        <span>4.</span>
-
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="12"
-                                 aria-valuemin="0"
-                                 aria-valuemax="100" style="width: 12%;">
-                                12%
-                            </div>
-                            <span class="badge pull-right">110v</span>
+                </form>
+            </div>
+            <div class="front-signup">
+                <h2><strong>New to Voter?</strong> Sign up</h2>
+                <form role="form" id="signup-form">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control" id="signup-fullname"
+                                   placeholder="Full name">
                         </div>
                     </div>
-                </div>
-                <div class="vote-panel-footer-action">
-                    <button type="button" class="btn btn-default btn-block">Vote</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12 inner-col">
-        <div class="panel panel-warning vote-panel">
-            <div class="panel-heading vote-panel-heading">
-                <div class="media pull-left">
-                    <a class="pull-left" href="#">
-                        <img class="media-object img-circle" src="./static/imgs/silencily.jpg"
-                             alt="silencily">
-                    </a>
-
-                    <div class="media-body">
-                        <h5 class="media-heading vote-media-heading">Silencily</h5>
-                        <small>2014/06/27 18:02</small>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control" id="signup-email"
+                                   placeholder="Email">
+                        </div>
                     </div>
-                </div>
-                <div class="vote-actions">
-                    <span class="glyphicon glyphicon-hand-up"></span>
-                    <span class="badge">777</span>
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                    <span class="badge">77</span>
-                </div>
-            </div>
-            <div class="panel-body vote-panel-body">
-                <h4><span class="glyphicon glyphicon-hand-right"></span> This is the title of the vote.</h4>
-
-                <div class="radio vote-radio">
-                    <span class="vote-order">1.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios2" id="optionsRadios31"
-                               value="option1">
-                        Option one is this and that&mdash;be sure to include why it's great
-                    </label>
-                </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">2.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios2" id="optionsRadios32"
-                               value="option2">
-                        Option two can be something else and selecting it will deselect option one
-                    </label>
-                </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">3.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios2" id="optionsRadios33"
-                               value="option3">
-                        Option three is disabled
-                    </label>
-                </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">4.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios2" id="optionsRadios34" value="option1"
-                               checked>
-                        Option one is this and that&mdash;be sure to include why it's great
-                    </label>
-                </div>
-            </div>
-            <div class="panel-footer vote-panel-tools">
-                <a href="#"><span class="glyphicon glyphicon-eye-open"></span> Expand...</a>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12 inner-col">
-        <div class="panel panel-warning vote-panel">
-            <div class="panel-heading vote-panel-heading">
-                <div class="media pull-left">
-                    <a class="pull-left" href="#">
-                        <img class="media-object img-circle" src="./static/imgs/silencily.jpg"
-                             alt="silencily">
-                    </a>
-
-                    <div class="media-body">
-                        <h5 class="media-heading vote-media-heading">Silencily</h5>
-                        <small>2014/06/27 18:02</small>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <input type="password" class="form-control" id="signup-password" placeholder="Password">
+                        </div>
                     </div>
-                </div>
-                <div class="vote-actions">
-                    <span class="glyphicon glyphicon-hand-up"></span>
-                    <span class="badge">777</span>
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                    <span class="badge">77</span>
-                </div>
-            </div>
-            <div class="panel-body vote-panel-body">
-                <h4><span class="glyphicon glyphicon-hand-right"></span> This is the title of the vote.</h4>
-
-                <div class="radio vote-radio">
-                    <span class="vote-order">1.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios3" id="optionsRadios41"
-                               value="option1">
-                        Option one is this and that&mdash;be sure to include why it's great
-                    </label>
-                </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">2.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios3" id="optionsRadios42"
-                               value="option2">
-                        Option two can be something else and selecting it will deselect option one
-                    </label>
-                </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">3.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios3" id="optionsRadios43"
-                               value="option3">
-                        Option three is disabled
-                    </label>
-                </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">4.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios3" id="optionsRadios44" value="option1"
-                               checked>
-                        Option one is this and that&mdash;be sure to include why it's great
-                    </label>
-                </div>
-            </div>
-            <div class="panel-footer vote-panel-tools">
-                <a href="#"><span class="glyphicon glyphicon-eye-open"></span> Expand...</a>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button type="submit" class="form-control btn btn-primary">Sign up for Voter</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="panel-footer">Auto loading...</div>
-</div>
-</div>
-</div>
-</div>
-<div class="col-md-3">
-    <div class="panel panel-info">
-        <div class="panel-heading">news</div>
-        <div class="panel-body">
-            This is a news panel.
-        </div>
-    </div>
-</div>
-</div>
-
 </div>
 <!-- /container -->
+<nav class="navbar navbar-default navbar-fixed-bottom front-footer" role="navigation">
+    <div class="container">
+        <h4>Powered by bootstrap. Thanks Twitter</h4>
+        <h5>Copyright © 2014-2015 org.silencer.silencily All rights reserved.</h5>
+    </div>
+</nav>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="./static/js/jquery.js"></script>

@@ -2,6 +2,87 @@ body {
     padding-top: 60px;
 }
 
+.front-bg {
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    left: -50%;
+    background: #000;
+}
+
+.front-bg img {
+    display: none;
+    margin: auto;
+    min-width: 50%;
+    min-height: 50%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 0;
+}
+
+.front-welcome {
+    padding-top: 80px;
+}
+
+.welcome-text > h1 {
+    color: #fff;
+    font-size: 38px;
+    line-height: 44px;
+    margin-bottom: 30px;
+    text-shadow: none;
+    font-weight: 700;
+    text-align: left;
+}
+
+.welcome-text > p {
+    color: #fff;
+    font-size: 21px;
+    line-height: 31px;
+    text-shadow: none;
+    font-weight: 300;
+    text-align: left;
+}
+
+.front-sign {
+    padding: 0px 25px;
+}
+
+.front-sign .row {
+    margin-bottom: 5px;
+}
+
+.front-signin, .front-signup {
+    border: 1px solid #e1e8ed;
+    border-radius: 4px;
+    background: white;
+    box-shadow: none;
+    margin-bottom: 10px;
+}
+
+.front-sign form {
+    margin: 12px 12px 6px;
+    font-size: 12px;
+}
+
+.col-signin-password {
+    padding-right: 0px;
+}
+
+.front-signup h2 {
+    border-bottom: 1px solid #e1e8ed;
+    box-shadow: 0 1px 0 #fff;
+    color: #66757f;
+    display: block;
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0px 0px 12px 0px;
+    padding: 10px 12px;
+    position: relative;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
 .inner-col {
     padding-left: 0px;
     padding-right: 0px;
@@ -110,4 +191,12 @@ body {
 .vote-self-table > thead > tr > th,
 .vote-self-table > tbody > tr > td {
     padding: 0px;
+}
+
+.front-footer {
+    background-color: rgba(255,255,255,0);
+    border-color: rgba(255,255,255,0);
+    color: white;
+    font-size: 11px;
+    text-align: center;
 }
