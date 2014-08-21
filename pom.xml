@@ -49,7 +49,7 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-mongodb</artifactId>
-            <version>1.5.1.RELEASE</version>
+            <version>1.5.2.RELEASE</version>
         </dependency>
         <!--spring end -->
 
@@ -80,4 +80,22 @@
     <build>
         <finalName>voter-server-webapp</finalName>
     </build>
+
+    <profiles>
+        <profile>
+            <id>voter</id>
+            <repositories>
+                <repository>
+                    <id>cn mirror</id>
+                    <url>http://mirrors.ibiblio.org/pub/mirrors/maven2/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
 </project>
