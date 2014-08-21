@@ -51,7 +51,7 @@
         </div>
         <div class="col-md-4 col-md-offset-1 front-sign">
             <div class="front-signin">
-                <form role="form" id="signin-form">
+                <form role="form" id="signin-form" action="./WEB-INF/views/home.jsp">
                     <div class="row">
                         <div class="col-xs-12">
                             <input type="text" class="form-control" id="signin-username"
