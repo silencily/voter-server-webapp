@@ -78,22 +78,36 @@
                 </div>
             </div>
         </div>
-        <div class="panel-body">
+        <div class="panel-body vote-self-info">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <span class="glyphicon glyphicon-user"></span> silencily
+                </li>
+                <li class="list-group-item">
+                    <span class="glyphicon glyphicon-envelope"></span> silencily@gmail.com
+                </li>
+                <li class="list-group-item">
+                    <span class="glyphicon glyphicon-time"></span> Joined Apr 05, 2012
+                </li>
+            </ul>
+        </div>
+        <div class="panel-footer">
             <table class="table vote-self-table">
                 <thead>
                 <tr>
                     <th>VOTES</th>
-                    <th>FAVORITES</th>
+                    <th>VOTED</th>
+                    <th>STARRED</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td><a href="#">22</a></td>
                     <td><a href="#">26</a></td>
+                    <td><a href="#">26</a></td>
                 </tr>
                 </tbody>
             </table>
-
         </div>
     </div>
 </div>

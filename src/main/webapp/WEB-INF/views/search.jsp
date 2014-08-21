@@ -64,40 +64,7 @@
 
 <div class="container">
 <div class="row">
-<div class="col-md-3">
-    <div class="panel panel-warning">
-        <div class="panel-heading">
-            <div class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object img-rounded vote-self-img" src="../../static/imgs/silencily.jpg"
-                         alt="silencily">
-                </a>
-
-                <div class="media-body vote-self-name">
-                    <h4 class="media-heading vote-media-heading">Silencily Seven</h4>
-                </div>
-            </div>
-        </div>
-        <div class="panel-body">
-            <table class="table vote-self-table">
-                <thead>
-                <tr>
-                    <th>VOTES</th>
-                    <th>FAVORITES</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><a href="#">22</a></td>
-                    <td><a href="#">26</a></td>
-                </tr>
-                </tbody>
-            </table>
-
-        </div>
-    </div>
-</div>
-<div class="col-md-6">
+<div class="col-md-6 col-md-offset-3">
 <div class="panel panel-primary">
 <div class="panel-heading">Votes</div>
 <div class="panel-body vote-panel-body">
