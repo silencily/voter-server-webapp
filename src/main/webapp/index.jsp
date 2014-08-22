@@ -51,16 +51,16 @@
         </div>
         <div class="col-md-4 col-md-offset-1 front-sign">
             <div class="front-signin">
-                <form role="form" id="signin-form" action="./WEB-INF/views/home.jsp">
+                <form method="post" role="form" id="signin-form" action="./j_spring_security_check">
                     <div class="row">
                         <div class="col-xs-12">
-                            <input type="text" class="form-control" id="signin-username"
+                            <input type="text" class="form-control" id="signin-username" name="j_username"
                                    placeholder="Username or email">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-8 col-signin-password">
-                            <input type="password" class="form-control" id="signin-password" placeholder="Password">
+                            <input type="password" class="form-control" id="signin-password" name="j_password" placeholder="Password">
                         </div>
                         <div class="col-xs-4">
                             <button type="submit" class="form-control btn btn-primary">Sign in</button>

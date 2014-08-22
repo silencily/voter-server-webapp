@@ -23,6 +23,7 @@ vote:
   isMulti: boolean
   isDel: boolean
   delTime: date
+  lastUpdateTime: date
   choices:
     - no: int
       content: string

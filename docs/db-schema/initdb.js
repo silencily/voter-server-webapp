@@ -16,7 +16,7 @@ function init() {
     db.createCollection("vote");
     db.vote.insert({"title": "hello world", "creator": db.user.findOne()._id.valueOf(),
         "createTime": new Date(), "voted": 2, "starred": 3, "isMulti": false, "isDel": false,
-        "delTime": null, "choices": [
+        "delTime": null, "lastUpdateTime": new Date(), "choices": [
             {"no": 1, "content": "first choice", "voted": 2, "ratio": 0.2},
             {"no": 2, "content": "second choice", "voted": 8, "ratio": 0.8}
         ]});
