@@ -8,14 +8,14 @@ function init() {
     db.createCollection("user");
     db.user.insert({"username": "silencily", "email": "silencily@gmail.com",
         "password": "seven", "fullname": "silencily.seven", "smPhoto": "bytes",
-        "lgPhoto": "bytes", "location": "Beijing", "joinedDate": new Date(), "isEnabled": true,
+        "lgPhoto": "bytes", "location": "Beijing", "joinedDate": new Date(), "enabled": true,
         "voteCounter": {"votes": 2, "voted": 3, "starred": 4}});
 
     //init collection 'vote'
     db.vote.drop();
     db.createCollection("vote");
     db.vote.insert({"title": "hello world", "creator": db.user.findOne()._id.valueOf(),
-        "createTime": new Date(), "voted": 2, "starred": 3, "isMulti": false, "isDel": false,
+        "createTime": new Date(), "voted": 2, "starred": 3, "multi": false, "deleted": false,
         "delTime": null, "lastUpdateTime": new Date(), "choices": [
             {"no": 1, "content": "first choice", "voted": 2, "ratio": 0.2},
             {"no": 2, "content": "second choice", "voted": 8, "ratio": 0.8}
@@ -25,7 +25,7 @@ function init() {
     db.notification.drop();
     db.createCollection("notification");
     db.notification.insert({"to": db.user.findOne()._id.valueOf(), "type": 0, "notiTime": new Date(),
-        "isReaded": false, "content": "hello world!", "isDel": false, "delTime": null})
+        "readed": false, "content": "hello world!", "deleted": false, "delTime": null})
 
     //init collection 'voted'
     db.voted.drop();

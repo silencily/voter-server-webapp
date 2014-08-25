@@ -8,7 +8,7 @@ user:
   lgPhoto: bytes
   location: string
   joinedDate: date
-  isEnabled: boolean
+  enabled: boolean
   voteCounter:
     votes: int
     voted: int
@@ -21,8 +21,8 @@ vote:
   createTime: date
   voted: int
   starred: int
-  isMulti: boolean
-  isDel: boolean
+  multi: boolean
+  deleted: boolean
   delTime: date
   lastUpdateTime: date
   choices:
@@ -36,9 +36,9 @@ notification:
   to: object(user)
   type: int #0:sys
   notiTime: date
-  isReaded: boolean
+  readed: boolean
   content: string
-  isDel: boolean
+  deleted: boolean
   delTime: date
 
 #collection : voted

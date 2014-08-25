@@ -3,10 +3,16 @@
  */
 package org.silencer.voter.web.security;
 
+import org.silencer.voter.entity.UserEntity;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import java.util.Queue;
 
 /**
  * 用户信息从mongodb中读取组装
@@ -24,7 +30,12 @@ public class MongoUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        //mongoTemplate.
-        return null;
+        Query query = new Query(Criteria.where("username").is(username));
+        UserEntity user = mongoTemplate.findOne(query, UserEntity.class);
+        if (user == null) {
+            return null;
+        }
+        User userDetails = new User(username, user.getPassword(), user.isEnabled(), true, true, true, null);
+        return userDetails;
     }
 }

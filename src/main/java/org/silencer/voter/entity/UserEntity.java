@@ -3,7 +3,9 @@
  */
 package org.silencer.voter.entity;
 
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
@@ -16,6 +18,7 @@ import java.util.Date;
 public class UserEntity {
     @Id
     private String id;
+    @Indexed(unique = true)
     private String username;
     private String email;
     private String password;
@@ -23,8 +26,9 @@ public class UserEntity {
     private String smPhoto;
     private String lgPhoto;
     private String location;
+    @CreatedDate
     private Date joinedDate;
-    private boolean isEnabled;
+    private boolean enabled;
     private VoteCounter voteCounter;
 
     public String getId() {
@@ -100,11 +104,11 @@ public class UserEntity {
     }
 
     public boolean isEnabled() {
-        return isEnabled;
+        return enabled;
     }
 
-    public void setEnabled(boolean isEnabled) {
-        this.isEnabled = isEnabled;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public VoteCounter getVoteCounter() {
