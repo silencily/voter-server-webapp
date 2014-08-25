@@ -8,6 +8,7 @@ user:
   lgPhoto: bytes
   location: string
   joinedDate: date
+  isEnabled: boolean
   voteCounter:
     votes: int
     voted: int

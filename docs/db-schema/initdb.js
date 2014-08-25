@@ -8,7 +8,7 @@ function init() {
     db.createCollection("user");
     db.user.insert({"username": "silencily", "email": "silencily@gmail.com",
         "password": "seven", "fullname": "silencily.seven", "smPhoto": "bytes",
-        "lgPhoto": "bytes", "location": "Beijing", "joinedDate": new Date(),
+        "lgPhoto": "bytes", "location": "Beijing", "joinedDate": new Date(), "isEnabled": true,
         "voteCounter": {"votes": 2, "voted": 3, "starred": 4}});
 
     //init collection 'vote'

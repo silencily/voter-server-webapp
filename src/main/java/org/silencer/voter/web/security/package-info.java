@@ -4,6 +4,6 @@
 /**
  *
  * @author gejb
- * @since 14-8-21
+ * @since 14-8-25
  */
-package org.silencer.voter.web;
+package org.silencer.voter.web.security;

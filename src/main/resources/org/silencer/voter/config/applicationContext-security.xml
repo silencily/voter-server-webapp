@@ -8,15 +8,21 @@
     <http pattern="/static/**" security="none"/>
     <http pattern="/index.jsp" security="none"/>
     <http>
-        <intercept-url pattern='/**' access='ROLE_USER'/>
-        <form-login login-page="/index.jsp" default-target-url="/home" always-use-default-target="true"/>
+        <intercept-url pattern='/**' access='IS_AUTHENTICATED_REMEMBERED' />
+        <form-login login-page="/" default-target-url="/home" always-use-default-target="true"/>
         <logout logout-url="/logout"/>
+        <remember-me user-service-ref="mongoUserDetailsService"/>
     </http>
     <authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="silencily" password="silencily" authorities="ROLE_USER"/>
-            </user-service>
+        <authentication-provider user-service-ref="mongoUserDetailsService">
+            <password-encoder hash="md5">
+                <salt-source user-property="username"/>
+            </password-encoder>
         </authentication-provider>
     </authentication-manager>
+
+    <beans:bean name="mongoUserDetailsService" class="org.silencer.voter.web.security.MongoUserDetailsService">
+        <beans:property name="mongoTemplate" ref="mongoTemplate"/>
+    </beans:bean>
+
 </beans:beans>
