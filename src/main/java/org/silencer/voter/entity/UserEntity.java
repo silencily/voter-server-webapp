@@ -31,7 +31,7 @@ public class UserEntity {
     private String location;
     @CreatedDate
     private Date joinedDate;
-    private boolean enabled;
+    private boolean enabled = true;
     private VoteCounter voteCounter;
 
     public String getId() {
@@ -130,7 +130,7 @@ public class UserEntity {
         this.voteCounter = voteCounter;
     }
 
-    public class VoteCounter{
+    public class VoteCounter {
         private Integer votes;
         private Integer voted;
         private Integer starred;

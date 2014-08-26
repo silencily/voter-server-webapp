@@ -1,5 +1,5 @@
 /* 
- * CopyRright (c) 2013, Minxin and/or its affiliates. All rights reserved.
+ * CopyRright (c) 2014, org.silencer and/or its affiliates. All rights reserved.
  */
 package org.silencer.voter.web.controller;
 
@@ -19,6 +19,10 @@ public class EntryPointController {
 
     @RequestMapping(value = "/signup")
     public String signup(String fullname,String email,String password){
+
+        //TODO:check the user
+
+        userService.registerUser(fullname,email,password);
 
         return "home";
     }

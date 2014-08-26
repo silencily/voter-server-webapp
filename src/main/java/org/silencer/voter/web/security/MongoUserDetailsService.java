@@ -33,22 +33,23 @@ public class MongoUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        SigninType signinType=decideSigninType(username);
-        switch (signinType){
+        SigninType signinType = decideSigninType(username);
+        UserEntity user = null;
+        switch (signinType) {
             case PHONE:
+                user = mongoTemplate.findOne(Query.query(Criteria.where("phone").is(username)), UserEntity.class);
                 break;
             case EMAIL:
+                user = mongoTemplate.findOne(Query.query(Criteria.where("email").is(username)), UserEntity.class);
                 break;
             case USERNAME:
                 break;
         }
-        Query query = new Query(Criteria.where("username").is(username));
-        UserEntity user = mongoTemplate.findOne(query, UserEntity.class);
         if (user == null) {
-
-        }
-        if (user == null) {
-            throw new UsernameNotFoundException("username:'" + username + "' not found.");
+            user = mongoTemplate.findOne(Query.query(Criteria.where("username").is(username)), UserEntity.class);
+            if (user == null) {
+                throw new UsernameNotFoundException("username:'" + username + "' not found.");
+            }
         }
         Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
         User userDetails = new User(username, user.getPassword(), user.isEnabled(), true, true, true, authorities);
@@ -62,10 +63,10 @@ public class MongoUserDetailsService implements UserDetailsService {
      * @return 登录类型
      */
     private SigninType decideSigninType(String loginName) {
-        if(FormatValidator.validateEmail(loginName)){
+        if (FormatValidator.validateEmail(loginName)) {
             return SigninType.EMAIL;
         }
-        if(FormatValidator.validatePhone(loginName)){
+        if (FormatValidator.validatePhone(loginName)) {
             return SigninType.PHONE;
         }
         return SigninType.USERNAME;

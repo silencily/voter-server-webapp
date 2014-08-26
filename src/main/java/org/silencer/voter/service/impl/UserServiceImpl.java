@@ -3,11 +3,16 @@
  */
 package org.silencer.voter.service.impl;
 
+import org.apache.log4j.Logger;
 import org.silencer.voter.entity.UserEntity;
 import org.silencer.voter.repository.UserRepository;
 import org.silencer.voter.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 
 /**
  * @author gejb
@@ -15,14 +20,29 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl implements UserService {
+    private static final Logger log = Logger.getLogger(UserServiceImpl.class);
 
     @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
     private UserRepository userRepository;
 
+    @Value("${security.password.encoder.salt}")
+    private String passwordSalt;
+
 
     @Override
     public UserEntity registerUser(String fullname, String email, String password) {
-        return null;
+        UserEntity userEntity = new UserEntity();
+        userEntity.setEmail(email);
+        userEntity.setFullname(fullname);
+
+        Md5PasswordEncoder encoder = new Md5PasswordEncoder();
+        String encodedPassword = encoder.encodePassword(password, passwordSalt);
+        log.debug("username [" + email + "] encoded password:[" + encodedPassword + "],salt:[" + passwordSalt + "]");
+        userEntity.setPassword(encodedPassword);
+        //userEntity.setJoinedDate(new Date());
+        userEntity.setUsername(email);
+        UserEntity savedUser = userRepository.save(userEntity);
+        return savedUser;
     }
 }

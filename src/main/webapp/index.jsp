@@ -51,7 +51,7 @@
         </div>
         <div class="col-md-4 col-md-offset-1 front-sign">
             <div class="front-signin">
-                <form method="post" role="form" id="signin-form" action="./j_spring_security_check">
+                <form method="post" role="form" id="signin-form" action="/j_spring_security_check">
                     <div class="row">
                         <div class="col-xs-12">
                             <input type="text" class="form-control" id="signin-username" name="j_username"
@@ -60,7 +60,8 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-8 col-signin-password">
-                            <input type="password" class="form-control" id="signin-password" name="j_password" placeholder="Password">
+                            <input type="password" class="form-control" id="signin-password" name="j_password"
+                                   placeholder="Password">
                         </div>
                         <div class="col-xs-4">
                             <button type="submit" class="form-control btn btn-primary">Sign in</button>
@@ -79,22 +80,24 @@
             </div>
             <div class="front-signup">
                 <h2><strong>New to Voter?</strong> Sign up</h2>
-                <form role="form" id="signup-form">
+
+                <form role="form" id="signup-form" action="/signup" method="post">
                     <div class="row">
                         <div class="col-xs-12">
-                            <input type="text" class="form-control" id="signup-fullname"
+                            <input type="text" class="form-control" id="signup-fullname" name="fullname"
                                    placeholder="Full name">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <input type="text" class="form-control" id="signup-email"
+                            <input type="text" class="form-control" id="signup-email" name="email"
                                    placeholder="Email">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <input type="password" class="form-control" id="signup-password" placeholder="Password">
+                            <input type="password" class="form-control" id="signup-password" name="password"
+                                   placeholder="Password">
                         </div>
                     </div>
                     <div class="row">
