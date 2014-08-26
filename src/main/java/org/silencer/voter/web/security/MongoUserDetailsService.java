@@ -4,6 +4,7 @@
 package org.silencer.voter.web.security;
 
 import org.silencer.voter.entity.UserEntity;
+import org.silencer.voter.utils.FormatValidator;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -32,6 +33,15 @@ public class MongoUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        SigninType signinType=decideSigninType(username);
+        switch (signinType){
+            case PHONE:
+                break;
+            case EMAIL:
+                break;
+            case USERNAME:
+                break;
+        }
         Query query = new Query(Criteria.where("username").is(username));
         UserEntity user = mongoTemplate.findOne(query, UserEntity.class);
         if (user == null) {
@@ -52,7 +62,12 @@ public class MongoUserDetailsService implements UserDetailsService {
      * @return 登录类型
      */
     private SigninType decideSigninType(String loginName) {
-
+        if(FormatValidator.validateEmail(loginName)){
+            return SigninType.EMAIL;
+        }
+        if(FormatValidator.validatePhone(loginName)){
+            return SigninType.PHONE;
+        }
         return SigninType.USERNAME;
 
     }

@@ -20,9 +20,12 @@ public class UserEntity {
     private String id;
     @Indexed(unique = true)
     private String username;
+    @Indexed(unique = true)
     private String email;
     private String password;
     private String fullname;
+    @Indexed(unique = true)
+    private String phone;
     private String smPhoto;
     private String lgPhoto;
     private String location;
@@ -69,6 +72,14 @@ public class UserEntity {
 
     public void setFullname(String fullname) {
         this.fullname = fullname;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getSmPhoto() {
