@@ -7,12 +7,14 @@ import org.silencer.voter.entity.UserEntity;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import java.util.Queue;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 用户信息从mongodb中读取组装
@@ -33,9 +35,10 @@ public class MongoUserDetailsService implements UserDetailsService {
         Query query = new Query(Criteria.where("username").is(username));
         UserEntity user = mongoTemplate.findOne(query, UserEntity.class);
         if (user == null) {
-            return null;
+            throw new UsernameNotFoundException("username:'" + username + "' not found.");
         }
-        User userDetails = new User(username, user.getPassword(), user.isEnabled(), true, true, true, null);
+        Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
+        User userDetails = new User(username, user.getPassword(), user.isEnabled(), true, true, true, authorities);
         return userDetails;
     }
 }

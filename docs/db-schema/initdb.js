@@ -3,9 +3,15 @@
  */
 
 function init() {
+    //create db user
+    db.dropUser("voter")
+    db.createUser({"user": "voter", "pwd": "voter", "roles": [
+        {"role": "readWrite", "db": "voter"}
+    ]});
     //init collection 'user'
     db.user.drop();
     db.createCollection("user");
+    db.user.ensureIndex({"username": 1}, {"unique": true});
     db.user.insert({"username": "silencily", "email": "silencily@gmail.com",
         "password": "seven", "fullname": "silencily.seven", "smPhoto": "bytes",
         "lgPhoto": "bytes", "location": "Beijing", "joinedDate": new Date(), "enabled": true,
