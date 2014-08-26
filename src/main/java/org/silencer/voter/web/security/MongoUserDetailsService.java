@@ -35,10 +35,32 @@ public class MongoUserDetailsService implements UserDetailsService {
         Query query = new Query(Criteria.where("username").is(username));
         UserEntity user = mongoTemplate.findOne(query, UserEntity.class);
         if (user == null) {
+
+        }
+        if (user == null) {
             throw new UsernameNotFoundException("username:'" + username + "' not found.");
         }
         Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
         User userDetails = new User(username, user.getPassword(), user.isEnabled(), true, true, true, authorities);
         return userDetails;
+    }
+
+    /**
+     * 判断登录名的类型
+     *
+     * @param loginName 登录名
+     * @return 登录类型
+     */
+    private SigninType decideSigninType(String loginName) {
+
+        return SigninType.USERNAME;
+
+    }
+
+    /**
+     * 登录类型：phone,email or username
+     */
+    private enum SigninType {
+        PHONE, EMAIL, USERNAME
     }
 }

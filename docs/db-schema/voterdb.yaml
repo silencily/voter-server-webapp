@@ -4,6 +4,7 @@ user:
   email: string
   password: string
   fullname: string
+  phone: string
   smPhoto: bytes
   lgPhoto: bytes
   location: string
