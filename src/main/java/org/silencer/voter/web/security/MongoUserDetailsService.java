@@ -52,7 +52,7 @@ public class MongoUserDetailsService implements UserDetailsService {
             }
         }
         Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
-        User userDetails = new User(username, user.getPassword(), user.isEnabled(), true, true, true, authorities);
+        SecurityUser userDetails = new SecurityUser(user, authorities);
         return userDetails;
     }
 

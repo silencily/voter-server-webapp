@@ -11,11 +11,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
  * @author gejb
  * @since 14-8-27
  */
-public class SecurityAuditorAware implements AuditorAware<UserEntity>{
+public class SecurityAuditorAware implements AuditorAware<UserEntity> {
 
     @Override
     public UserEntity getCurrentAuditor() {
-        //SecurityContextHolder.getContext().getAuthentication().getPrincipal()
-        return null;
+        SecurityUser securityUser = (SecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return securityUser.getUserEntity();
     }
 }
