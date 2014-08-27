@@ -3,9 +3,11 @@
  */
 package org.silencer.voter.entity;
 
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
@@ -20,10 +22,13 @@ public class VoteEntity extends AbstractEntity{
     @Id
     private String id;
     private String title;
+    @CreatedBy
+    @DBRef
+    private UserEntity creator;
     @CreatedDate
     private Date createTime;
-    private Integer voted;
-    private Integer starred;
+    private int voted;
+    private int starred;
     private boolean multi;
     private boolean deleted;
     private Date delTime;
@@ -47,6 +52,14 @@ public class VoteEntity extends AbstractEntity{
         this.title = title;
     }
 
+    public UserEntity getCreator() {
+        return creator;
+    }
+
+    public void setCreator(UserEntity creator) {
+        this.creator = creator;
+    }
+
     public Date getCreateTime() {
         return createTime;
     }
@@ -55,19 +68,19 @@ public class VoteEntity extends AbstractEntity{
         this.createTime = createTime;
     }
 
-    public Integer getVoted() {
+    public int getVoted() {
         return voted;
     }
 
-    public void setVoted(Integer voted) {
+    public void setVoted(int voted) {
         this.voted = voted;
     }
 
-    public Integer getStarred() {
+    public int getStarred() {
         return starred;
     }
 
-    public void setStarred(Integer starred) {
+    public void setStarred(int starred) {
         this.starred = starred;
     }
 
@@ -111,17 +124,17 @@ public class VoteEntity extends AbstractEntity{
         this.choices = choices;
     }
 
-    public class Choice{
-        private Integer no;
+    public static class Choice{
+        private int no;
         private String content;
-        private Integer voted;
-        private Float ratio;
+        private int voted;
+        private float ratio;
 
-        public Integer getNo() {
+        public int getNo() {
             return no;
         }
 
-        public void setNo(Integer no) {
+        public void setNo(int no) {
             this.no = no;
         }
 
@@ -133,19 +146,19 @@ public class VoteEntity extends AbstractEntity{
             this.content = content;
         }
 
-        public Integer getVoted() {
+        public int getVoted() {
             return voted;
         }
 
-        public void setVoted(Integer voted) {
+        public void setVoted(int voted) {
             this.voted = voted;
         }
 
-        public Float getRatio() {
+        public float getRatio() {
             return ratio;
         }
 
-        public void setRatio(Float ratio) {
+        public void setRatio(float ratio) {
             this.ratio = ratio;
         }
     }
