@@ -15,7 +15,7 @@ import java.util.Date;
  * @since 2014-08-25
  */
 @Document(collection = "starred")
-public class StarredEntity {
+public class StarredEntity extends AbstractEntity{
     @Id
     private String id;
     @DBRef

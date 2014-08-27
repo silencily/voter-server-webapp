@@ -4,9 +4,9 @@
     <title>Voter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="./static/css/bootstrap.css">
-    <link rel="stylesheet" href="./static/css/voter.css">
-    <link rel="shortcut icon" href="./favicon.ico">
+    <link rel="stylesheet" href="${ctxStatic}/css/bootstrap.css">
+    <link rel="stylesheet" href="${ctxStatic}/css/voter.css">
+    <link rel="shortcut icon" href="${ctxStatic}/imgs/favicon.ico">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -51,7 +51,7 @@
         </div>
         <div class="col-md-4 col-md-offset-1 front-sign">
             <div class="front-signin">
-                <form method="post" role="form" id="signin-form" action="/j_spring_security_check">
+                <form method="post" role="form" id="signin-form" action="${ctx}/j_spring_security_check">
                     <div class="row">
                         <div class="col-xs-12">
                             <input type="text" class="form-control" id="signin-username" name="j_username"
@@ -81,7 +81,7 @@
             <div class="front-signup">
                 <h2><strong>New to Voter?</strong> Sign up</h2>
 
-                <form role="form" id="signup-form" action="/signup" method="post">
+                <form role="form" id="signup-form" action="${ctx}/signup" method="post">
                     <div class="row">
                         <div class="col-xs-12">
                             <input type="text" class="form-control" id="signup-fullname" name="fullname"
@@ -119,8 +119,8 @@
 </nav>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="./static/js/jquery.js"></script>
+<script src="${ctxStatic}/js/jquery.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="./static/js/bootstrap.js"></script>
+<script src="${ctxStatic}/js/bootstrap.js"></script>
 </body>
 </html>

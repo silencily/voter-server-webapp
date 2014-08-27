@@ -16,7 +16,7 @@ import java.util.List;
  * @since 2014-08-25
  */
 @Document(collection = "vote")
-public class VoteEntity {
+public class VoteEntity extends AbstractEntity{
     @Id
     private String id;
     private String title;

@@ -15,7 +15,7 @@ import java.util.Date;
  * @since 2014-08-25
  */
 @Document(collection = "voted")
-public class VotedEntity {
+public class VotedEntity extends AbstractEntity{
     @Id
     private String id;
     @DBRef

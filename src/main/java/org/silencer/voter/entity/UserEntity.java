@@ -15,7 +15,7 @@ import java.util.Date;
  * @since 14-8-25
  */
 @Document(collection = "user")
-public class UserEntity {
+public class UserEntity extends AbstractEntity {
     @Id
     private String id;
     @Indexed(unique = true)
@@ -24,14 +24,13 @@ public class UserEntity {
     private String email;
     private String password;
     private String fullname;
-    @Indexed(unique = true)
     private String phone;
     private String smPhoto;
     private String lgPhoto;
     private String location;
     @CreatedDate
     private Date joinedDate;
-    private boolean enabled = true;
+    private boolean enabled;
     private VoteCounter voteCounter;
 
     public String getId() {
@@ -130,32 +129,32 @@ public class UserEntity {
         this.voteCounter = voteCounter;
     }
 
-    public class VoteCounter {
-        private Integer votes;
-        private Integer voted;
-        private Integer starred;
+    public static class VoteCounter {
+        private int votes;
+        private int voted;
+        private int starred;
 
-        public Integer getVotes() {
+        public int getVotes() {
             return votes;
         }
 
-        public void setVotes(Integer votes) {
+        public void setVotes(int votes) {
             this.votes = votes;
         }
 
-        public Integer getVoted() {
+        public int getVoted() {
             return voted;
         }
 
-        public void setVoted(Integer voted) {
+        public void setVoted(int voted) {
             this.voted = voted;
         }
 
-        public Integer getStarred() {
+        public int getStarred() {
             return starred;
         }
 
-        public void setStarred(Integer starred) {
+        public void setStarred(int starred) {
             this.starred = starred;
         }
     }

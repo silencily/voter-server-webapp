@@ -15,7 +15,7 @@ import java.util.Date;
  * @since 2014-08-25
  */
 @Document(collection = "notification")
-public class NotificationEntity {
+public class NotificationEntity extends AbstractEntity{
     @Id
     private String id;
     @DBRef

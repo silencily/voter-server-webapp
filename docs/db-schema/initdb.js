@@ -13,9 +13,8 @@ function init() {
     db.createCollection("user");
     db.user.ensureIndex({"username": 1}, {"unique": true});
     db.user.ensureIndex({"email": 1}, {"unique": true});
-    db.user.ensureIndex({"phone": 1}, {"unique": true});
     db.user.insert({"username": "silencily", "email": "silencily@gmail.com",
-        "password": "seven", "fullname": "silencily.seven", "phone": "13501220454", "smPhoto": "bytes",
+        "password": "85e7119deeddab56abd3aad406649e43", "fullname": "silencily.seven", "phone": "13501220454", "smPhoto": "bytes",
         "lgPhoto": "bytes", "location": "Beijing", "joinedDate": new Date(), "enabled": true,
         "voteCounter": {"votes": 2, "voted": 3, "starred": 4}});
 

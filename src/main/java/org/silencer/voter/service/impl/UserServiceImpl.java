@@ -12,8 +12,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-
 /**
  * @author gejb
  * @since 14-8-26
@@ -40,8 +38,13 @@ public class UserServiceImpl implements UserService {
         String encodedPassword = encoder.encodePassword(password, passwordSalt);
         log.debug("username [" + email + "] encoded password:[" + encodedPassword + "],salt:[" + passwordSalt + "]");
         userEntity.setPassword(encodedPassword);
-        //userEntity.setJoinedDate(new Date());
         userEntity.setUsername(email);
+        userEntity.setEnabled(true);
+        userEntity.setVoteCounter(new UserEntity.VoteCounter());
+        userEntity.setPhone("");
+        userEntity.setLgPhoto("");
+        userEntity.setSmPhoto("");
+        userEntity.setLocation("CN");
         UserEntity savedUser = userRepository.save(userEntity);
         return savedUser;
     }

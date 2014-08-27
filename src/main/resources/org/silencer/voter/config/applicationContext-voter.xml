@@ -12,7 +12,7 @@
     <context:property-placeholder ignore-unresolvable="true"
                                   location="classpath*:/org/silencer/voter/config/application.properties"/>
     <!-- mongodb config -->
-    <mongo:mongo id="mongo" host="${mongo.host}" port="${mongo.port}">
+    <mongo:mongo id="mongo" host="${mongo.host}" port="${mongo.port}" write-concern="${mongo.writeconcern}">
         <!--<mongo:options
                 connections-per-host="${mongo.connectionsPerHost}"
                 threads-allowed-to-block-for-connection-multiplier="${mongo.threadsAllowedToBlockForConnectionMultiplier}"
@@ -28,14 +28,15 @@
     </mongo:mongo>
     <mongo:db-factory id="mongoDbFactory" dbname="${mongo.dbname}" mongo-ref="mongo" username="${mongo.username}"
                       password="${mongo.password}"/>
-    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
-        <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
-    </bean>
+    <mongo:template id="mongoTemplate" db-factory-ref="mongoDbFactory"/>
+
     <!-- 映射转换器，扫描back-package目录下的文件，根据注释，把它们作为mongodb的一个collection的映射 -->
     <mongo:mapping-converter base-package="org.silencer.voter.entity"/>
 
     <!-- mongodb bean的仓库目录，会自动扫描扩展了MongoRepository接口的接口进行注入 -->
     <mongo:repositories base-package="org.silencer.voter.repository"/>
+
+    <mongo:auditing/>
 
     <context:component-scan base-package="org.silencer.voter.service"/>
 

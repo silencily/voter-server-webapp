@@ -4,9 +4,9 @@
     <title>Voter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="../../static/css/bootstrap.css">
-    <link rel="stylesheet" href="../../static/css/voter.css">
-    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="${ctxStatic}/css/bootstrap.css">
+    <link rel="stylesheet" href="${ctxStatic}/css/voter.css">
+    <link rel="shortcut icon" href="${ctxStatic}/imgs/favicon.ico">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -69,7 +69,7 @@
         <div class="panel-heading">
             <div class="media">
                 <a class="pull-left" href="#">
-                    <img class="media-object img-rounded vote-self-img" src="../../static/imgs/silencily.jpg"
+                    <img class="media-object img-rounded vote-self-img" src="${ctxStatic}/imgs/silencily.jpg"
                          alt="silencily">
                 </a>
 
@@ -121,7 +121,7 @@
             <div class="panel-heading vote-panel-heading">
                 <div class="media pull-left">
                     <a class="pull-left" href="#">
-                        <img class="media-object img-circle" src="../../static/imgs/silencily.jpg"
+                        <img class="media-object img-circle" src="${ctxStatic}/imgs/silencily.jpg"
                              alt="silencily">
                     </a>
 
@@ -185,7 +185,7 @@
             <div class="panel-heading vote-panel-heading">
                 <div class="media pull-left">
                     <a class="pull-left" href="#">
-                        <img class="media-object img-circle" src="../../static/imgs/silencily.jpg"
+                        <img class="media-object img-circle" src="${ctxStatic}/imgs/silencily.jpg"
                              alt="silencily">
                     </a>
 
@@ -306,7 +306,7 @@
             <div class="panel-heading vote-panel-heading">
                 <div class="media pull-left">
                     <a class="pull-left" href="#">
-                        <img class="media-object img-circle" src="../../static/imgs/silencily.jpg"
+                        <img class="media-object img-circle" src="${ctxStatic}/imgs/silencily.jpg"
                              alt="silencily">
                     </a>
 
@@ -370,7 +370,7 @@
             <div class="panel-heading vote-panel-heading">
                 <div class="media pull-left">
                     <a class="pull-left" href="#">
-                        <img class="media-object img-circle" src="../../static/imgs/silencily.jpg"
+                        <img class="media-object img-circle" src="${ctxStatic}/imgs/silencily.jpg"
                              alt="silencily">
                     </a>
 
@@ -448,8 +448,8 @@
 <!-- /container -->
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="../../static/js/jquery.js"></script>
+<script src="${ctxStatic}/js/jquery.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../../static/js/bootstrap.js"></script>
+<script src="${ctxStatic}/js/bootstrap.js"></script>
 </body>
 </html>
