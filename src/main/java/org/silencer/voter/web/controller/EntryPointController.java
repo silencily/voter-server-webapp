@@ -3,10 +3,14 @@
  */
 package org.silencer.voter.web.controller;
 
+import org.silencer.voter.entity.UserEntity;
 import org.silencer.voter.service.UserService;
+import org.silencer.voter.web.security.SecurityContextHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author gejb
@@ -18,12 +22,13 @@ public class EntryPointController {
     private UserService userService;
 
     @RequestMapping(value = "/signup")
-    public String signup(String fullname,String email,String password){
+    public String signup(String fullname,String email,String password,HttpServletRequest request){
 
         //TODO:check the user
 
-        userService.registerUser(fullname,email,password);
+        UserEntity userEntity= userService.registerUser(fullname, email, password);
 
-        return "home";
+        SecurityContextHelper.authenticate(userEntity,request);
+        return "redirect:home";
     }
 }
