@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Page not found</title>
+    <title>Server error</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="${ctxStatic}/css/bootstrap.css">
@@ -24,7 +24,7 @@
 
 <div class="container">
     <div class="front-bg">
-        <img class="front-image" src="${ctxStatic}/imgs/404.png"
+        <img class="front-image" src="${ctxStatic}/imgs/frontbg/a.jpg"
              alt="" style="display: block;">
     </div>
     <div class="row not-found-main">
