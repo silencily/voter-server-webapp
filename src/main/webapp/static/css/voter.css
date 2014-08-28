@@ -213,3 +213,13 @@ body {
     font-size: 11px;
     text-align: center;
 }
+
+.not-found-main{
+    margin-top: 100px;
+    text-align: center;
+    min-width: 600px;
+}
+.not-found-from{
+    margin:20px auto;
+    width: 600px;
+}

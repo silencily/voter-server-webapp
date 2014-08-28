@@ -1,9 +1,10 @@
 /* 
- * CopyRright (c) 2013, Minxin and/or its affiliates. All rights reserved.
+ * CopyRright (c) 2014, org.silencer and/or its affiliates. All rights reserved.
  */
 package org.silencer.voter.service.impl;
 
-import org.apache.log4j.Logger;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.silencer.voter.entity.UserEntity;
 import org.silencer.voter.repository.UserRepository;
 import org.silencer.voter.service.UserService;
@@ -18,7 +19,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl implements UserService {
-    private static final Logger log = Logger.getLogger(UserServiceImpl.class);
+    private final Log log = LogFactory.getLog(this.getClass());
 
     @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired

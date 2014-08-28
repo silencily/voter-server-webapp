@@ -34,7 +34,7 @@
 
 <div class="container">
     <div class="front-bg">
-        <img class="front-image" src="./static/imgs/frontbg/a.jpg"
+        <img class="front-image" src="${ctxStatic}/imgs/frontbg/a.jpg"
              alt="" style="display: block;">
     </div>
     <div class="row front-welcome">
