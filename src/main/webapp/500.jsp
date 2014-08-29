@@ -22,12 +22,24 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container" style="min-width: 600px">
     <div class="front-bg">
-        <img class="front-image" src="${ctxStatic}/imgs/frontbg/a.jpg"
+        <img class="front-image" src="${ctxStatic}/imgs/500.jpg"
              alt="" style="display: block;">
     </div>
-    <div class="row not-found-main">
+    <div class="row" style="margin:25px 150px;height: 50px;">
+        <div class="col-md-12">
+            <div class="alert alert-danger alert-dismissible" style="text-align: center;" role="alert">
+                <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4><strong>500:</strong> Oh no,Server has some trouble!</h4>
+                <p>You can search interesting others below.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row error-page-main">
         <div class="col-md-12">
             <div>
                 <a href="#" class="btn btn-primary btn-lg disabled" role="button">
@@ -35,7 +47,7 @@
                 </a>
             </div>
             <div>
-                <form role="form" class="not-found-from" action="${ctx}/search">
+                <form role="form" class="error-page-from" action="${ctx}/search">
                     <div class="row">
                         <div class="col-xs-12">
                             <input type="search" class="form-control" id="search" name="q" placeholder="Search votes you interesting">
@@ -49,8 +61,6 @@
                             <button type="button" class="form-control btn btn-primary">I'm Feeling Luck</button>
                         </div>
                     </div>
-
-
                 </form>
             </div>
         </div>
