@@ -42,8 +42,8 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-bell"></span> </a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-cog"></span> </a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> </a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-cog"></span> </a></li>
             </ul>
             <form class="navbar-form navbar-right" role="search">
                 <div class="form-group">
@@ -74,20 +74,20 @@
                 </a>
 
                 <div class="media-body vote-self-name">
-                    <h4 class="media-heading vote-media-heading">Silencily Seven</h4>
+                    <h4 class="media-heading vote-media-heading">${userEntity.fullname}</h4>
                 </div>
             </div>
         </div>
         <div class="panel-body vote-self-info">
             <ul class="list-group">
                 <li class="list-group-item">
-                    <span class="glyphicon glyphicon-user"></span> silencily
+                    <span class="glyphicon glyphicon-user"></span> ${userEntity.username}
                 </li>
                 <li class="list-group-item">
-                    <span class="glyphicon glyphicon-envelope"></span> silencily@gmail.com
+                    <span class="glyphicon glyphicon-envelope"></span> ${userEntity.email}
                 </li>
                 <li class="list-group-item">
-                    <span class="glyphicon glyphicon-time"></span> Joined Apr 05, 2012
+                    <span class="glyphicon glyphicon-time"></span> ${userEntity.joinedDate}
                 </li>
             </ul>
         </div>

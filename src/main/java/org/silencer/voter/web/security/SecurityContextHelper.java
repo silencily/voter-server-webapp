@@ -74,4 +74,32 @@ public class SecurityContextHelper {
         httpSession.setAttribute(SPRING_SECURITY_CONTEXT_KEY, context);
         return authentication;
     }
+
+    /**
+     * 获取当前安全用户信息
+     *
+     * @return 当前登录安全用户
+     */
+    public static SecurityUser obtainCurrentSecurityUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null) {
+            if (logger.isWarnEnabled()) {
+                logger.warn("security context does not contain authentication.");
+            }
+            return null;
+        }
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal == null || !(principal instanceof SecurityUser)) {
+            if (logger.isWarnEnabled()) {
+                logger.warn("Principal [" + principal + "] is invalided.Please be sure you set SecurityUser type to principal.");
+            }
+            return null;
+        }
+        if (logger.isDebugEnabled()) {
+            logger.debug("Current Auditor:" + principal);
+        }
+        return (SecurityUser) principal;
+    }
+
+
 }

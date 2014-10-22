@@ -70,7 +70,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <label>
-                                <input type="checkbox"> Remember me
+                                <input id="_spring_security_remember_me" name="_spring_security_remember_me" type="checkbox"> Remember me
                             </label>
                             <span>-</span>
                             <a href="#">Forgot password?</a>
