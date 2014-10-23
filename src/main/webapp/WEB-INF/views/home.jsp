@@ -87,7 +87,7 @@
                     <span class="glyphicon glyphicon-envelope"></span> ${userEntity.email}
                 </li>
                 <li class="list-group-item">
-                    <span class="glyphicon glyphicon-time"></span> ${userEntity.joinedDate}
+                    <span class="glyphicon glyphicon-time"></span> Joined <fmt:setLocale value="en_US"/> <fmt:formatDate value="${userEntity.joinedDate}"/>
                 </li>
             </ul>
         </div>
@@ -102,9 +102,9 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><a href="#">22</a></td>
-                    <td><a href="#">26</a></td>
-                    <td><a href="#">26</a></td>
+                    <td><a href="#">${userEntity.voteCounter.votes}</a></td>
+                    <td><a href="#">${userEntity.voteCounter.voted}</a></td>
+                    <td><a href="#">${userEntity.voteCounter.starred}</a></td>
                 </tr>
                 </tbody>
             </table>

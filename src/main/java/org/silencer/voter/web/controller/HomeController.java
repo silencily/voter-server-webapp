@@ -21,4 +21,5 @@ public class HomeController {
         model.addAttribute(userEntity);
         return "home";
     }
+
 }

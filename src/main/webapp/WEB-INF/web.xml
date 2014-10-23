@@ -79,6 +79,10 @@
             <taglib-uri>http://java.sun.com/jsp/jstl/core</taglib-uri>
             <taglib-location>/WEB-INF/tlds/c.tld</taglib-location>
         </taglib>
+        <taglib>
+            <taglib-uri>http://java.sun.com/jsp/jstl/fmt</taglib-uri>
+            <taglib-location>/WEB-INF/tlds/fmt.tld</taglib-location>
+        </taglib>
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>
             <include-prelude>/WEB-INF/include/head.jspf</include-prelude>
