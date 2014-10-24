@@ -19,4 +19,11 @@ public interface UserService {
      * @return 用户实体
      */
     public UserEntity registerUser(String fullname, String email, String password);
+
+    /**
+     * 根据用户id查找用户
+     * @param id 用户id
+     * @return 用户
+     */
+    public UserEntity findUserById(String id);
 }

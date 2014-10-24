@@ -222,3 +222,10 @@ body {
     margin:20px auto;
     width: 600px;
 }
+.vote-modal{
+    top: 200px;
+}
+
+.vote-modal .modal-title{
+    text-align: center;
+}

@@ -42,8 +42,8 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-bell"></span> </a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> </a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-cog"></span> </a></li>
+                <li><a href="#newVote" data-toggle="modal"><span class="glyphicon glyphicon-pencil"></span> </a></li>
             </ul>
             <form class="navbar-form navbar-right" role="search">
                 <div class="form-group">
@@ -61,6 +61,32 @@
     </div>
     <!-- /.container -->
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="newVote" tabindex="-1" role="dialog" aria-labelledby="newVoteLabel" aria-hidden="true">
+    <div class="modal-dialog vote-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="newVoteLabel">Compose new Vote</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span> Vote</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="container">
 <div class="row">

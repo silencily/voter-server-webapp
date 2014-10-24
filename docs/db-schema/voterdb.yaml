@@ -43,17 +43,25 @@ notification:
   delTime: date
 
 #collection : voted
+# @deprecated 此集合被voter集合替代
 voted:
   voter: object(user)
   vote: object(vote)
   voteTime: date
 
 #collection : starred
+# @deprecated 此集合被voter集合替代
 starred:
   voter: object(user)
   vote: object(vote)
   starredTime: date
 
+#collection : voter 此集合为用户投票关系表，包括创建、标星、参与投票。替代voted和starred两个集合。
+voter:
+  userId: string
+  voteId: string
+  type: int #0:created;1:starred;2:voted
+  createTime: date
 
 
 

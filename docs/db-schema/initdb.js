@@ -21,7 +21,7 @@ function init() {
     //init collection 'vote'
     db.vote.drop();
     db.createCollection("vote");
-    db.vote.insert({"title": "hello world", "creator": db.user.findOne()._id.valueOf(),
+    db.vote.insert({"title": "hello world", "creator": new DBRef("user",ObjectId(db.user.findOne()._id.valueOf())),
         "createTime": new Date(), "voted": 2, "starred": 3, "multi": false, "deleted": false,
         "delTime": null, "lastUpdateTime": new Date(), "choices": [
             {"no": 1, "content": "first choice", "voted": 2, "ratio": 0.2},
@@ -35,16 +35,23 @@ function init() {
         "readed": false, "content": "hello world!", "deleted": false, "delTime": null})
 
     //init collection 'voted'
-    db.voted.drop();
-    db.createCollection("voted");
-    db.voted.insert({"voter": db.user.findOne()._id.valueOf(),
-        "vote": db.vote.findOne()._id.valueOf(), "voteTime": new Date()});
+//    db.voted.drop();
+//    db.createCollection("voted");
+//    db.voted.insert({"voter": db.user.findOne()._id.valueOf(),
+//        "vote": db.vote.findOne()._id.valueOf(), "voteTime": new Date()});
 
     //init collection 'starred'
-    db.starred.drop();
-    db.createCollection("starred");
-    db.starred.insert({"voter": db.user.findOne()._id.valueOf(),
-        "vote": db.vote.findOne()._id.valueOf(), "starredTime": new Date()});
+//    db.starred.drop();
+//    db.createCollection("starred");
+//    db.starred.insert({"voter": db.user.findOne()._id.valueOf(),
+//        "vote": db.vote.findOne()._id.valueOf(), "starredTime": new Date()});
+
+    //init collection 'voter'
+    db.voter.drop();
+    db.createCollection("voter");
+    db.voter.insert({"userId": db.user.findOne()._id.valueOf(),
+        "voteId": db.vote.findOne()._id.valueOf(),"type":0, "createTime": new Date()});
+
 }
 
 init();

@@ -49,4 +49,11 @@ public class UserServiceImpl implements UserService {
         UserEntity savedUser = userRepository.save(userEntity);
         return savedUser;
     }
+
+    @Override
+    public UserEntity findUserById(String id) {
+        return userRepository.findOne(id);
+    }
+
+
 }
