@@ -67,22 +67,73 @@
     <div class="modal-dialog vote-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="newVoteLabel">Compose new Vote</h4>
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-xs-12">
-
+                    <div class="row" style="padding-bottom: 5px;border-bottom: 1px solid #e5e5e5;">
+                        <div class="col-sm-12">
+                            <div class="checkbox" style="display: inline">
+                                <label>
+                                    <input type="checkbox"> Multi
+                                </label>
+                            </div>
+                            <button id="btnAddChoice" type="button" class="btn btn-primary btn-xs pull-right"><span
+                                    class="glyphicon glyphicon-plus"></span> Add Choice
+                            </button>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12" style="padding-top: 5px;padding-bottom: 5px;">
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-addon">Title</span>
+                                <input type="text" class="form-control" placeholder="Enter the Title for your vote.">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="list-group">
+                                <div class="list-group-item">
+                                    <div class="input-group input-group-sm ">
+                                        <span class="input-group-addon">1</span>
+                                        <input type="text" class="form-control">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button" disabled="disabled"><span class="glyphicon glyphicon-trash"> </span></button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="input-group input-group-sm ">
+                                        <span class="input-group-addon">2</span>
+                                        <input type="text" class="form-control">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button" disabled="disabled"><span class="glyphicon glyphicon-trash"> </span></button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="input-group input-group-sm ">
+                                        <span class="input-group-addon">3</span>
+                                        <input type="text" class="form-control">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-trash"> </span></button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span> Vote</button>
+                <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span> Vote
+                </button>
             </div>
         </div>
     </div>
@@ -113,7 +164,8 @@
                     <span class="glyphicon glyphicon-envelope"></span> ${userEntity.email}
                 </li>
                 <li class="list-group-item">
-                    <span class="glyphicon glyphicon-time"></span> Joined <fmt:setLocale value="en_US"/> <fmt:formatDate value="${userEntity.joinedDate}"/>
+                    <span class="glyphicon glyphicon-time"></span> Joined on <fmt:setLocale value="en_US"/>
+                    <fmt:formatDate value="${userEntity.joinedDate}"/>
                 </li>
             </ul>
         </div>
@@ -477,5 +529,22 @@
 <script src="${ctxStatic}/js/jquery.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="${ctxStatic}/js/bootstrap.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#btnAddChoice').click(function(){
+            var $choices=$('.vote-modal .list-group');
+            var lastChoiceIndex= $choices.children().length;
+            var newChoice='<div class="list-group-item">'+
+                                   '<div class="input-group input-group-sm ">'+
+                                        '<span class="input-group-addon">'+(lastChoiceIndex+1)+'</span>'+
+                                        '<input type="text" class="form-control">'+
+                                        '<span class="input-group-btn"><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-trash"> </span></button></span>'+
+                                '</div>'+
+                                '</div>';
+            $choices.append(newChoice);
+        });
+    });
+</script>
 </body>
 </html>

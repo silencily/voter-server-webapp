@@ -214,18 +214,38 @@ body {
     text-align: center;
 }
 
-.error-page-main{
+.error-page-main {
     margin-top: 100px;
     text-align: center;
 }
-.error-page-from{
-    margin:20px auto;
+
+.error-page-from {
+    margin: 20px auto;
     width: 600px;
 }
-.vote-modal{
+
+.vote-modal {
     top: 200px;
 }
 
-.vote-modal .modal-title{
+.vote-modal .modal-title {
     text-align: center;
+}
+
+.vote-modal .list-group-item {
+    padding: 0px;
+    border: none;
+}
+
+.vote-modal .modal-header, .vote-modal .modal-footer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.vote-modal .modal-body {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.vote-modal .list-group{
+    margin-bottom: 0px;
 }
