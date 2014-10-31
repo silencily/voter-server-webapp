@@ -18,7 +18,7 @@ import java.util.List;
  * @since 2014-08-25
  */
 @Document(collection = "vote")
-public class VoteEntity extends AbstractEntity{
+public class VoteEntity extends AbstractEntity {
     @Id
     private String id;
     private String title;
@@ -27,10 +27,10 @@ public class VoteEntity extends AbstractEntity{
     private UserEntity creator;
     @CreatedDate
     private Date createTime;
-    private int voted;
-    private int starred;
+    private int voted = 0;
+    private int starred = 0;
     private boolean multi;
-    private boolean deleted;
+    private boolean deleted = false;
     private Date delTime;
     @LastModifiedDate
     private Date lastUpdateTime;
@@ -124,7 +124,7 @@ public class VoteEntity extends AbstractEntity{
         this.choices = choices;
     }
 
-    public static class Choice{
+    public static class Choice {
         private int no;
         private String content;
         private int voted;

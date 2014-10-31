@@ -61,6 +61,13 @@
     </div>
     <!-- /.container -->
 </nav>
+<div class="alert-messages" id="message-drawer" style="display: none;">
+    <div class="message bg-info">
+        <div class="message-inside">
+            <span class="message-text"></span>
+        </div>
+    </div>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="newVote" tabindex="-1" role="dialog" aria-labelledby="newVoteLabel" aria-hidden="true">
@@ -77,7 +84,7 @@
                         <div class="col-sm-12">
                             <div class="checkbox" style="display: inline">
                                 <label>
-                                    <input type="checkbox"> Multi
+                                    <input id="isMulti" type="checkbox"> Multi
                                 </label>
                             </div>
                             <button id="btnAddChoice" type="button" class="btn btn-primary btn-xs pull-right"><span
@@ -89,7 +96,8 @@
                         <div class="col-sm-12" style="padding-top: 5px;padding-bottom: 5px;">
                             <div class="input-group input-group-sm">
                                 <span class="input-group-addon">Title</span>
-                                <input type="text" class="form-control" placeholder="Enter the Title for your vote.">
+                                <input id="vote-title" type="text" class="form-control"
+                                       placeholder="Enter the Title for your vote.">
                             </div>
                         </div>
                     </div>
@@ -99,27 +107,20 @@
                                 <div class="list-group-item">
                                     <div class="input-group input-group-sm ">
                                         <span class="input-group-addon">1</span>
-                                        <input type="text" class="form-control">
+                                        <input name="choice" type="text" class="form-control">
                                         <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button" disabled="disabled"><span class="glyphicon glyphicon-trash"> </span></button>
+                                            <button class="btn btn-default" type="button" disabled="disabled"><span
+                                                    class="glyphicon glyphicon-trash"> </span></button>
                                         </span>
                                     </div>
                                 </div>
                                 <div class="list-group-item">
                                     <div class="input-group input-group-sm ">
                                         <span class="input-group-addon">2</span>
-                                        <input type="text" class="form-control">
+                                        <input name="choice" type="text" class="form-control">
                                         <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button" disabled="disabled"><span class="glyphicon glyphicon-trash"> </span></button>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="list-group-item">
-                                    <div class="input-group input-group-sm ">
-                                        <span class="input-group-addon">3</span>
-                                        <input type="text" class="form-control">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-trash"> </span></button>
+                                            <button class="btn btn-default" type="button" disabled="disabled"><span
+                                                    class="glyphicon glyphicon-trash"> </span></button>
                                         </span>
                                     </div>
                                 </div>
@@ -132,7 +133,8 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span> Vote
+                <button id="addVote" type="button" class="btn btn-primary"><span
+                        class="glyphicon glyphicon-send"></span> Vote
                 </button>
             </div>
         </div>
@@ -531,20 +533,54 @@
 <script src="${ctxStatic}/js/bootstrap.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function(){
-        $('#btnAddChoice').click(function(){
-            var $choices=$('.vote-modal .list-group');
-            var lastChoiceIndex= $choices.children().length;
-            var newChoice='<div class="list-group-item">'+
-                                   '<div class="input-group input-group-sm ">'+
-                                        '<span class="input-group-addon">'+(lastChoiceIndex+1)+'</span>'+
-                                        '<input type="text" class="form-control">'+
-                                        '<span class="input-group-btn"><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-trash"> </span></button></span>'+
-                                '</div>'+
-                                '</div>';
-            $choices.append(newChoice);
+    $(document).ready(function () {
+        $('#btnAddChoice').click(function () {
+            var $choiceContainer = $('.vote-modal .list-group');
+            var lastChoiceIndex = $choiceContainer.children().length;
+            var newChoice = '<div class="list-group-item">' +
+                    '<div class="input-group input-group-sm ">' +
+                    '<span class="input-group-addon">' + (lastChoiceIndex + 1) + '</span>' +
+                    '<input name="choice" type="text" class="form-control">' +
+                    '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="delChoice(this)"><span class="glyphicon glyphicon-trash"> </span></button></span>' +
+                    '</div>' +
+                    '</div>';
+            $choiceContainer.append(newChoice);
+        });
+        $('#addVote').click(function () {
+            //获取vote数据
+            var title = $('#vote-title').val();
+            var multi = $('#isMulti').is(':checked');
+            var choices = [];
+            $(':text[name="choice"]').each(function (index, element) {
+                choices[index] = $(element).val();
+            });
+            //校验数据
+            if(title.trim()==''){
+
+
+            }
+
+            //ajax post request
+            $.post("${ctx}/vote", {
+                "title": title,
+                "multi": multi,
+                "choices": choices
+            }, function (data, txtStatus, jqXHR) {
+                $('#newVote').modal('hide');
+                $('#message-drawer .message-text').text(data);
+                $('#message-drawer').fadeIn(2000);
+                $('#message-drawer').delay(4000).fadeOut(2000);
+            });
         });
     });
+    function delChoice(btn) {
+        //remove the choice
+        $(btn).parents('.list-group-item').remove();
+        //刷新choice排序
+        $('.vote-modal .list-group').children().each(function (idx, element) {
+            $(element).find('.input-group-addon').text(idx + 1);
+        });
+    }
 </script>
 </body>
 </html>

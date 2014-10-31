@@ -3,7 +3,6 @@
  */
 package org.silencer.voter.service.impl;
 
-import org.silencer.voter.entity.UserEntity;
 import org.silencer.voter.entity.VoteEntity;
 import org.silencer.voter.entity.VoterEntity;
 import org.silencer.voter.repository.VoteRepository;
@@ -55,5 +54,24 @@ public class VoteServiceImpl implements VoteService {
         query2.limit(initLoadPageSize).with(new Sort(Sort.Direction.DESC, "lastUpdateTime"));
         List<VoteEntity> votes = mongoTemplate.find(query2, VoteEntity.class);
         return votes;
+    }
+
+    @Override
+    public void addVote(String title, boolean multi, String[] choices) {
+        VoteEntity voteEntity = new VoteEntity();
+        voteEntity.setTitle(title);
+        voteEntity.setMulti(multi);
+        List<VoteEntity.Choice> choiceList = new ArrayList<VoteEntity.Choice>();
+        for (int i = 0; i < choices.length; i++) {
+            VoteEntity.Choice choice = new VoteEntity.Choice();
+            choice.setNo(i + 1);
+            choice.setContent(choices[i]);
+            choice.setVoted(0);
+            choice.setRatio(0.00f);
+            choiceList.add(choice);
+        }
+        voteEntity.setChoices(choiceList);
+
+        voteRepository.save(voteEntity);
     }
 }
