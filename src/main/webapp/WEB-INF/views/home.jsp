@@ -555,7 +555,7 @@
                 choices[index] = $(element).val();
             });
             //校验数据
-            if(title.trim()==''){
+            if (title.trim() == '') {
 
 
             }
@@ -567,6 +567,15 @@
                 "choices": choices
             }, function (data, txtStatus, jqXHR) {
                 $('#newVote').modal('hide');
+                $('#vote-title').val('');
+                $('#isMulti').attr("checked", false);
+                $(':text[name="choice"]').each(function (index, element) {
+                    if (index > 1) {
+                        $(element).parents('.list-group-item').remove();
+                    } else {
+                        $(element).val('');
+                    }
+                });
                 $('#message-drawer .message-text').text(data);
                 $('#message-drawer').fadeIn(2000);
                 $('#message-drawer').delay(4000).fadeOut(2000);
