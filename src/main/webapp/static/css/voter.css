@@ -225,11 +225,16 @@ body {
 }
 
 .vote-modal {
-    top: 200px;
+    top: 150px;
 }
 
 .vote-modal .modal-title {
     text-align: center;
+    margin-bottom: 5px;
+}
+.vote-modal .modal-header .alert{
+    margin-bottom: 0px;
+    padding: 5px 15px;
 }
 
 .vote-modal .list-group-item {

@@ -77,6 +77,8 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
                         class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="newVoteLabel">Compose new Vote</h4>
+
+                <div id="error-msg" class="alert alert-danger hidden" role="alert">error message.</div>
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
@@ -549,17 +551,28 @@
         $('#addVote').click(function () {
             //获取vote数据
             var title = $('#vote-title').val();
+            if (title.trim() == '') {
+                showError('The title is required.');
+                $('#vote-title').focus();
+                return;
+            }
             var multi = $('#isMulti').is(':checked');
             var choices = [];
+            var vChoices = true;
             $(':text[name="choice"]').each(function (index, element) {
-                choices[index] = $(element).val();
+                var choice = $(element).val();
+                if (choice.trim() == '') {
+                    showError('The choice is required.');
+                    $(element).focus();
+                    vChoices = false;
+                    return false;
+                }
+                choices[index] = choice;
             });
-            //校验数据
-            if (title.trim() == '') {
-
-
+            if (!vChoices) {
+                return;
             }
-
+            clearError();
             //ajax post request
             $.post("${ctx}/vote", {
                 "title": title,
@@ -582,6 +595,17 @@
             });
         });
     });
+    function showError(err) {
+        $('#error-msg').text(err);
+        $('#error-msg').removeClass('hidden');
+        $('#error-msg').addClass('show');
+    }
+    function clearError() {
+        $('#error-msg').text('');
+        $('#error-msg').removeClass('show');
+        $('#error-msg').addClass('hidden');
+    }
+
     function delChoice(btn) {
         //remove the choice
         $(btn).parents('.list-group-item').remove();
