@@ -211,7 +211,8 @@
 
                                             <div class="media-body">
                                                 <h5 class="media-heading vote-media-heading">${vote.creator.username}</h5>
-                                                <small><fmt:formatDate value="${vote.createTime}" pattern="yyyy/MM/dd HH:mm"/></small>
+                                                <small><fmt:formatDate value="${vote.createTime}"
+                                                                       pattern="yyyy/MM/dd HH:mm"/></small>
                                             </div>
                                         </div>
                                         <div class="vote-actions">
@@ -223,41 +224,23 @@
                                     </div>
                                     <div class="panel-body vote-panel-body">
                                         <h4><span class="glyphicon glyphicon-hand-right"></span> ${vote.title}</h4>
+                                        <c:choose>
+                                            <c:when test="${vote.multi}">
 
-                                        <div class="radio vote-radio">
-                                            <span class="vote-order">1.</span>
-                                            <label>
-                                                <input type="radio" name="optionsRadios" id="optionsRadios1"
-                                                       value="option1">
-                                                Option one is this and that&mdash;be sure to include why it's great
-                                            </label>
-                                        </div>
-                                        <div class="radio vote-radio">
-                                            <span class="vote-order">2.</span>
-                                            <label>
-                                                <input type="radio" name="optionsRadios" id="optionsRadios2"
-                                                       value="option2">
-                                                Option two can be something else and selecting it will deselect option
-                                                one
-                                            </label>
-                                        </div>
-                                        <div class="radio vote-radio">
-                                            <span class="vote-order">3.</span>
-                                            <label>
-                                                <input type="radio" name="optionsRadios" id="optionsRadios3"
-                                                       value="option3">
-                                                Option three is disabled
-                                            </label>
-                                        </div>
-                                        <div class="radio vote-radio">
-                                            <span class="vote-order">4.</span>
-                                            <label>
-                                                <input type="radio" name="optionsRadios" id="optionsRadios4"
-                                                       value="option1"
-                                                       checked>
-                                                Option one is this and that&mdash;be sure to include why it's great
-                                            </label>
-                                        </div>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <c:forEach items="${vote.choices}" var="choice">
+                                                    <div class="radio vote-radio">
+                                                        <span class="vote-order">${choice.no}.</span>
+                                                        <label>
+                                                            <input type="radio" name="optionsRadios"
+                                                                   value="${choice.no}">
+                                                                ${choice.content}
+                                                        </label>
+                                                    </div>
+                                                </c:forEach>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </div>
                                     <div class="vote-panel-tools">
                                         <a href="#"><span class="glyphicon glyphicon-eye-open"></span>
@@ -267,58 +250,23 @@
                                         <h4><span class="glyphicon glyphicon-stats"></span> Result</h4>
 
                                         <div>
-                                            <div class="vote-panel-footer-result">
-                                                <span>1.</span>
+                                            <c:forEach items="${vote.choices}" var="choice">
+                                                <div class="vote-panel-footer-result">
+                                                    <span>${choice.no}.</span>
+                                                    <fmt:formatNumber value="${choice.ratio}" type="percent" var="ratio" />
 
-                                                <div class="progress">
-                                                    <div class="progress-bar progress-bar-success" role="progressbar"
-                                                         aria-valuenow="10"
-                                                         aria-valuemin="0"
-                                                         aria-valuemax="100" style="width: 10%;">
-                                                        10%
+                                                    <div class="progress">
+                                                        <div class="progress-bar progress-bar-success"
+                                                             role="progressbar"
+                                                             aria-valuenow="10"
+                                                             aria-valuemin="0"
+                                                             aria-valuemax="100" style="width: ${ratio};">
+                                                                ${ratio}
+                                                        </div>
+                                                        <span class="badge  pull-right">${choice.voted}v</span>
                                                     </div>
-                                                    <span class="badge  pull-right">50v</span>
                                                 </div>
-                                            </div>
-                                            <div class="vote-panel-footer-result">
-                                                <span>2.</span>
-
-                                                <div class="progress">
-                                                    <div class="progress-bar progress-bar-success" role="progressbar"
-                                                         aria-valuenow="20"
-                                                         aria-valuemin="0"
-                                                         aria-valuemax="100" style="width: 20%;">
-                                                        20%
-                                                    </div>
-                                                    <span class="badge  pull-right">50v</span>
-                                                </div>
-                                            </div>
-                                            <div class="vote-panel-footer-result">
-                                                <span>3.</span>
-
-                                                <div class="progress">
-                                                    <div class="progress-bar progress-bar-success" role="progressbar"
-                                                         aria-valuenow="40"
-                                                         aria-valuemin="0"
-                                                         aria-valuemax="100" style="width: 40%;">
-                                                        40%
-                                                    </div>
-                                                    <span class="badge  pull-right">50v</span>
-                                                </div>
-                                            </div>
-                                            <div class="vote-panel-footer-result">
-                                                <span>4.</span>
-
-                                                <div class="progress">
-                                                    <div class="progress-bar progress-bar-success" role="progressbar"
-                                                         aria-valuenow="12"
-                                                         aria-valuemin="0"
-                                                         aria-valuemax="100" style="width: 12%;">
-                                                        12%
-                                                    </div>
-                                                    <span class="badge pull-right">110v</span>
-                                                </div>
-                                            </div>
+                                            </c:forEach>
                                         </div>
                                         <div class="vote-panel-footer-action">
                                             <button type="button" class="btn btn-default btn-block">Vote</button>
