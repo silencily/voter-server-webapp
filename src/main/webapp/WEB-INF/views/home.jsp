@@ -144,387 +144,205 @@
 </div>
 
 <div class="container">
-<div class="row">
-<div class="col-md-3">
-    <div class="panel panel-warning">
-        <div class="panel-heading">
-            <div class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object img-rounded vote-self-img" src="${ctxStatic}/imgs/silencily.jpg"
-                         alt="silencily">
-                </a>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-rounded vote-self-img" src="${ctxStatic}/imgs/silencily.jpg"
+                                 alt="silencily">
+                        </a>
 
-                <div class="media-body vote-self-name">
-                    <h4 class="media-heading vote-media-heading">${userEntity.fullname}</h4>
-                </div>
-            </div>
-        </div>
-        <div class="panel-body vote-self-info">
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <span class="glyphicon glyphicon-user"></span> ${userEntity.username}
-                </li>
-                <li class="list-group-item">
-                    <span class="glyphicon glyphicon-envelope"></span> ${userEntity.email}
-                </li>
-                <li class="list-group-item">
-                    <span class="glyphicon glyphicon-time"></span> Joined on <fmt:setLocale value="en_US"/>
-                    <fmt:formatDate value="${userEntity.joinedDate}"/>
-                </li>
-            </ul>
-        </div>
-        <div class="panel-footer">
-            <table class="table vote-self-table">
-                <thead>
-                <tr>
-                    <th>VOTES</th>
-                    <th>VOTED</th>
-                    <th>STARRED</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><a href="#">${userEntity.voteCounter.votes}</a></td>
-                    <td><a href="#">${userEntity.voteCounter.voted}</a></td>
-                    <td><a href="#">${userEntity.voteCounter.starred}</a></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-<div class="col-md-6">
-<div class="panel panel-primary">
-<div class="panel-heading">Votes</div>
-<div class="panel-body vote-panel-body">
-<div class="row">
-    <div class="col-md-12 inner-col">
-        <div class="panel panel-warning vote-panel">
-            <div class="panel-heading vote-panel-heading">
-                <div class="media pull-left">
-                    <a class="pull-left" href="#">
-                        <img class="media-object img-circle" src="${ctxStatic}/imgs/silencily.jpg"
-                             alt="silencily">
-                    </a>
-
-                    <div class="media-body">
-                        <h5 class="media-heading vote-media-heading">Silencily</h5>
-                        <small>2014/06/27 18:02</small>
-                    </div>
-                </div>
-                <div class="vote-actions">
-                    <span class="glyphicon glyphicon-hand-up"></span>
-                    <span class="badge">777</span>
-                    <span class="glyphicon glyphicon-star vote-actions-star" onclick=""></span>
-                    <span class="badge">77</span>
-                </div>
-            </div>
-            <div class="panel-body vote-panel-body">
-                <h4><span class="glyphicon glyphicon-hand-right"></span> This is the title of the vote.</h4>
-
-                <div class="radio vote-radio">
-                    <span class="vote-order">1.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios1"
-                               value="option1">
-                        Option one is this and that&mdash;be sure to include why it's great
-                    </label>
-                </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">2.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios2"
-                               value="option2">
-                        Option two can be something else and selecting it will deselect option one
-                    </label>
-                </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">3.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios3"
-                               value="option3">
-                        Option three is disabled
-                    </label>
-                </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">4.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios4" value="option1"
-                               checked>
-                        Option one is this and that&mdash;be sure to include why it's great
-                    </label>
-                </div>
-            </div>
-            <div class="vote-panel-tools">
-                <a href="#"><span class="glyphicon glyphicon-eye-open"></span> Expand...</a>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12 inner-col">
-        <div class="panel panel-warning vote-panel">
-            <div class="panel-heading vote-panel-heading">
-                <div class="media pull-left">
-                    <a class="pull-left" href="#">
-                        <img class="media-object img-circle" src="${ctxStatic}/imgs/silencily.jpg"
-                             alt="silencily">
-                    </a>
-
-                    <div class="media-body">
-                        <h5 class="media-heading vote-media-heading">Silencily</h5>
-                        <small>2014/06/27 18:02</small>
-                    </div>
-                </div>
-                <div class="vote-actions">
-                    <span class="glyphicon glyphicon-hand-up"></span>
-                    <span class="badge">777</span>
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                    <span class="badge">77</span>
-                </div>
-            </div>
-            <div class="panel-body vote-panel-body">
-                <h4><span class="glyphicon glyphicon-hand-right"></span> This is the title of the vote.</h4>
-
-                <div class="radio vote-radio">
-                    <span class="vote-order">1.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios1" id="optionsRadios21"
-                               value="option1">
-                        Option one is this and that&mdash;be sure to include why it's great
-                    </label>
-                </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">2.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios1" id="optionsRadios22"
-                               value="option2">
-                        Option two can be something else and selecting it will deselect option one
-                    </label>
-                </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">3.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios1" id="optionsRadios23"
-                               value="option3">
-                        Option three is disabled
-                    </label>
-                </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">4.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios1" id="optionsRadios24" value="option1"
-                               checked>
-                        Option one is this and that&mdash;be sure to include why it's great
-                    </label>
-                </div>
-            </div>
-            <div class="vote-panel-tools">
-                <a href="#"><span class="glyphicon glyphicon-eye-close"></span> Collapse...</a>
-            </div>
-            <div class="panel-footer vote-panel-footer">
-                <h4><span class="glyphicon glyphicon-stats"></span> Result</h4>
-
-                <div>
-                    <div class="vote-panel-footer-result">
-                        <span>1.</span>
-
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10"
-                                 aria-valuemin="0"
-                                 aria-valuemax="100" style="width: 10%;">
-                                10%
-                            </div>
-                            <span class="badge  pull-right">50v</span>
-                        </div>
-                    </div>
-                    <div class="vote-panel-footer-result">
-                        <span>2.</span>
-
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
-                                 aria-valuemin="0"
-                                 aria-valuemax="100" style="width: 20%;">
-                                20%
-                            </div>
-                            <span class="badge  pull-right">50v</span>
-                        </div>
-                    </div>
-                    <div class="vote-panel-footer-result">
-                        <span>3.</span>
-
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
-                                 aria-valuemin="0"
-                                 aria-valuemax="100" style="width: 40%;">
-                                40%
-                            </div>
-                            <span class="badge  pull-right">50v</span>
-                        </div>
-                    </div>
-                    <div class="vote-panel-footer-result">
-                        <span>4.</span>
-
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="12"
-                                 aria-valuemin="0"
-                                 aria-valuemax="100" style="width: 12%;">
-                                12%
-                            </div>
-                            <span class="badge pull-right">110v</span>
+                        <div class="media-body vote-self-name">
+                            <h4 class="media-heading vote-media-heading">${currentUser.fullname}</h4>
                         </div>
                     </div>
                 </div>
-                <div class="vote-panel-footer-action">
-                    <button type="button" class="btn btn-default btn-block">Vote</button>
+                <div class="panel-body vote-self-info">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="glyphicon glyphicon-user"></span> ${currentUser.username}
+                        </li>
+                        <li class="list-group-item">
+                            <span class="glyphicon glyphicon-envelope"></span> ${currentUser.email}
+                        </li>
+                        <li class="list-group-item">
+                            <span class="glyphicon glyphicon-time"></span> Joined on <fmt:setLocale value="en_US"/>
+                            <fmt:formatDate value="${currentUser.joinedDate}"/>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-footer">
+                    <table class="table vote-self-table">
+                        <thead>
+                        <tr>
+                            <th>VOTES</th>
+                            <th>VOTED</th>
+                            <th>STARRED</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><a href="#">${currentUser.voteCounter.votes}</a></td>
+                            <td><a href="#">${currentUser.voteCounter.voted}</a></td>
+                            <td><a href="#">${currentUser.voteCounter.starred}</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12 inner-col">
-        <div class="panel panel-warning vote-panel">
-            <div class="panel-heading vote-panel-heading">
-                <div class="media pull-left">
-                    <a class="pull-left" href="#">
-                        <img class="media-object img-circle" src="${ctxStatic}/imgs/silencily.jpg"
-                             alt="silencily">
-                    </a>
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Votes</div>
+                <div class="panel-body vote-panel-body">
+                    <c:forEach items="${votes}" var="vote">
+                        <div class="row">
+                            <div class="col-md-12 inner-col">
+                                <div class="panel panel-warning vote-panel">
+                                    <div class="panel-heading vote-panel-heading">
+                                        <div class="media pull-left">
+                                            <a class="pull-left" href="#">
+                                                <img class="media-object img-circle"
+                                                     src="${ctxStatic}/imgs/silencily.jpg"
+                                                     alt="silencily">
+                                            </a>
 
-                    <div class="media-body">
-                        <h5 class="media-heading vote-media-heading">Silencily</h5>
-                        <small>2014/06/27 18:02</small>
+                                            <div class="media-body">
+                                                <h5 class="media-heading vote-media-heading">${vote.creator.username}</h5>
+                                                <small><fmt:formatDate value="${vote.createTime}" pattern="yyyy/MM/dd HH:mm"/></small>
+                                            </div>
+                                        </div>
+                                        <div class="vote-actions">
+                                            <span class="glyphicon glyphicon-hand-up"></span>
+                                            <span class="badge">${vote.voted}</span>
+                                            <span class="glyphicon glyphicon-star vote-actions-star" onclick=""></span>
+                                            <span class="badge">${vote.starred}</span>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body vote-panel-body">
+                                        <h4><span class="glyphicon glyphicon-hand-right"></span> ${vote.title}</h4>
+
+                                        <div class="radio vote-radio">
+                                            <span class="vote-order">1.</span>
+                                            <label>
+                                                <input type="radio" name="optionsRadios" id="optionsRadios1"
+                                                       value="option1">
+                                                Option one is this and that&mdash;be sure to include why it's great
+                                            </label>
+                                        </div>
+                                        <div class="radio vote-radio">
+                                            <span class="vote-order">2.</span>
+                                            <label>
+                                                <input type="radio" name="optionsRadios" id="optionsRadios2"
+                                                       value="option2">
+                                                Option two can be something else and selecting it will deselect option
+                                                one
+                                            </label>
+                                        </div>
+                                        <div class="radio vote-radio">
+                                            <span class="vote-order">3.</span>
+                                            <label>
+                                                <input type="radio" name="optionsRadios" id="optionsRadios3"
+                                                       value="option3">
+                                                Option three is disabled
+                                            </label>
+                                        </div>
+                                        <div class="radio vote-radio">
+                                            <span class="vote-order">4.</span>
+                                            <label>
+                                                <input type="radio" name="optionsRadios" id="optionsRadios4"
+                                                       value="option1"
+                                                       checked>
+                                                Option one is this and that&mdash;be sure to include why it's great
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="vote-panel-tools">
+                                        <a href="#"><span class="glyphicon glyphicon-eye-open"></span>
+                                            <span>Expand...</span></a>
+                                    </div>
+                                    <div class="panel-footer vote-panel-footer hidden">
+                                        <h4><span class="glyphicon glyphicon-stats"></span> Result</h4>
+
+                                        <div>
+                                            <div class="vote-panel-footer-result">
+                                                <span>1.</span>
+
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success" role="progressbar"
+                                                         aria-valuenow="10"
+                                                         aria-valuemin="0"
+                                                         aria-valuemax="100" style="width: 10%;">
+                                                        10%
+                                                    </div>
+                                                    <span class="badge  pull-right">50v</span>
+                                                </div>
+                                            </div>
+                                            <div class="vote-panel-footer-result">
+                                                <span>2.</span>
+
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success" role="progressbar"
+                                                         aria-valuenow="20"
+                                                         aria-valuemin="0"
+                                                         aria-valuemax="100" style="width: 20%;">
+                                                        20%
+                                                    </div>
+                                                    <span class="badge  pull-right">50v</span>
+                                                </div>
+                                            </div>
+                                            <div class="vote-panel-footer-result">
+                                                <span>3.</span>
+
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success" role="progressbar"
+                                                         aria-valuenow="40"
+                                                         aria-valuemin="0"
+                                                         aria-valuemax="100" style="width: 40%;">
+                                                        40%
+                                                    </div>
+                                                    <span class="badge  pull-right">50v</span>
+                                                </div>
+                                            </div>
+                                            <div class="vote-panel-footer-result">
+                                                <span>4.</span>
+
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success" role="progressbar"
+                                                         aria-valuenow="12"
+                                                         aria-valuemin="0"
+                                                         aria-valuemax="100" style="width: 12%;">
+                                                        12%
+                                                    </div>
+                                                    <span class="badge pull-right">110v</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="vote-panel-footer-action">
+                                            <button type="button" class="btn btn-default btn-block">Vote</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                    <div class="row">
+                        <div class="panel-footer">Auto loading...</div>
                     </div>
                 </div>
-                <div class="vote-actions">
-                    <span class="glyphicon glyphicon-hand-up"></span>
-                    <span class="badge">777</span>
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                    <span class="badge">77</span>
-                </div>
             </div>
-            <div class="panel-body vote-panel-body">
-                <h4><span class="glyphicon glyphicon-hand-right"></span> This is the title of the vote.</h4>
-
-                <div class="radio vote-radio">
-                    <span class="vote-order">1.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios2" id="optionsRadios31"
-                               value="option1">
-                        Option one is this and that&mdash;be sure to include why it's great
-                    </label>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-info">
+                <div class="panel-heading">news</div>
+                <div class="panel-body">
+                    This is a news panel.
                 </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">2.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios2" id="optionsRadios32"
-                               value="option2">
-                        Option two can be something else and selecting it will deselect option one
-                    </label>
-                </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">3.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios2" id="optionsRadios33"
-                               value="option3">
-                        Option three is disabled
-                    </label>
-                </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">4.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios2" id="optionsRadios34" value="option1"
-                               checked>
-                        Option one is this and that&mdash;be sure to include why it's great
-                    </label>
-                </div>
-            </div>
-            <div class="panel-footer vote-panel-tools">
-                <a href="#"><span class="glyphicon glyphicon-eye-open"></span> Expand...</a>
             </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-12 inner-col">
-        <div class="panel panel-warning vote-panel">
-            <div class="panel-heading vote-panel-heading">
-                <div class="media pull-left">
-                    <a class="pull-left" href="#">
-                        <img class="media-object img-circle" src="${ctxStatic}/imgs/silencily.jpg"
-                             alt="silencily">
-                    </a>
-
-                    <div class="media-body">
-                        <h5 class="media-heading vote-media-heading">Silencily</h5>
-                        <small>2014/06/27 18:02</small>
-                    </div>
-                </div>
-                <div class="vote-actions">
-                    <span class="glyphicon glyphicon-hand-up"></span>
-                    <span class="badge">777</span>
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                    <span class="badge">77</span>
-                </div>
-            </div>
-            <div class="panel-body vote-panel-body">
-                <h4><span class="glyphicon glyphicon-hand-right"></span> This is the title of the vote.</h4>
-
-                <div class="radio vote-radio">
-                    <span class="vote-order">1.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios3" id="optionsRadios41"
-                               value="option1">
-                        Option one is this and that&mdash;be sure to include why it's great
-                    </label>
-                </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">2.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios3" id="optionsRadios42"
-                               value="option2">
-                        Option two can be something else and selecting it will deselect option one
-                    </label>
-                </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">3.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios3" id="optionsRadios43"
-                               value="option3">
-                        Option three is disabled
-                    </label>
-                </div>
-                <div class="radio vote-radio">
-                    <span class="vote-order">4.</span>
-                    <label>
-                        <input type="radio" name="optionsRadios3" id="optionsRadios44" value="option1"
-                               checked>
-                        Option one is this and that&mdash;be sure to include why it's great
-                    </label>
-                </div>
-            </div>
-            <div class="panel-footer vote-panel-tools">
-                <a href="#"><span class="glyphicon glyphicon-eye-open"></span> Expand...</a>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="panel-footer">Auto loading...</div>
-</div>
-</div>
-</div>
-</div>
-<div class="col-md-3">
-    <div class="panel panel-info">
-        <div class="panel-heading">news</div>
-        <div class="panel-body">
-            This is a news panel.
-        </div>
-    </div>
-</div>
-</div>
 
 </div>
 <!-- /container -->
@@ -593,6 +411,19 @@
                 $('#message-drawer').fadeIn(2000);
                 $('#message-drawer').delay(4000).fadeOut(2000);
             });
+        });
+        $('.vote-panel-tools a').click(function () {
+            var isOpen = $(this).children('span').hasClass('glyphicon-eye-open');
+            if (isOpen) {
+                $(this).children('span').first().removeClass('glyphicon-eye-open');
+                $(this).children('span').first().addClass('glyphicon-eye-close');
+                $(this).children('span').last().text('Collapse...');
+            } else {
+                $(this).children('span').first().removeClass('glyphicon-eye-close');
+                $(this).children('span').first().addClass('glyphicon-eye-open');
+                $(this).children('span').last().text('Expand...');
+            }
+            $(this).parent().next().toggleClass('hidden');
         });
     });
     function showError(err) {

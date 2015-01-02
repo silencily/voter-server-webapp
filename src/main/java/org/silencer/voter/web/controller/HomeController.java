@@ -28,9 +28,9 @@ public class HomeController {
     @RequestMapping(value = "home")
     public String home(Model model) {
         UserEntity userEntity = SecurityContextHelper.obtainCurrentSecurityUser().getUserEntity();
-        model.addAttribute(userEntity);
+        model.addAttribute("currentUser", userEntity);
         List<VoteEntity> votes = voteService.initLoadVoteByUserId(userEntity.getId());
-        model.addAttribute(votes);
+        model.addAttribute("votes", votes);
         return "home";
     }
 

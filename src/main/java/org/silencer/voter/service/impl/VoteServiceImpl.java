@@ -6,7 +6,9 @@ package org.silencer.voter.service.impl;
 import org.silencer.voter.entity.VoteEntity;
 import org.silencer.voter.entity.VoterEntity;
 import org.silencer.voter.repository.VoteRepository;
+import org.silencer.voter.repository.VoterRepository;
 import org.silencer.voter.service.VoteService;
+import org.silencer.voter.utils.VoterConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
@@ -28,6 +30,9 @@ public class VoteServiceImpl implements VoteService {
     @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
     private VoteRepository voteRepository;
+    @SuppressWarnings("SpringJavaAutowiringInspection")
+    @Autowired
+    private VoterRepository voterRepository;
 
 
     @SuppressWarnings("SpringJavaAutowiringInspection")
@@ -71,7 +76,12 @@ public class VoteServiceImpl implements VoteService {
             choiceList.add(choice);
         }
         voteEntity.setChoices(choiceList);
-
         voteRepository.save(voteEntity);
+
+        VoterEntity voterEntity = new VoterEntity();
+        voterEntity.setType(VoterConstants.VOTER_TYPE_CREATED);
+        voterEntity.setVoteId(voteEntity.getId());
+        voterEntity.setUserId(voteEntity.getCreator().getId());
+        voterRepository.save(voterEntity);
     }
 }
