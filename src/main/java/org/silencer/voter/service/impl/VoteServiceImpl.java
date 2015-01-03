@@ -3,8 +3,10 @@
  */
 package org.silencer.voter.service.impl;
 
+import org.silencer.voter.entity.UserEntity;
 import org.silencer.voter.entity.VoteEntity;
 import org.silencer.voter.entity.VoterEntity;
+import org.silencer.voter.repository.UserRepository;
 import org.silencer.voter.repository.VoteRepository;
 import org.silencer.voter.repository.VoterRepository;
 import org.silencer.voter.service.VoteService;
@@ -33,6 +35,9 @@ public class VoteServiceImpl implements VoteService {
     @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
     private VoterRepository voterRepository;
+    @SuppressWarnings("SpringJavaAutowiringInspection")
+    @Autowired
+    private UserRepository userRepository;
 
 
     @SuppressWarnings("SpringJavaAutowiringInspection")
@@ -110,12 +115,18 @@ public class VoteServiceImpl implements VoteService {
             VoteEntity voteEntity = voteRepository.findOne(voteId);
             voteEntity.setStarred(voteEntity.getStarred() + 1);
             voteRepository.save(voteEntity);
+            UserEntity userEntity = userRepository.findOne(userId);
+            userEntity.getVoteCounter().setStarred(userEntity.getVoteCounter().getStarred() + 1);
+            userRepository.save(userEntity);
         } else {
             //删除
             voterRepository.delete(voterEntity);
             VoteEntity voteEntity = voteRepository.findOne(voteId);
             voteEntity.setStarred(voteEntity.getStarred() - 1);
             voteRepository.save(voteEntity);
+            UserEntity userEntity = userRepository.findOne(userId);
+            userEntity.getVoteCounter().setStarred(userEntity.getVoteCounter().getStarred() - 1);
+            userRepository.save(userEntity);
         }
     }
 }
