@@ -11,6 +11,7 @@ import org.silencer.voter.repository.VoteRepository;
 import org.silencer.voter.repository.VoterRepository;
 import org.silencer.voter.service.VoteService;
 import org.silencer.voter.utils.VoterConstants;
+import org.silencer.voter.web.security.SecurityContextHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
@@ -88,6 +89,10 @@ public class VoteServiceImpl implements VoteService {
         voterEntity.setVoteId(voteEntity.getId());
         voterEntity.setUserId(voteEntity.getCreator().getId());
         voterRepository.save(voterEntity);
+
+        UserEntity userEntity = voteEntity.getCreator();
+        userEntity.getVoteCounter().setVotes(userEntity.getVoteCounter().getVotes() + 1);
+        userRepository.save(userEntity);
     }
 
     @Override
@@ -118,6 +123,8 @@ public class VoteServiceImpl implements VoteService {
             UserEntity userEntity = userRepository.findOne(userId);
             userEntity.getVoteCounter().setStarred(userEntity.getVoteCounter().getStarred() + 1);
             userRepository.save(userEntity);
+            int currentStarred = SecurityContextHelper.obtainCurrentSecurityUser().getUserEntity().getVoteCounter().getStarred();
+            SecurityContextHelper.obtainCurrentSecurityUser().getUserEntity().getVoteCounter().setStarred(currentStarred + 1);
         } else {
             //删除
             voterRepository.delete(voterEntity);
@@ -127,6 +134,8 @@ public class VoteServiceImpl implements VoteService {
             UserEntity userEntity = userRepository.findOne(userId);
             userEntity.getVoteCounter().setStarred(userEntity.getVoteCounter().getStarred() - 1);
             userRepository.save(userEntity);
+            int currentStarred = SecurityContextHelper.obtainCurrentSecurityUser().getUserEntity().getVoteCounter().getStarred();
+            SecurityContextHelper.obtainCurrentSecurityUser().getUserEntity().getVoteCounter().setStarred(currentStarred - 1);
         }
     }
 }

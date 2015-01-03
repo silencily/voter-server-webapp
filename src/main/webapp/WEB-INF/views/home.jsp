@@ -236,26 +236,50 @@
                                         <c:choose>
                                             <c:when test="${vote.multi}">
                                                 <c:forEach items="${vote.choices}" var="choice">
-                                                    <div class="checkbox vote-checkbox">
-                                                        <span class="vote-order">${choice.no}.</span>
-                                                        <label>
-                                                            <input type="checkbox" name="optionsRadios"
-                                                                   value="${choice.no}">
-                                                                ${choice.content}
-                                                        </label>
-                                                    </div>
+                                                    <c:if test="${choice.no<5}">
+                                                        <div class="checkbox vote-checkbox">
+                                                            <span class="vote-order">${choice.no}.</span>
+                                                            <label>
+                                                                <input type="checkbox" name="optionsRadios"
+                                                                       value="${choice.no}">
+                                                                    ${choice.content}
+                                                            </label>
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="${choice.no>=5}">
+                                                        <div class="checkbox vote-checkbox hidden">
+                                                            <span class="vote-order">${choice.no}.</span>
+                                                            <label>
+                                                                <input type="checkbox" name="optionsRadios"
+                                                                       value="${choice.no}">
+                                                                    ${choice.content}
+                                                            </label>
+                                                        </div>
+                                                    </c:if>
                                                 </c:forEach>
                                             </c:when>
                                             <c:otherwise>
                                                 <c:forEach items="${vote.choices}" var="choice">
-                                                    <div class="radio vote-radio">
-                                                        <span class="vote-order">${choice.no}.</span>
-                                                        <label>
-                                                            <input type="radio" name="optionsRadios"
-                                                                   value="${choice.no}">
-                                                                ${choice.content}
-                                                        </label>
-                                                    </div>
+                                                    <c:if test="${choice.no<5}">
+                                                        <div class="radio vote-radio">
+                                                            <span class="vote-order">${choice.no}.</span>
+                                                            <label>
+                                                                <input type="radio" name="optionsRadios"
+                                                                       value="${choice.no}">
+                                                                    ${choice.content}
+                                                            </label>
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="${choice.no>=5}">
+                                                        <div class="radio vote-radio hidden">
+                                                            <span class="vote-order">${choice.no}.</span>
+                                                            <label>
+                                                                <input type="radio" name="optionsRadios"
+                                                                       value="${choice.no}">
+                                                                    ${choice.content}
+                                                            </label>
+                                                        </div>
+                                                    </c:if>
                                                 </c:forEach>
                                             </c:otherwise>
                                         </c:choose>
@@ -385,10 +409,12 @@
                 $(this).children('span').first().removeClass('glyphicon-eye-open');
                 $(this).children('span').first().addClass('glyphicon-eye-close');
                 $(this).children('span').last().text('Collapse...');
+                $(this).parent().prev().children('div.hidden').removeClass('hidden').addClass('show');
             } else {
                 $(this).children('span').first().removeClass('glyphicon-eye-close');
                 $(this).children('span').first().addClass('glyphicon-eye-open');
                 $(this).children('span').last().text('Expand...');
+                $(this).parent().prev().children('div.show').removeClass('show').addClass('hidden');
             }
             $(this).parent().next().toggleClass('hidden');
         });
