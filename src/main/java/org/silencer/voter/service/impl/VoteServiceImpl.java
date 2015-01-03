@@ -93,4 +93,29 @@ public class VoteServiceImpl implements VoteService {
         boolean findOne = mongoTemplate.exists(query1, VoterEntity.class);
         return findOne;
     }
+
+    @Override
+    public void toggleStar(String voteId, String userId) {
+        Query query1 = new Query();
+        query1.addCriteria(Criteria.where("voteId").is(voteId)
+                .and("userId").is(userId).and("type").is(VoterConstants.VOTER_TYPE_STARRED));
+        VoterEntity voterEntity = mongoTemplate.findOne(query1, VoterEntity.class);
+        if (voterEntity == null) {
+            //新增
+            VoterEntity voterEntity1 = new VoterEntity();
+            voterEntity1.setUserId(userId);
+            voterEntity1.setVoteId(voteId);
+            voterEntity1.setType(VoterConstants.VOTER_TYPE_STARRED);
+            voterRepository.save(voterEntity1);
+            VoteEntity voteEntity = voteRepository.findOne(voteId);
+            voteEntity.setStarred(voteEntity.getStarred() + 1);
+            voteRepository.save(voteEntity);
+        } else {
+            //删除
+            voterRepository.delete(voterEntity);
+            VoteEntity voteEntity = voteRepository.findOne(voteId);
+            voteEntity.setStarred(voteEntity.getStarred() - 1);
+            voteRepository.save(voteEntity);
+        }
+    }
 }

@@ -39,4 +39,11 @@ public interface VoteService {
      * @return true:标记星；false：未标记星
      */
     public boolean checkStarredBy(String voteId, String userId);
+
+    /**
+     * 切换标记星
+     * @param voteId voteId
+     * @param userId 用户id
+     */
+    public void toggleStar(String voteId,String userId);
 }

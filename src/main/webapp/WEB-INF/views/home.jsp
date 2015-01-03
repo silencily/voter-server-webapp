@@ -220,10 +220,12 @@
                                             <span class="badge">${vote.voted}</span>
                                             <c:choose>
                                                 <c:when test="${vote.starredBy}">
-                                                    <span class="glyphicon glyphicon-star vote-actions-star" onclick=""></span>
+                                                    <span class="glyphicon glyphicon-star vote-actions-star"
+                                                          data-voteid="${vote.id}"></span>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <span class="glyphicon glyphicon-star-empty vote-actions-star" onclick=""></span>
+                                                    <span class="glyphicon glyphicon-star-empty vote-actions-star"
+                                                          data-voteid="${vote.id}"></span>
                                                 </c:otherwise>
                                             </c:choose>
                                             <span class="badge">${vote.starred}</span>
@@ -269,7 +271,8 @@
                                             <c:forEach items="${vote.choices}" var="choice">
                                                 <div class="vote-panel-footer-result">
                                                     <span>${choice.no}.</span>
-                                                    <fmt:formatNumber value="${choice.ratio}" type="percent" var="ratio" />
+                                                    <fmt:formatNumber value="${choice.ratio}" type="percent"
+                                                                      var="ratio"/>
 
                                                     <div class="progress">
                                                         <div class="progress-bar progress-bar-success"
@@ -389,6 +392,21 @@
             }
             $(this).parent().next().toggleClass('hidden');
         });
+        $('.vote-actions-star').click(function () {
+            var $this = $(this);
+            var voteId = $this.data('voteid');
+            $.post("${ctx}/star", {"voteId": voteId}, function (data) {
+                alert(data);
+                var starred = parseInt($this.next().text());
+                if ($this.hasClass("glyphicon-star")) {
+                    $this.next().text(starred - 1);
+                } else {
+                    $this.next().text(starred + 1);
+                }
+                $this.toggleClass("glyphicon-star");
+                $this.toggleClass("glyphicon-star-empty");
+            });
+        });
     });
     function showError(err) {
         $('#error-msg').text(err);
@@ -408,9 +426,6 @@
         $('.vote-modal .list-group').children().each(function (idx, element) {
             $(element).find('.input-group-addon').text(idx + 1);
         });
-    }
-    function starVote(voteId){
-        //$(this).
     }
 </script>
 </body>
