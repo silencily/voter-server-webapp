@@ -210,7 +210,7 @@
                                             </a>
 
                                             <div class="media-body">
-                                                <h5 class="media-heading vote-media-heading">${vote.creator.username}</h5>
+                                                <h5 class="media-heading vote-media-heading">${vote.creatorName}</h5>
                                                 <small><fmt:formatDate value="${vote.createTime}"
                                                                        pattern="yyyy/MM/dd HH:mm"/></small>
                                             </div>
@@ -218,7 +218,14 @@
                                         <div class="vote-actions">
                                             <span class="glyphicon glyphicon-hand-up"></span>
                                             <span class="badge">${vote.voted}</span>
-                                            <span class="glyphicon glyphicon-star vote-actions-star" onclick=""></span>
+                                            <c:choose>
+                                                <c:when test="${vote.starredBy}">
+                                                    <span class="glyphicon glyphicon-star vote-actions-star" onclick=""></span>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <span class="glyphicon glyphicon-star-empty vote-actions-star" onclick=""></span>
+                                                </c:otherwise>
+                                            </c:choose>
                                             <span class="badge">${vote.starred}</span>
                                         </div>
                                     </div>
@@ -226,7 +233,16 @@
                                         <h4><span class="glyphicon glyphicon-hand-right"></span> ${vote.title}</h4>
                                         <c:choose>
                                             <c:when test="${vote.multi}">
-
+                                                <c:forEach items="${vote.choices}" var="choice">
+                                                    <div class="checkbox vote-checkbox">
+                                                        <span class="vote-order">${choice.no}.</span>
+                                                        <label>
+                                                            <input type="checkbox" name="optionsRadios"
+                                                                   value="${choice.no}">
+                                                                ${choice.content}
+                                                        </label>
+                                                    </div>
+                                                </c:forEach>
                                             </c:when>
                                             <c:otherwise>
                                                 <c:forEach items="${vote.choices}" var="choice">
@@ -269,7 +285,7 @@
                                             </c:forEach>
                                         </div>
                                         <div class="vote-panel-footer-action">
-                                            <button type="button" class="btn btn-default btn-block">Vote</button>
+                                            <button type="button" class="btn btn-primary btn-block">Vote</button>
                                         </div>
                                     </div>
                                 </div>
@@ -392,6 +408,9 @@
         $('.vote-modal .list-group').children().each(function (idx, element) {
             $(element).find('.input-group-addon').text(idx + 1);
         });
+    }
+    function starVote(voteId){
+        //$(this).
     }
 </script>
 </body>

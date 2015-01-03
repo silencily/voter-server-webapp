@@ -24,9 +24,19 @@ public interface VoteService {
 
     /**
      * 新增vote
-     * @param title 标题
-     * @param multi 是否多选
+     *
+     * @param title   标题
+     * @param multi   是否多选
      * @param choices 选项
      */
     public void addVote(String title, boolean multi, String[] choices);
+
+    /**
+     * 验证是否为用户所标记星
+     *
+     * @param voteId voteid
+     * @param userId 用户id
+     * @return true:标记星；false：未标记星
+     */
+    public boolean checkStarredBy(String voteId, String userId);
 }

@@ -165,7 +165,7 @@ body {
     cursor: pointer;
 }
 
-.vote-radio {
+.vote-radio,.vote-checkbox {
     padding-left: 15px;
 }
 

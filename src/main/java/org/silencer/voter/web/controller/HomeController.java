@@ -7,12 +7,14 @@ import org.silencer.voter.entity.UserEntity;
 import org.silencer.voter.entity.VoteEntity;
 import org.silencer.voter.service.UserService;
 import org.silencer.voter.service.VoteService;
+import org.silencer.voter.web.model.VoteModel;
 import org.silencer.voter.web.security.SecurityContextHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,7 +31,21 @@ public class HomeController {
     public String home(Model model) {
         UserEntity userEntity = SecurityContextHelper.obtainCurrentSecurityUser().getUserEntity();
         model.addAttribute("currentUser", userEntity);
-        List<VoteEntity> votes = voteService.initLoadVoteByUserId(userEntity.getId());
+        List<VoteEntity> voteEntities = voteService.initLoadVoteByUserId(userEntity.getId());
+        List<VoteModel> votes = new ArrayList<VoteModel>();
+        for (VoteEntity voteEntity : voteEntities) {
+            VoteModel vote = new VoteModel();
+            vote.setId(voteEntity.getId());
+            vote.setCreateTime(voteEntity.getCreateTime());
+            vote.setCreatorName(voteEntity.getCreator().getUsername());
+            vote.setMulti(voteEntity.isMulti());
+            vote.setStarred(voteEntity.getStarred());
+            vote.setTitle(voteEntity.getTitle());
+            vote.setVoted(voteEntity.getVoted());
+            vote.setChoices(voteEntity.getChoices());
+            vote.setStarredBy(voteService.checkStarredBy(voteEntity.getId(), userEntity.getId()));
+            votes.add(vote);
+        }
         model.addAttribute("votes", votes);
         return "home";
     }
