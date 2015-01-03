@@ -396,7 +396,6 @@
             var $this = $(this);
             var voteId = $this.data('voteid');
             $.post("${ctx}/star", {"voteId": voteId}, function (data) {
-                alert(data);
                 var starred = parseInt($this.next().text());
                 if ($this.hasClass("glyphicon-star")) {
                     $this.next().text(starred - 1);
