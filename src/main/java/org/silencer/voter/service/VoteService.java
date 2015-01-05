@@ -42,8 +42,17 @@ public interface VoteService {
 
     /**
      * 切换标记星
+     *
      * @param voteId voteId
      * @param userId 用户id
      */
-    public void toggleStar(String voteId,String userId);
+    public void toggleStar(String voteId, String userId);
+
+    /**
+     * 获取投票选择的选项号
+     * @param voteId voteId
+     * @param userId 用户id
+     * @return 投票选择的选项号
+     */
+    public List<Integer> obtainVotedChoices(String voteId, String userId);
 }

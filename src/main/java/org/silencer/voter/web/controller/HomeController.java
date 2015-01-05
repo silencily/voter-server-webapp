@@ -42,7 +42,19 @@ public class HomeController {
             vote.setStarred(voteEntity.getStarred());
             vote.setTitle(voteEntity.getTitle());
             vote.setVoted(voteEntity.getVoted());
-            vote.setChoices(voteEntity.getChoices());
+            List<Integer> votedChoices = voteService.obtainVotedChoices(voteEntity.getId(), userEntity.getId());
+            List<VoteModel.ChoiceModel> choiceModels = new ArrayList<VoteModel.ChoiceModel>();
+            for (VoteEntity.Choice choice : voteEntity.getChoices()) {
+                VoteModel.ChoiceModel choiceModel = new VoteModel.ChoiceModel();
+                choiceModel.setNo(choice.getNo());
+                choiceModel.setContent(choice.getContent());
+                choiceModel.setRatio(choice.getRatio());
+                choiceModel.setVoted(choice.getVoted());
+                choiceModel.setVotedBy(votedChoices.contains(choice.getNo()));
+                choiceModels.add(choiceModel);
+            }
+            vote.setVotedBy(votedChoices.size() > 0);
+            vote.setChoices(choiceModels);
             vote.setStarredBy(voteService.checkStarredBy(voteEntity.getId(), userEntity.getId()));
             votes.add(vote);
         }

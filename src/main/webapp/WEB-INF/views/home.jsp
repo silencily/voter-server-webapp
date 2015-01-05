@@ -285,7 +285,7 @@
                                         </c:choose>
                                     </div>
                                     <div class="vote-panel-tools">
-                                        <a href="#"><span class="glyphicon glyphicon-eye-open"></span>
+                                        <a href="javascript:void(0)"><span class="glyphicon glyphicon-eye-open"></span>
                                             <span>Expand...</span></a>
                                     </div>
                                     <div class="panel-footer vote-panel-footer hidden">
@@ -312,7 +312,8 @@
                                             </c:forEach>
                                         </div>
                                         <div class="vote-panel-footer-action">
-                                            <button type="button" class="btn btn-primary btn-block">Vote</button>
+                                            <button type="button" name="vote" data-voteid="${vote.id}" class="btn btn-primary btn-block">Vote
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -431,6 +432,14 @@
                 $this.toggleClass("glyphicon-star");
                 $this.toggleClass("glyphicon-star-empty");
             });
+        });
+        $("button[name='vote']").click(function () {
+            var $this = $(this);
+            var voteId = $this.data('voteid');
+            $this.parents('.vote-panel').find('')
+            //TODO:
+
+
         });
     });
     function showError(err) {

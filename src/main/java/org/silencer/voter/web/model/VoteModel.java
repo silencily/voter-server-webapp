@@ -19,10 +19,12 @@ public class VoteModel {
     private int voted = 0;
     private int starred = 0;
     private boolean multi;
-    private List<VoteEntity.Choice> choices;
+    private List<ChoiceModel> choices;
     private String creatorName;
 
     private boolean starredBy;//是否被当前用户标记星
+
+    private boolean votedBy;//是否被当前用户投过
 
     public String getId() {
         return id;
@@ -72,11 +74,11 @@ public class VoteModel {
         this.multi = multi;
     }
 
-    public List<VoteEntity.Choice> getChoices() {
+    public List<ChoiceModel> getChoices() {
         return choices;
     }
 
-    public void setChoices(List<VoteEntity.Choice> choices) {
+    public void setChoices(List<ChoiceModel> choices) {
         this.choices = choices;
     }
 
@@ -94,5 +96,62 @@ public class VoteModel {
 
     public void setStarredBy(boolean starredBy) {
         this.starredBy = starredBy;
+    }
+
+    public boolean isVotedBy() {
+        return votedBy;
+    }
+
+    public void setVotedBy(boolean votedBy) {
+        this.votedBy = votedBy;
+    }
+
+    public static class ChoiceModel{
+        private int no;
+        private String content;
+        private int voted;
+        private float ratio;
+
+        private boolean votedBy;//是否被当前用户投过
+
+        public int getNo() {
+            return no;
+        }
+
+        public void setNo(int no) {
+            this.no = no;
+        }
+
+        public String getContent() {
+            return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
+
+        public int getVoted() {
+            return voted;
+        }
+
+        public void setVoted(int voted) {
+            this.voted = voted;
+        }
+
+        public float getRatio() {
+            return ratio;
+        }
+
+        public void setRatio(float ratio) {
+            this.ratio = ratio;
+        }
+
+        public boolean isVotedBy() {
+            return votedBy;
+        }
+
+        public void setVotedBy(boolean votedBy) {
+            this.votedBy = votedBy;
+        }
     }
 }

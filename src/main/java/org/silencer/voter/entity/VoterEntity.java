@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author gejb
@@ -23,6 +24,8 @@ public class VoterEntity extends AbstractEntity {
     private int type;
     @CreatedDate
     private Date createTime;
+
+    private List<Integer> votedChoices;
 
     public String getId() {
         return id;
@@ -62,5 +65,13 @@ public class VoterEntity extends AbstractEntity {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public List<Integer> getVotedChoices() {
+        return votedChoices;
+    }
+
+    public void setVotedChoices(List<Integer> votedChoices) {
+        this.votedChoices = votedChoices;
     }
 }

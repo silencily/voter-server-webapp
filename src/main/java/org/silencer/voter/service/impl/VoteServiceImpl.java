@@ -138,4 +138,17 @@ public class VoteServiceImpl implements VoteService {
             SecurityContextHelper.obtainCurrentSecurityUser().getUserEntity().getVoteCounter().setStarred(currentStarred - 1);
         }
     }
+
+    @Override
+    public List<Integer> obtainVotedChoices(String voteId, String userId) {
+        List<Integer> choiceNos = new ArrayList<Integer>();
+        Query query1 = new Query();
+        query1.addCriteria(Criteria.where("voteId").is(voteId)
+                .and("userId").is(userId).and("type").is(VoterConstants.VOTER_TYPE_VOTED));
+        VoterEntity findOne = mongoTemplate.findOne(query1, VoterEntity.class);
+        if (findOne != null) {
+            choiceNos = findOne.getVotedChoices();
+        }
+        return choiceNos;
+    }
 }
