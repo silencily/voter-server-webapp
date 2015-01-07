@@ -21,6 +21,8 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -150,5 +152,37 @@ public class VoteServiceImpl implements VoteService {
             choiceNos = findOne.getVotedChoices();
         }
         return choiceNos;
+    }
+
+    @Override
+    public void voted(String voteId, Integer[] choices, String userId) {
+        VoteEntity voteEntity = voteRepository.findOne(voteId);
+        voteEntity.setVoted(voteEntity.getVoted() + 1);
+        List<Integer> chosenList = Arrays.asList(choices);
+        List<VoteEntity.Choice> choiceList = voteEntity.getChoices();
+        int choiceVoted = 0;
+        for (VoteEntity.Choice choice : choiceList) {
+            Integer no = choice.getNo();
+            if (chosenList.contains(no)) {
+                choice.setVoted(choice.getVoted() + 1);
+            }
+            choiceVoted += choice.getVoted();
+        }
+        for (VoteEntity.Choice choice : choiceList) {
+            choice.setRatio(choice.getVoted() / choiceVoted);
+        }
+        voteRepository.save(voteEntity);
+        UserEntity userEntity = userRepository.findOne(userId);
+        userEntity.getVoteCounter().setVoted(userEntity.getVoteCounter().getVoted() + 1);
+        userRepository.save(userEntity);
+        int currentVoted = SecurityContextHelper.obtainCurrentSecurityUser().getUserEntity().getVoteCounter().getVoted();
+        SecurityContextHelper.obtainCurrentSecurityUser().getUserEntity().getVoteCounter().setVoted(currentVoted + 1);
+
+        VoterEntity voterEntity = new VoterEntity();
+        voterEntity.setType(VoterConstants.VOTER_TYPE_VOTED);
+        voterEntity.setUserId(userId);
+        voterEntity.setVoteId(voteId);
+        voterEntity.setVotedChoices(chosenList);
+        voterRepository.save(voterEntity);
     }
 }

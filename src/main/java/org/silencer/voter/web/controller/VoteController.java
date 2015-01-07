@@ -38,4 +38,13 @@ public class VoteController {
 
     }
 
+    @ResponseBody
+    @RequestMapping(value = "voted", method = RequestMethod.POST)
+    public String voted(String voteId, @RequestParam(value = "choices[]") Integer[] choices) {
+        String userId = SecurityContextHelper.obtainCurrentSecurityUser().getUserEntity().getId();
+        voteService.voted(voteId, choices, userId);
+        return "1";
+
+    }
+
 }

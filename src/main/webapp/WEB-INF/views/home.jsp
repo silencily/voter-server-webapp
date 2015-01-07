@@ -144,197 +144,298 @@
 </div>
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <div class="media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object img-rounded vote-self-img" src="${ctxStatic}/imgs/silencily.jpg"
-                                 alt="silencily">
-                        </a>
+<div class="row">
+<div class="col-md-3">
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <div class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object img-rounded vote-self-img" src="${ctxStatic}/imgs/silencily.jpg"
+                         alt="silencily">
+                </a>
 
-                        <div class="media-body vote-self-name">
-                            <h4 class="media-heading vote-media-heading">${currentUser.fullname}</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body vote-self-info">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-user"></span> ${currentUser.username}
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-envelope"></span> ${currentUser.email}
-                        </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-time"></span> Joined on <fmt:setLocale value="en_US"/>
-                            <fmt:formatDate value="${currentUser.joinedDate}"/>
-                        </li>
-                    </ul>
-                </div>
-                <div class="panel-footer">
-                    <table class="table vote-self-table">
-                        <thead>
-                        <tr>
-                            <th>VOTES</th>
-                            <th>VOTED</th>
-                            <th>STARRED</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td><a href="#">${currentUser.voteCounter.votes}</a></td>
-                            <td><a href="#">${currentUser.voteCounter.voted}</a></td>
-                            <td><a href="#">${currentUser.voteCounter.starred}</a></td>
-                        </tr>
-                        </tbody>
-                    </table>
+                <div class="media-body vote-self-name">
+                    <h4 class="media-heading vote-media-heading">${currentUser.fullname}</h4>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Votes</div>
-                <div class="panel-body vote-panel-body">
-                    <c:forEach items="${votes}" var="vote">
-                        <div class="row">
-                            <div class="col-md-12 inner-col">
-                                <div class="panel panel-warning vote-panel">
-                                    <div class="panel-heading vote-panel-heading">
-                                        <div class="media pull-left">
-                                            <a class="pull-left" href="#">
-                                                <img class="media-object img-circle"
-                                                     src="${ctxStatic}/imgs/silencily.jpg"
-                                                     alt="silencily">
-                                            </a>
-
-                                            <div class="media-body">
-                                                <h5 class="media-heading vote-media-heading">${vote.creatorName}</h5>
-                                                <small><fmt:formatDate value="${vote.createTime}"
-                                                                       pattern="yyyy/MM/dd HH:mm"/></small>
-                                            </div>
-                                        </div>
-                                        <div class="vote-actions">
-                                            <span class="glyphicon glyphicon-hand-up"></span>
-                                            <span class="badge">${vote.voted}</span>
-                                            <c:choose>
-                                                <c:when test="${vote.starredBy}">
-                                                    <span class="glyphicon glyphicon-star vote-actions-star"
-                                                          data-voteid="${vote.id}"></span>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <span class="glyphicon glyphicon-star-empty vote-actions-star"
-                                                          data-voteid="${vote.id}"></span>
-                                                </c:otherwise>
-                                            </c:choose>
-                                            <span class="badge">${vote.starred}</span>
-                                        </div>
-                                    </div>
-                                    <div class="panel-body vote-panel-body">
-                                        <h4><span class="glyphicon glyphicon-hand-right"></span> ${vote.title}</h4>
-                                        <c:choose>
-                                            <c:when test="${vote.multi}">
-                                                <c:forEach items="${vote.choices}" var="choice">
-                                                    <c:if test="${choice.no<5}">
-                                                        <div class="checkbox vote-checkbox">
-                                                            <span class="vote-order">${choice.no}.</span>
-                                                            <label>
-                                                                <input type="checkbox" name="optionsRadios"
-                                                                       value="${choice.no}">
-                                                                    ${choice.content}
-                                                            </label>
-                                                        </div>
-                                                    </c:if>
-                                                    <c:if test="${choice.no>=5}">
-                                                        <div class="checkbox vote-checkbox hidden">
-                                                            <span class="vote-order">${choice.no}.</span>
-                                                            <label>
-                                                                <input type="checkbox" name="optionsRadios"
-                                                                       value="${choice.no}">
-                                                                    ${choice.content}
-                                                            </label>
-                                                        </div>
-                                                    </c:if>
-                                                </c:forEach>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <c:forEach items="${vote.choices}" var="choice">
-                                                    <c:if test="${choice.no<5}">
-                                                        <div class="radio vote-radio">
-                                                            <span class="vote-order">${choice.no}.</span>
-                                                            <label>
-                                                                <input type="radio" name="optionsRadios"
-                                                                       value="${choice.no}">
-                                                                    ${choice.content}
-                                                            </label>
-                                                        </div>
-                                                    </c:if>
-                                                    <c:if test="${choice.no>=5}">
-                                                        <div class="radio vote-radio hidden">
-                                                            <span class="vote-order">${choice.no}.</span>
-                                                            <label>
-                                                                <input type="radio" name="optionsRadios"
-                                                                       value="${choice.no}">
-                                                                    ${choice.content}
-                                                            </label>
-                                                        </div>
-                                                    </c:if>
-                                                </c:forEach>
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </div>
-                                    <div class="vote-panel-tools">
-                                        <a href="javascript:void(0)"><span class="glyphicon glyphicon-eye-open"></span>
-                                            <span>Expand...</span></a>
-                                    </div>
-                                    <div class="panel-footer vote-panel-footer hidden">
-                                        <h4><span class="glyphicon glyphicon-stats"></span> Result</h4>
-
-                                        <div>
-                                            <c:forEach items="${vote.choices}" var="choice">
-                                                <div class="vote-panel-footer-result">
-                                                    <span>${choice.no}.</span>
-                                                    <fmt:formatNumber value="${choice.ratio}" type="percent"
-                                                                      var="ratio"/>
-
-                                                    <div class="progress">
-                                                        <div class="progress-bar progress-bar-success"
-                                                             role="progressbar"
-                                                             aria-valuenow="10"
-                                                             aria-valuemin="0"
-                                                             aria-valuemax="100" style="width: ${ratio};">
-                                                                ${ratio}
-                                                        </div>
-                                                        <span class="badge  pull-right">${choice.voted}v</span>
-                                                    </div>
-                                                </div>
-                                            </c:forEach>
-                                        </div>
-                                        <div class="vote-panel-footer-action">
-                                            <button type="button" name="vote" data-voteid="${vote.id}" class="btn btn-primary btn-block">Vote
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
-                    <div class="row">
-                        <div class="panel-footer">Auto loading...</div>
-                    </div>
-                </div>
-            </div>
+        <div class="panel-body vote-self-info">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <span class="glyphicon glyphicon-user"></span> ${currentUser.username}
+                </li>
+                <li class="list-group-item">
+                    <span class="glyphicon glyphicon-envelope"></span> ${currentUser.email}
+                </li>
+                <li class="list-group-item">
+                    <span class="glyphicon glyphicon-time"></span> Joined on <fmt:setLocale value="en_US"/>
+                    <fmt:formatDate value="${currentUser.joinedDate}"/>
+                </li>
+            </ul>
         </div>
-        <div class="col-md-3">
-            <div class="panel panel-info">
-                <div class="panel-heading">news</div>
-                <div class="panel-body">
-                    This is a news panel.
-                </div>
-            </div>
+        <div class="panel-footer">
+            <table class="table vote-self-table">
+                <thead>
+                <tr>
+                    <th>VOTES</th>
+                    <th>VOTED</th>
+                    <th>STARRED</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><a href="#">${currentUser.voteCounter.votes}</a></td>
+                    <td><a href="#">${currentUser.voteCounter.voted}</a></td>
+                    <td><a href="#">${currentUser.voteCounter.starred}</a></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
+<div class="col-md-6">
+<div class="panel panel-primary">
+<div class="panel-heading">Votes</div>
+<div class="panel-body vote-panel-body">
+<c:forEach items="${votes}" var="vote">
+<div class="row">
+<div class="col-md-12 inner-col">
+<div class="panel panel-warning vote-panel">
+<div class="panel-heading vote-panel-heading">
+    <div class="media pull-left">
+        <a class="pull-left" href="#">
+            <img class="media-object img-circle"
+                 src="${ctxStatic}/imgs/silencily.jpg"
+                 alt="silencily">
+        </a>
+
+        <div class="media-body">
+            <h5 class="media-heading vote-media-heading">${vote.creatorName}</h5>
+            <small><fmt:formatDate value="${vote.createTime}"
+                                   pattern="yyyy/MM/dd HH:mm"/></small>
+        </div>
+    </div>
+    <div class="vote-actions">
+        <span class="glyphicon glyphicon-hand-up"></span>
+        <span class="badge">${vote.voted}</span>
+        <c:choose>
+            <c:when test="${vote.starredBy}">
+                                                    <span class="glyphicon glyphicon-star vote-actions-star"
+                                                          data-voteid="${vote.id}"></span>
+            </c:when>
+            <c:otherwise>
+                                                    <span class="glyphicon glyphicon-star-empty vote-actions-star"
+                                                          data-voteid="${vote.id}"></span>
+            </c:otherwise>
+        </c:choose>
+        <span class="badge">${vote.starred}</span>
+    </div>
+</div>
+<div class="panel-body vote-panel-body">
+    <h4><span class="glyphicon glyphicon-hand-right"></span> ${vote.title}</h4>
+    <c:choose>
+        <c:when test="${vote.multi}">
+            <c:forEach items="${vote.choices}" var="choice">
+                <c:if test="${choice.no<5}">
+                    <div class="checkbox vote-checkbox">
+                        <span class="vote-order">${choice.no}.</span>
+                        <label>
+                            <c:if test="${choice.votedBy}">
+                                <c:if test="${vote.votedBy}">
+                                    <input type="checkbox"
+                                           name="checkbox-options-${vote.id}"
+                                           value="${choice.no}" checked="checked"
+                                           disabled="disabled">
+                                </c:if>
+                                <c:if test="${not vote.votedBy}">
+                                    <input type="checkbox"
+                                           name="checkbox-options-${vote.id}"
+                                           value="${choice.no}" checked="checked">
+                                </c:if>
+                            </c:if>
+                            <c:if test="${not choice.votedBy}">
+                                <c:if test="${vote.votedBy}">
+                                    <input type="checkbox"
+                                           name="checkbox-options-${vote.id}"
+                                           value="${choice.no}" disabled="disabled">
+                                </c:if>
+                                <c:if test="${not vote.votedBy}">
+                                    <input type="checkbox"
+                                           name="checkbox-options-${vote.id}"
+                                           value="${choice.no}">
+                                </c:if>
+                            </c:if>
+                                ${choice.content}
+                        </label>
+                    </div>
+                </c:if>
+                <c:if test="${choice.no>=5}">
+                    <div class="checkbox vote-checkbox hidden">
+                        <span class="vote-order">${choice.no}.</span>
+                        <label>
+                            <c:if test="${choice.votedBy}">
+                                <c:if test="${vote.votedBy}">
+                                    <input type="checkbox"
+                                           name="checkbox-options-${vote.id}"
+                                           value="${choice.no}" checked="checked"
+                                           disabled="disabled">
+                                </c:if>
+                                <c:if test="${not vote.votedBy}">
+                                    <input type="checkbox"
+                                           name="checkbox-options-${vote.id}"
+                                           value="${choice.no}" checked="checked">
+                                </c:if>
+                            </c:if>
+                            <c:if test="${not choice.votedBy}">
+                                <c:if test="${vote.votedBy}">
+                                    <input type="checkbox"
+                                           name="checkbox-options-${vote.id}"
+                                           value="${choice.no}" disabled="disabled">
+                                </c:if>
+                                <c:if test="${not vote.votedBy}">
+                                    <input type="checkbox"
+                                           name="checkbox-options-${vote.id}"
+                                           value="${choice.no}">
+                                </c:if>
+                            </c:if>
+                                ${choice.content}
+                        </label>
+                    </div>
+                </c:if>
+            </c:forEach>
+        </c:when>
+        <c:otherwise>
+            <c:forEach items="${vote.choices}" var="choice">
+                <c:if test="${choice.no<5}">
+                    <div class="radio vote-radio">
+                        <span class="vote-order">${choice.no}.</span>
+                        <label>
+                            <c:if test="${choice.votedBy}">
+                                <c:if test="${vote.votedBy}">
+                                    <input type="radio"
+                                           name="radio-options-${vote.id}"
+                                           value="${choice.no}" checked="checked"
+                                           disabled="disabled">
+                                </c:if>
+                                <c:if test="${not vote.votedBy}">
+                                    <input type="radio"
+                                           name="radio-options-${vote.id}"
+                                           value="${choice.no}" checked="checked">
+                                </c:if>
+                            </c:if>
+                            <c:if test="${not choice.votedBy}">
+                                <c:if test="${vote.votedBy}">
+                                    <input type="radio"
+                                           name="radio-options-${vote.id}"
+                                           value="${choice.no}" disabled="disabled">
+                                </c:if>
+                                <c:if test="${not vote.votedBy}">
+                                    <input type="radio"
+                                           name="radio-options-${vote.id}"
+                                           value="${choice.no}">
+                                </c:if>
+                            </c:if>
+                                ${choice.content}
+                        </label>
+                    </div>
+                </c:if>
+                <c:if test="${choice.no>=5}">
+                    <div class="radio vote-radio hidden">
+                        <span class="vote-order">${choice.no}.</span>
+                        <label>
+                            <c:if test="${choice.votedBy}">
+                                <c:if test="${vote.votedBy}">
+                                    <input type="radio"
+                                           name="radio-options-${vote.id}"
+                                           value="${choice.no}" checked="checked"
+                                           disabled="disabled">
+                                </c:if>
+                                <c:if test="${not vote.votedBy}">
+                                    <input type="radio"
+                                           name="radio-options-${vote.id}"
+                                           value="${choice.no}" checked="checked">
+                                </c:if>
+                            </c:if>
+                            <c:if test="${not choice.votedBy}">
+                                <c:if test="${vote.votedBy}">
+                                    <input type="radio"
+                                           name="radio-options-${vote.id}"
+                                           value="${choice.no}" disabled="disabled">
+                                </c:if>
+                                <c:if test="${not vote.votedBy}">
+                                    <input type="radio"
+                                           name="radio-options-${vote.id}"
+                                           value="${choice.no}">
+                                </c:if>
+                            </c:if>
+                                ${choice.content}
+                        </label>
+                    </div>
+                </c:if>
+            </c:forEach>
+        </c:otherwise>
+    </c:choose>
+</div>
+<div class="vote-panel-tools">
+    <a href="javascript:void(0)"><span class="glyphicon glyphicon-eye-open"></span>
+        <span>Expand...</span></a>
+</div>
+<div class="panel-footer vote-panel-footer hidden">
+    <h4><span class="glyphicon glyphicon-stats"></span> Result</h4>
+
+    <div>
+        <c:forEach items="${vote.choices}" var="choice">
+            <div class="vote-panel-footer-result">
+                <span>${choice.no}.</span>
+                <fmt:formatNumber value="${choice.ratio}" type="percent"
+                                  var="ratio"/>
+
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success"
+                         role="progressbar"
+                         aria-valuenow="10"
+                         aria-valuemin="0"
+                         aria-valuemax="100" style="width: ${ratio};">
+                            ${ratio}
+                    </div>
+                    <span class="badge  pull-right">${choice.voted}v</span>
+                </div>
+            </div>
+        </c:forEach>
+    </div>
+    <div class="vote-panel-footer-action">
+        <c:if test="${vote.votedBy}">
+            <button type="button" name="vote" data-voteid="${vote.id}"
+                    class="btn btn-primary btn-block" disabled="disabled">Vote
+            </button>
+        </c:if>
+        <c:if test="${not vote.votedBy}">
+            <button type="button" name="vote" data-voteid="${vote.id}"
+                    class="btn btn-primary btn-block">Vote
+            </button>
+        </c:if>
+
+    </div>
+</div>
+</div>
+</div>
+</div>
+</c:forEach>
+<div class="row">
+    <div class="panel-footer">Auto loading...</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-3">
+    <div class="panel panel-info">
+        <div class="panel-heading">news</div>
+        <div class="panel-body">
+            This is a news panel.
+        </div>
+    </div>
+</div>
+</div>
 
 </div>
 <!-- /container -->
@@ -404,6 +505,7 @@
                 $('#message-drawer').delay(4000).fadeOut(2000);
             });
         });
+
         $('.vote-panel-tools a').click(function () {
             var isOpen = $(this).children('span').hasClass('glyphicon-eye-open');
             if (isOpen) {
@@ -436,10 +538,17 @@
         $("button[name='vote']").click(function () {
             var $this = $(this);
             var voteId = $this.data('voteid');
-            $this.parents('.vote-panel').find('')
-            //TODO:
-
-
+            var choices = [];
+            $this.parents('.vote-panel').find("input[name$='-options-" + voteId + "']:checked").each(function (idx, element) {
+                choices[idx] = $(element).val();
+            });
+            if (choices.length == 0) {
+                alert('please chose your vote.');
+                return false;
+            }
+            $.post("${ctx}/voted", {"voteId": voteId, "choices": choices}, function (data) {
+                alert(data);
+            });
         });
     });
     function showError(err) {

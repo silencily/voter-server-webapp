@@ -55,4 +55,12 @@ public interface VoteService {
      * @return 投票选择的选项号
      */
     public List<Integer> obtainVotedChoices(String voteId, String userId);
+
+    /**
+     * 投票
+     * @param voteId voteId
+     * @param choices 投票选择的号
+     * @param userId 用户id
+     */
+    public void voted(String voteId,Integer[] choices,String userId);
 }
