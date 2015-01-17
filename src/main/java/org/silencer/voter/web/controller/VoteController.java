@@ -3,7 +3,9 @@
  */
 package org.silencer.voter.web.controller;
 
+import org.silencer.voter.entity.VoteEntity;
 import org.silencer.voter.service.VoteService;
+import org.silencer.voter.web.model.VoteModel;
 import org.silencer.voter.web.security.SecurityContextHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author gejb
@@ -40,10 +45,20 @@ public class VoteController {
 
     @ResponseBody
     @RequestMapping(value = "voted", method = RequestMethod.POST)
-    public String voted(String voteId, @RequestParam(value = "choices[]") Integer[] choices) {
+    public List<VoteModel.ChoiceModel> voted(String voteId, @RequestParam(value = "choices[]") Integer[] choices) {
         String userId = SecurityContextHelper.obtainCurrentSecurityUser().getUserEntity().getId();
-        voteService.voted(voteId, choices, userId);
-        return "1";
+        List<VoteEntity.Choice> choiceList = voteService.voted(voteId, choices, userId);
+        List<VoteModel.ChoiceModel> choiceModels = new ArrayList<VoteModel.ChoiceModel>();
+        for (VoteEntity.Choice choice:choiceList){
+            VoteModel.ChoiceModel choiceModel=new VoteModel.ChoiceModel();
+            choiceModel.setVoted(choice.getVoted());
+            choiceModel.setVotedBy(true);
+            choiceModel.setRatio(choice.getRatio());
+            choiceModel.setNo(choice.getNo());
+            choiceModel.setContent(choice.getContent());
+            choiceModels.add(choiceModel);
+        }
+        return choiceModels;
 
     }
 

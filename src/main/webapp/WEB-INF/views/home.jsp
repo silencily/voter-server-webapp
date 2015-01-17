@@ -547,7 +547,20 @@
                 return false;
             }
             $.post("${ctx}/voted", {"voteId": voteId, "choices": choices}, function (data) {
-                alert(data);
+                $this.parents('.vote-panel').find("input[name$='-options-" + voteId + "']").attr("disabled", "disabled");
+                $this.attr("disabled", "disabled");
+                var voted = $this.parents('.vote-panel').find(".vote-actions .glyphicon-hand-up").next().text();
+                var voted2 = parseInt(voted) + 1;
+                $this.parents('.vote-panel').find(".vote-actions .glyphicon-hand-up").next().text(voted2);
+                $.each(data, function (idx, element) {
+
+                    var radio = element.ratio;
+                    var voted = element.voted;
+                    var result = $this.parent().prev().children(".vote-panel-footer-result")[idx];
+                    $(result).find(".progress-bar").attr("style", "width:" + radio * 100 + "%").text(radio * 100 + "%").next().text(voted + "v");
+
+                });
+
             });
         });
     });

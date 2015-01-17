@@ -50,6 +50,7 @@ public interface VoteService {
 
     /**
      * 获取投票选择的选项号
+     *
      * @param voteId voteId
      * @param userId 用户id
      * @return 投票选择的选项号
@@ -58,9 +59,11 @@ public interface VoteService {
 
     /**
      * 投票
-     * @param voteId voteId
+     *
+     * @param voteId  voteId
      * @param choices 投票选择的号
-     * @param userId 用户id
+     * @param userId  用户id
+     * @return 投票选择结果
      */
-    public void voted(String voteId,Integer[] choices,String userId);
+    public List<VoteEntity.Choice> voted(String voteId, Integer[] choices, String userId);
 }

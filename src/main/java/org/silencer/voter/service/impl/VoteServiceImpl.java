@@ -155,7 +155,7 @@ public class VoteServiceImpl implements VoteService {
     }
 
     @Override
-    public void voted(String voteId, Integer[] choices, String userId) {
+    public List<VoteEntity.Choice> voted(String voteId, Integer[] choices, String userId) {
         VoteEntity voteEntity = voteRepository.findOne(voteId);
         voteEntity.setVoted(voteEntity.getVoted() + 1);
         List<Integer> chosenList = Arrays.asList(choices);
@@ -169,7 +169,7 @@ public class VoteServiceImpl implements VoteService {
             choiceVoted += choice.getVoted();
         }
         for (VoteEntity.Choice choice : choiceList) {
-            choice.setRatio(choice.getVoted() / choiceVoted);
+            choice.setRatio(choice.getVoted() / (choiceVoted * 1f));
         }
         voteRepository.save(voteEntity);
         UserEntity userEntity = userRepository.findOne(userId);
@@ -184,5 +184,6 @@ public class VoteServiceImpl implements VoteService {
         voterEntity.setVoteId(voteId);
         voterEntity.setVotedChoices(chosenList);
         voterRepository.save(voterEntity);
+        return voteEntity.getChoices();
     }
 }

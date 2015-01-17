@@ -3,8 +3,6 @@
  */
 package org.silencer.voter.web.model;
 
-import org.silencer.voter.entity.VoteEntity;
-
 import java.util.Date;
 import java.util.List;
 
