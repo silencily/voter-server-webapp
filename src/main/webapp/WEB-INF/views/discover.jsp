@@ -4,9 +4,9 @@
     <title>Voter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="../../static/css/bootstrap.css">
-    <link rel="stylesheet" href="../../static/css/voter.css">
-    <link rel="shortcut icon" href="../../static/imgs/favicon.ico">
+    <link rel="stylesheet" href="${ctxStatic}/css/bootstrap.css">
+    <link rel="stylesheet" href="${ctxStatic}/css/voter.css">
+    <link rel="shortcut icon" href="${ctxStatic}/imgs/favicon.ico">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,9 +35,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-globe"></span> Discover</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Me</a></li>
+                <li><a href="${ctx}/home"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li><a href="${ctx}/discover"><span class="glyphicon glyphicon-globe"></span> Discover</a></li>
+                <li><a href="${ctx}/me"><span class="glyphicon glyphicon-user"></span> Me</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -90,7 +90,7 @@
             <div class="panel-heading vote-panel-heading">
                 <div class="media pull-left">
                     <a class="pull-left" href="#">
-                        <img class="media-object img-circle" src="../../static/imgs/silencily.jpg"
+                        <img class="media-object img-circle" src="${ctxStatic}/imgs/silencily.jpg"
                              alt="silencily">
                     </a>
 
@@ -154,7 +154,7 @@
             <div class="panel-heading vote-panel-heading">
                 <div class="media pull-left">
                     <a class="pull-left" href="#">
-                        <img class="media-object img-circle" src="../../static/imgs/silencily.jpg"
+                        <img class="media-object img-circle" src="${ctxStatic}/imgs/silencily.jpg"
                              alt="silencily">
                     </a>
 
@@ -275,7 +275,7 @@
             <div class="panel-heading vote-panel-heading">
                 <div class="media pull-left">
                     <a class="pull-left" href="#">
-                        <img class="media-object img-circle" src="../../static/imgs/silencily.jpg"
+                        <img class="media-object img-circle" src="${ctxStatic}/imgs/silencily.jpg"
                              alt="silencily">
                     </a>
 
@@ -339,7 +339,7 @@
             <div class="panel-heading vote-panel-heading">
                 <div class="media pull-left">
                     <a class="pull-left" href="#">
-                        <img class="media-object img-circle" src="../../static/imgs/silencily.jpg"
+                        <img class="media-object img-circle" src="${ctxStatic}/imgs/silencily.jpg"
                              alt="silencily">
                     </a>
 
@@ -417,8 +417,8 @@
 <!-- /container -->
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="../../static/js/jquery.js"></script>
+<script src="${ctxStatic}/js/jquery.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../../static/js/bootstrap.js"></script>
+<script src="${ctxStatic}/js/bootstrap.js"></script>
 </body>
 </html>
