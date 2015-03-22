@@ -42,7 +42,7 @@
     <div class="row error-page-main">
         <div class="col-md-12">
             <div>
-                <a href="#" class="btn btn-primary btn-lg disabled" role="button">
+                <a href="${ctx}/home" class="btn btn-primary btn-lg disabled" role="button">
                     <span class="glyphicon glyphicon-ok"> Voter</span>
                 </a>
             </div>

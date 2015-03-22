@@ -35,9 +35,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-globe"></span> Discover</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Me</a></li>
+                <li><a href="${ctx}/home"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li><a href="${ctx}/discover"><span class="glyphicon glyphicon-globe"></span> Discover</a></li>
+                <li><a href="${ctx}/me"><span class="glyphicon glyphicon-user"></span> Me</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
