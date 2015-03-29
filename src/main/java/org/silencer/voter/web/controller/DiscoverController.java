@@ -27,6 +27,7 @@ public class DiscoverController {
 
     @RequestMapping(value = "discover")
     public String discover(Model model) {
+        //TODO:分页
         UserEntity userEntity = SecurityContextHelper.obtainCurrentSecurityUser().getUserEntity();
         List<VoteEntity> voteEntities = voteService.discoverNewVotes(userEntity.getId());
         List<VoteModel> votes = new ArrayList<VoteModel>();
