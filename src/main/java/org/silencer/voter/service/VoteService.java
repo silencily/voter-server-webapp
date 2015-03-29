@@ -66,4 +66,14 @@ public interface VoteService {
      * @return 投票选择结果
      */
     public List<VoteEntity.Choice> voted(String voteId, Integer[] choices, String userId);
+
+    /**
+     * 发现新投票，排除当前登录人参与过的
+     *
+     * @param userId 排除的用户id
+     * @return 投票集合
+     */
+    public List<VoteEntity> discoverNewVotes(String userId);
+
+
 }

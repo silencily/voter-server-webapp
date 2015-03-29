@@ -22,7 +22,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -55,17 +54,13 @@ public class VoteServiceImpl implements VoteService {
 
         Query query1 = new Query();
         query1.addCriteria(Criteria.where("userId").is(userId));
-        query1.fields().include("voteId");
+        List voteIds = mongoTemplate.getCollection("voter").distinct("voteId", query1.getQueryObject());
 
-        List<VoterEntity> voterEntities = mongoTemplate.find(query1, VoterEntity.class);
-        List<String> voteIds = new ArrayList<String>();
-        for (VoterEntity voterEntity : voterEntities) {
-            voteIds.add(voterEntity.getVoteId());
-        }
         Query query2 = new Query();
         query2.addCriteria(Criteria.where("_id").in(voteIds));
         query2.limit(initLoadPageSize).with(new Sort(Sort.Direction.DESC, "lastUpdateTime"));
         List<VoteEntity> votes = mongoTemplate.find(query2, VoteEntity.class);
+
         return votes;
     }
 
@@ -185,5 +180,19 @@ public class VoteServiceImpl implements VoteService {
         voterEntity.setVotedChoices(chosenList);
         voterRepository.save(voterEntity);
         return voteEntity.getChoices();
+    }
+
+    @Override
+    public List<VoteEntity> discoverNewVotes(String userId) {
+        Query query1 = new Query();
+        query1.addCriteria(Criteria.where("userId").is(userId));
+        List voteIds = mongoTemplate.getCollection("voter").distinct("voteId", query1.getQueryObject());
+
+        Query query2 = new Query();
+        query2.addCriteria(Criteria.where("_id").nin(voteIds));
+        query2.with(new Sort(Sort.Direction.DESC, "createTime"));
+        List<VoteEntity> votes = mongoTemplate.find(query2, VoteEntity.class);
+
+        return votes;
     }
 }

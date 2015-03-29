@@ -553,7 +553,6 @@
                 var voted2 = parseInt(voted) + 1;
                 $this.parents('.vote-panel').find(".vote-actions .glyphicon-hand-up").next().text(voted2);
                 $.each(data, function (idx, element) {
-
                     var radio = element.ratio;
                     var voted = element.voted;
                     var result = $this.parent().prev().children(".vote-panel-footer-result")[idx];
