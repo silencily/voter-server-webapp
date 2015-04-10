@@ -56,6 +56,76 @@ public class DiscoverController {
             votes.add(vote);
         }
         model.addAttribute("votes", votes);
+        model.addAttribute("active","new");
         return "discover";
     }
+    @RequestMapping(value = "discover/hot")
+    public String hot(Model model) {
+        //TODO:分页
+        UserEntity userEntity = SecurityContextHelper.obtainCurrentSecurityUser().getUserEntity();
+        List<VoteEntity> voteEntities = voteService.discoverHotVotes(userEntity.getId());
+        List<VoteModel> votes = new ArrayList<VoteModel>();
+        for (VoteEntity voteEntity : voteEntities) {
+            VoteModel vote = new VoteModel();
+            vote.setId(voteEntity.getId());
+            vote.setCreateTime(voteEntity.getCreateTime());
+            vote.setCreatorName(voteEntity.getCreator().getUsername());
+            vote.setMulti(voteEntity.isMulti());
+            vote.setStarred(voteEntity.getStarred());
+            vote.setTitle(voteEntity.getTitle());
+            vote.setVoted(voteEntity.getVoted());
+            List<VoteModel.ChoiceModel> choiceModels = new ArrayList<VoteModel.ChoiceModel>();
+            for (VoteEntity.Choice choice : voteEntity.getChoices()) {
+                VoteModel.ChoiceModel choiceModel = new VoteModel.ChoiceModel();
+                choiceModel.setNo(choice.getNo());
+                choiceModel.setContent(choice.getContent());
+                choiceModel.setRatio(choice.getRatio());
+                choiceModel.setVoted(choice.getVoted());
+                choiceModel.setVotedBy(false);
+                choiceModels.add(choiceModel);
+            }
+            vote.setVotedBy(false);
+            vote.setChoices(choiceModels);
+            vote.setStarredBy(false);
+            votes.add(vote);
+        }
+        model.addAttribute("votes", votes);
+        model.addAttribute("active","hot");
+        return "discover";
+    }
+    @RequestMapping(value = "discover/starred")
+    public String starred(Model model) {
+        //TODO:分页
+        UserEntity userEntity = SecurityContextHelper.obtainCurrentSecurityUser().getUserEntity();
+        List<VoteEntity> voteEntities = voteService.discoverStarredVotes(userEntity.getId());
+        List<VoteModel> votes = new ArrayList<VoteModel>();
+        for (VoteEntity voteEntity : voteEntities) {
+            VoteModel vote = new VoteModel();
+            vote.setId(voteEntity.getId());
+            vote.setCreateTime(voteEntity.getCreateTime());
+            vote.setCreatorName(voteEntity.getCreator().getUsername());
+            vote.setMulti(voteEntity.isMulti());
+            vote.setStarred(voteEntity.getStarred());
+            vote.setTitle(voteEntity.getTitle());
+            vote.setVoted(voteEntity.getVoted());
+            List<VoteModel.ChoiceModel> choiceModels = new ArrayList<VoteModel.ChoiceModel>();
+            for (VoteEntity.Choice choice : voteEntity.getChoices()) {
+                VoteModel.ChoiceModel choiceModel = new VoteModel.ChoiceModel();
+                choiceModel.setNo(choice.getNo());
+                choiceModel.setContent(choice.getContent());
+                choiceModel.setRatio(choice.getRatio());
+                choiceModel.setVoted(choice.getVoted());
+                choiceModel.setVotedBy(false);
+                choiceModels.add(choiceModel);
+            }
+            vote.setVotedBy(false);
+            vote.setChoices(choiceModels);
+            vote.setStarredBy(false);
+            votes.add(vote);
+        }
+        model.addAttribute("votes", votes);
+        model.addAttribute("active","starred");
+        return "discover";
+    }
+
 }

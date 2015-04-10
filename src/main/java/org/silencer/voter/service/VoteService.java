@@ -68,12 +68,28 @@ public interface VoteService {
     public List<VoteEntity.Choice> voted(String voteId, Integer[] choices, String userId);
 
     /**
-     * 发现新投票，排除当前登录人参与过的
+     * 发现新投票，按照创建时间进行降序，排除当前登录人参与过的
      *
      * @param userId 排除的用户id
      * @return 投票集合
      */
     public List<VoteEntity> discoverNewVotes(String userId);
+
+    /**
+     * 发现热门投票，按照投票数量进行降序，排除当前登录人参与过的
+     *
+     * @param userId 排除的用户id
+     * @return 投票集合
+     */
+    public List<VoteEntity> discoverHotVotes(String userId);
+
+    /**
+     * 发现标星投票，按照标星数量进行降序，排除当前登录人参与过的
+     *
+     * @param userId 排除的用户id
+     * @return 投票集合
+     */
+    public List<VoteEntity> discoverStarredVotes(String userId);
 
 
 }

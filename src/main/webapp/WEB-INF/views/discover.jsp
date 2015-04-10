@@ -146,16 +146,16 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <div class="list-group">
-                <a href="${ctx}/discover" class="list-group-item active">
+            <div class="list-group" id="type-item">
+                <a href="${ctx}/discover" class="list-group-item <c:if test="${active eq 'new'}">active</c:if>">
                     <span class="glyphicon glyphicon-chevron-right pull-right"></span>
                     New votes
                 </a>
-                <a href="${ctx}/discover/hot" class="list-group-item">
+                <a href="${ctx}/discover/hot" class="list-group-item <c:if test="${active eq 'hot'}">active</c:if>">
                     <span class="glyphicon glyphicon-chevron-right pull-right"></span>
                     Hot votes
                 </a>
-                <a href="${ctx}/discover/starred" class="list-group-item">
+                <a href="${ctx}/discover/starred" class="list-group-item <c:if test="${active eq 'starred'}">active</c:if>">
                     <span class="glyphicon glyphicon-chevron-right pull-right"></span>
                     Starred votes
                 </a>
@@ -424,6 +424,7 @@
 
             });
         });
+
     });
     function showError(err) {
         $('#error-msg').text(err);

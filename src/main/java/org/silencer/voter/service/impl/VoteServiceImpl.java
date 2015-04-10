@@ -195,4 +195,32 @@ public class VoteServiceImpl implements VoteService {
 
         return votes;
     }
+
+    @Override
+    public List<VoteEntity> discoverHotVotes(String userId) {
+        Query query1 = new Query();
+        query1.addCriteria(Criteria.where("userId").is(userId));
+        List voteIds = mongoTemplate.getCollection("voter").distinct("voteId", query1.getQueryObject());
+
+        Query query2 = new Query();
+        query2.addCriteria(Criteria.where("_id").nin(voteIds));
+        query2.with(new Sort(Sort.Direction.DESC, "voted"));
+        List<VoteEntity> votes = mongoTemplate.find(query2, VoteEntity.class);
+
+        return votes;
+    }
+
+    @Override
+    public List<VoteEntity> discoverStarredVotes(String userId) {
+        Query query1 = new Query();
+        query1.addCriteria(Criteria.where("userId").is(userId));
+        List voteIds = mongoTemplate.getCollection("voter").distinct("voteId", query1.getQueryObject());
+
+        Query query2 = new Query();
+        query2.addCriteria(Criteria.where("_id").nin(voteIds));
+        query2.with(new Sort(Sort.Direction.DESC, "starred"));
+        List<VoteEntity> votes = mongoTemplate.find(query2, VoteEntity.class);
+
+        return votes;
+    }
 }
