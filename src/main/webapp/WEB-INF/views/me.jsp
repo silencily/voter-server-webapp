@@ -179,9 +179,9 @@
 <div class="panel panel-primary">
 <div class="panel-heading me-nav">
     <ul class="nav nav-pills" role="tablist">
-        <li role="presentation" class=""><a class="in" href="#">Votes <span class="badge">${currentUser.voteCounter.votes}</span></a></li>
-        <li role="presentation" class=""><a href="#">Voted <span class="badge">${currentUser.voteCounter.voted}</span></a></li>
-        <li role="presentation" class=""><a href="#">Starred <span class="badge">${currentUser.voteCounter.starred}</span></a></li>
+        <li role="presentation" class=""><a class="<c:if test="${active eq 'me'}">in</c:if>" href="${ctx}/me">Votes <span class="badge">${currentUser.voteCounter.votes}</span></a></li>
+        <li role="presentation" class=""><a class="<c:if test="${active eq 'voted'}">in</c:if>" href="${ctx}/me/voted">Voted <span class="badge">${currentUser.voteCounter.voted}</span></a></li>
+        <li role="presentation" class=""><a class="<c:if test="${active eq 'starred'}">in</c:if>" href="${ctx}/me/starred">Starred <span class="badge">${currentUser.voteCounter.starred}</span></a></li>
     </ul>
 </div>
 <div class="panel-body vote-panel-body">

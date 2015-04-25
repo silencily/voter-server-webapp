@@ -24,6 +24,26 @@ public class MeController {
         UserEntity userEntity = SecurityContextHelper.obtainCurrentSecurityUser().getUserEntity();
         model.addAttribute("currentUser", userEntity);
 
+        model.addAttribute("active","me");
+
+        return "me";
+    }
+    @RequestMapping(value = "me/voted")
+    public String voted(Model model) {
+        UserEntity userEntity = SecurityContextHelper.obtainCurrentSecurityUser().getUserEntity();
+        model.addAttribute("currentUser", userEntity);
+
+        model.addAttribute("active","voted");
+
+        return "me";
+    }
+    @RequestMapping(value = "me/starred")
+    public String starred(Model model) {
+        UserEntity userEntity = SecurityContextHelper.obtainCurrentSecurityUser().getUserEntity();
+        model.addAttribute("currentUser", userEntity);
+
+        model.addAttribute("active","starred");
+
         return "me";
     }
 }

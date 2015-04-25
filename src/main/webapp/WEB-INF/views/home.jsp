@@ -184,9 +184,9 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><a href="#">${currentUser.voteCounter.votes}</a></td>
-                    <td><a href="#">${currentUser.voteCounter.voted}</a></td>
-                    <td><a href="#">${currentUser.voteCounter.starred}</a></td>
+                    <td><a href="${ctx}/me">${currentUser.voteCounter.votes}</a></td>
+                    <td><a href="${ctx}/me/voted">${currentUser.voteCounter.voted}</a></td>
+                    <td><a href="${ctx}/me/starred">${currentUser.voteCounter.starred}</a></td>
                 </tr>
                 </tbody>
             </table>
