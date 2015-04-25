@@ -165,7 +165,7 @@ body {
     cursor: pointer;
 }
 
-.vote-radio,.vote-checkbox {
+.vote-radio, .vote-checkbox {
     padding-left: 15px;
 }
 
@@ -232,7 +232,8 @@ body {
     text-align: center;
     margin-bottom: 5px;
 }
-.vote-modal .modal-header .alert{
+
+.vote-modal .modal-header .alert {
     margin-bottom: 0px;
     padding: 5px 15px;
 }
@@ -252,32 +253,62 @@ body {
     padding-top: 5px;
     padding-bottom: 5px;
 }
-.vote-modal .list-group{
+
+.vote-modal .list-group {
     margin-bottom: 0px;
 }
-.alert-messages{
+
+.alert-messages {
     position: fixed;
     top: 46px;
     left: 0;
     right: 0;
     z-index: 999;
 }
-.message{
+
+.message {
     position: relative;
     width: 600px;
     padding: 20px;
     margin: 0 auto;
     background: #fff;
-    background-color: rgba(255,255,255,0.97);
+    background-color: rgba(255, 255, 255, 0.97);
     border-radius: 0 0 6px 6px;
-    box-shadow: 0 2px 4px rgba(0,0,0,.25);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
 }
-.message .message-text{
+
+.message .message-text {
     display: block;
     margin-right: 20px;
     color: #66757f;
-    color: rgba(102,117,127,0.6);
+    color: rgba(102, 117, 127, 0.6);
     font-size: 14px;
     line-height: 16px;
     text-align: center;
+}
+
+.me-nav {
+    padding: 0px;
+}
+
+.me-nav .nav li {
+    margin-left: 0px;
+}
+
+.me-nav li a {
+    border-radius: 0px;
+    padding-bottom: 5px;
+    color: #333;
+    background-color: #428bca;
+}
+
+.me-nav li a:hover {
+    border-bottom: 5px solid #faebcc;
+    background-color: #428bca;
+    color: #fff;
+}
+
+.me-nav .in {
+    border-bottom: 5px solid #faebcc;
+    color: #fff;
 }
