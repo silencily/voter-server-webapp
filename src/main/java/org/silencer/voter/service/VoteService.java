@@ -91,5 +91,29 @@ public interface VoteService {
      */
     public List<VoteEntity> discoverStarredVotes(String userId);
 
+    /**
+     * 查询自己发起的投票，按照创建时间进行降序
+     *
+     * @param userId 用户id
+     * @return 投票集合
+     */
+    public List<VoteEntity> queryMeVotes(String userId);
+
+    /**
+     * 查询自己参与投票的投票，按照投票时间进行降序
+     *
+     * @param userId 用户id
+     * @return 投票集合
+     */
+    public List<VoteEntity> queryMeVotedVotes(String userId);
+
+    /**
+     * 查询自己标星投票，按照标星时间进行降序
+     *
+     * @param userId 用户id
+     * @return 投票集合
+     */
+    public List<VoteEntity> queryMeStarredVotes(String userId);
+
 
 }

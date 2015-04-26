@@ -59,7 +59,7 @@ starred:
 #collection : voter 此集合为用户投票关系表，包括创建、标星、参与投票。替代voted和starred两个集合。
 voter:
   userId: string
-  voteId: string
+  vote: object(vote)
   type: int #0:created;1:starred;2:voted
   createTime: date
   votedChoices: int[]

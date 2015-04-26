@@ -54,10 +54,10 @@ public class VoteServiceImpl implements VoteService {
 
         Query query1 = new Query();
         query1.addCriteria(Criteria.where("userId").is(userId));
-        List voteIds = mongoTemplate.getCollection("voter").distinct("voteId", query1.getQueryObject());
+        List voteIds = mongoTemplate.getCollection("voter").distinct("vote.$id", query1.getQueryObject());
 
         Query query2 = new Query();
-        query2.addCriteria(Criteria.where("_id").in(voteIds));
+        query2.addCriteria(Criteria.where("id").in(voteIds));
         query2.limit(initLoadPageSize).with(new Sort(Sort.Direction.DESC, "lastUpdateTime"));
         List<VoteEntity> votes = mongoTemplate.find(query2, VoteEntity.class);
 
@@ -83,8 +83,8 @@ public class VoteServiceImpl implements VoteService {
 
         VoterEntity voterEntity = new VoterEntity();
         voterEntity.setType(VoterConstants.VOTER_TYPE_CREATED);
-        voterEntity.setVoteId(voteEntity.getId());
         voterEntity.setUserId(voteEntity.getCreator().getId());
+        voterEntity.setVote(voteEntity);
         voterRepository.save(voterEntity);
 
         UserEntity userEntity = voteEntity.getCreator();
@@ -95,7 +95,7 @@ public class VoteServiceImpl implements VoteService {
     @Override
     public boolean checkStarredBy(String voteId, String userId) {
         Query query1 = new Query();
-        query1.addCriteria(Criteria.where("voteId").is(voteId)
+        query1.addCriteria(Criteria.where("vote").is(voteId)
                 .and("userId").is(userId).and("type").is(VoterConstants.VOTER_TYPE_STARRED));
         boolean findOne = mongoTemplate.exists(query1, VoterEntity.class);
         return findOne;
@@ -104,17 +104,19 @@ public class VoteServiceImpl implements VoteService {
     @Override
     public void toggleStar(String voteId, String userId) {
         Query query1 = new Query();
-        query1.addCriteria(Criteria.where("voteId").is(voteId)
+        query1.addCriteria(Criteria.where("vote").is(voteId)
                 .and("userId").is(userId).and("type").is(VoterConstants.VOTER_TYPE_STARRED));
         VoterEntity voterEntity = mongoTemplate.findOne(query1, VoterEntity.class);
         if (voterEntity == null) {
             //新增
+            VoteEntity voteEntity = voteRepository.findOne(voteId);
+
             VoterEntity voterEntity1 = new VoterEntity();
             voterEntity1.setUserId(userId);
-            voterEntity1.setVoteId(voteId);
+            voterEntity1.setVote(voteEntity);
             voterEntity1.setType(VoterConstants.VOTER_TYPE_STARRED);
             voterRepository.save(voterEntity1);
-            VoteEntity voteEntity = voteRepository.findOne(voteId);
+
             voteEntity.setStarred(voteEntity.getStarred() + 1);
             voteRepository.save(voteEntity);
             UserEntity userEntity = userRepository.findOne(userId);
@@ -140,7 +142,7 @@ public class VoteServiceImpl implements VoteService {
     public List<Integer> obtainVotedChoices(String voteId, String userId) {
         List<Integer> choiceNos = new ArrayList<Integer>();
         Query query1 = new Query();
-        query1.addCriteria(Criteria.where("voteId").is(voteId)
+        query1.addCriteria(Criteria.where("vote").is(voteId)
                 .and("userId").is(userId).and("type").is(VoterConstants.VOTER_TYPE_VOTED));
         VoterEntity findOne = mongoTemplate.findOne(query1, VoterEntity.class);
         if (findOne != null) {
@@ -176,7 +178,7 @@ public class VoteServiceImpl implements VoteService {
         VoterEntity voterEntity = new VoterEntity();
         voterEntity.setType(VoterConstants.VOTER_TYPE_VOTED);
         voterEntity.setUserId(userId);
-        voterEntity.setVoteId(voteId);
+        voterEntity.setVote(voteEntity);
         voterEntity.setVotedChoices(chosenList);
         voterRepository.save(voterEntity);
         return voteEntity.getChoices();
@@ -186,7 +188,7 @@ public class VoteServiceImpl implements VoteService {
     public List<VoteEntity> discoverNewVotes(String userId) {
         Query query1 = new Query();
         query1.addCriteria(Criteria.where("userId").is(userId));
-        List voteIds = mongoTemplate.getCollection("voter").distinct("voteId", query1.getQueryObject());
+        List voteIds = mongoTemplate.getCollection("voter").distinct("vote.$id", query1.getQueryObject());
 
         Query query2 = new Query();
         query2.addCriteria(Criteria.where("_id").nin(voteIds));
@@ -200,7 +202,7 @@ public class VoteServiceImpl implements VoteService {
     public List<VoteEntity> discoverHotVotes(String userId) {
         Query query1 = new Query();
         query1.addCriteria(Criteria.where("userId").is(userId));
-        List voteIds = mongoTemplate.getCollection("voter").distinct("voteId", query1.getQueryObject());
+        List voteIds = mongoTemplate.getCollection("voter").distinct("vote.$id", query1.getQueryObject());
 
         Query query2 = new Query();
         query2.addCriteria(Criteria.where("_id").nin(voteIds));
@@ -214,13 +216,59 @@ public class VoteServiceImpl implements VoteService {
     public List<VoteEntity> discoverStarredVotes(String userId) {
         Query query1 = new Query();
         query1.addCriteria(Criteria.where("userId").is(userId));
-        List voteIds = mongoTemplate.getCollection("voter").distinct("voteId", query1.getQueryObject());
+        List voteIds = mongoTemplate.getCollection("voter").distinct("vote.$id", query1.getQueryObject());
 
         Query query2 = new Query();
         query2.addCriteria(Criteria.where("_id").nin(voteIds));
         query2.with(new Sort(Sort.Direction.DESC, "starred"));
         List<VoteEntity> votes = mongoTemplate.find(query2, VoteEntity.class);
 
+        return votes;
+    }
+
+    @Override
+    public List<VoteEntity> queryMeVotes(String userId) {
+        Query query1 = new Query();
+        query1.addCriteria(Criteria.where("userId").is(userId).and("type").is(VoterConstants.VOTER_TYPE_CREATED));
+        query1.with(new Sort(Sort.Direction.DESC, "createTime"));
+        List<VoterEntity> voterEntities = mongoTemplate.find(query1, VoterEntity.class);
+        List<VoteEntity> votes = new ArrayList<VoteEntity>();
+        for (VoterEntity voterEntity : voterEntities) {
+            if(voterEntity.getVote()!=null){
+                votes.add(voterEntity.getVote());
+            }
+        }
+        return votes;
+    }
+
+    @Override
+    public List<VoteEntity> queryMeVotedVotes(String userId) {
+
+        Query query1 = new Query();
+        query1.addCriteria(Criteria.where("userId").is(userId).and("type").is(VoterConstants.VOTER_TYPE_VOTED));
+        query1.with(new Sort(Sort.Direction.DESC, "createTime"));
+        List<VoterEntity> voterEntities = mongoTemplate.find(query1, VoterEntity.class);
+        List<VoteEntity> votes = new ArrayList<VoteEntity>();
+        for (VoterEntity voterEntity : voterEntities) {
+            if(voterEntity.getVote()!=null){
+                votes.add(voterEntity.getVote());
+            }
+        }
+        return votes;
+    }
+
+    @Override
+    public List<VoteEntity> queryMeStarredVotes(String userId) {
+        Query query1 = new Query();
+        query1.addCriteria(Criteria.where("userId").is(userId).and("type").is(VoterConstants.VOTER_TYPE_STARRED));
+        query1.with(new Sort(Sort.Direction.DESC, "createTime"));
+        List<VoterEntity> voterEntities = mongoTemplate.find(query1, VoterEntity.class);
+        List<VoteEntity> votes = new ArrayList<VoteEntity>();
+        for (VoterEntity voterEntity : voterEntities) {
+            if(voterEntity.getVote()!=null){
+                votes.add(voterEntity.getVote());
+            }
+        }
         return votes;
     }
 }
