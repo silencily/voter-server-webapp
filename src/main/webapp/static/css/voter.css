@@ -303,12 +303,12 @@ body {
 }
 
 .me-nav li a:hover {
-    border-bottom: 5px solid #faebcc;
+    border-bottom: 5px solid #fff;
     background-color: #428bca;
     color: #fff;
 }
 
 .me-nav .in {
-    border-bottom: 5px solid #faebcc;
+    border-bottom: 5px solid #fff;
     color: #fff;
 }
