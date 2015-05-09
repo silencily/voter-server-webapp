@@ -4,7 +4,6 @@
 package org.silencer.voter.service;
 
 import org.silencer.voter.entity.VoteEntity;
-import org.silencer.voter.web.security.SecurityUser;
 
 import java.util.List;
 

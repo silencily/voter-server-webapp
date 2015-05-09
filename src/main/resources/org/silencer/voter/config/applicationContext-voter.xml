@@ -38,7 +38,7 @@
 
     <mongo:auditing auditor-aware-ref="auditorAware"/>
 
-    <bean id="auditorAware" class="org.silencer.voter.web.security.SecurityAuditorAware"/>
+    <bean id="auditorAware" class="org.silencer.voter.core.security.SecurityAuditorAware"/>
 
     <context:component-scan base-package="org.silencer.voter.service"/>
 

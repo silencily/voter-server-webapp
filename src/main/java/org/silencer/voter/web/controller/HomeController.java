@@ -3,12 +3,12 @@
  */
 package org.silencer.voter.web.controller;
 
+import org.silencer.voter.core.AbstractControllerSupport;
 import org.silencer.voter.entity.UserEntity;
 import org.silencer.voter.entity.VoteEntity;
-import org.silencer.voter.service.UserService;
 import org.silencer.voter.service.VoteService;
 import org.silencer.voter.web.model.VoteModel;
-import org.silencer.voter.web.security.SecurityContextHelper;
+import org.silencer.voter.core.security.SecurityContextHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +22,7 @@ import java.util.List;
  * @since 14-8-26
  */
 @Controller
-public class HomeController {
+public class HomeController extends AbstractControllerSupport {
 
     @Autowired
     private VoteService voteService;

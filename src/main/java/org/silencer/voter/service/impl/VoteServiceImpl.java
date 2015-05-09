@@ -11,11 +11,12 @@ import org.silencer.voter.repository.VoteRepository;
 import org.silencer.voter.repository.VoterRepository;
 import org.silencer.voter.service.VoteService;
 import org.silencer.voter.utils.VoterConstants;
-import org.silencer.voter.web.security.SecurityContextHelper;
+import org.silencer.voter.core.security.SecurityContextHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
@@ -54,8 +55,11 @@ public class VoteServiceImpl implements VoteService {
 
         Query query1 = new Query();
         query1.addCriteria(Criteria.where("userId").is(userId));
-        List voteIds = mongoTemplate.getCollection("voter").distinct("vote.$id", query1.getQueryObject());
+        query1.limit(initLoadPageSize);
 
+        List voteIds = mongoTemplate.getCollection("voter").distinct("vote.$id", query1.getQueryObject());
+        Aggregation aggregation=Aggregation.newAggregation(Aggregation.group("vote"));
+        //mongoTemplate.aggregate()
         Query query2 = new Query();
         query2.addCriteria(Criteria.where("id").in(voteIds));
         query2.limit(initLoadPageSize).with(new Sort(Sort.Direction.DESC, "lastUpdateTime"));

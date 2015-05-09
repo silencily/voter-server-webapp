@@ -1,7 +1,7 @@
 /* 
  * CopyRright (c) 2013, Minxin and/or its affiliates. All rights reserved.
  */
-package org.silencer.voter.web.security;
+package org.silencer.voter.core.security;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

@@ -24,7 +24,7 @@
         </authentication-provider>
     </authentication-manager>
 
-    <beans:bean name="mongoUserDetailsService" class="org.silencer.voter.web.security.MongoUserDetailsService">
+    <beans:bean name="mongoUserDetailsService" class="org.silencer.voter.core.security.MongoUserDetailsService">
         <beans:property name="mongoTemplate" ref="mongoTemplate"/>
     </beans:bean>
 

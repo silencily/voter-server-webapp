@@ -1,7 +1,7 @@
 /* 
  * CopyRright (c) 2014, org.silencer and/or its affiliates. All rights reserved.
  */
-package org.silencer.voter.web.security;
+package org.silencer.voter.core.security;
 
 import org.silencer.voter.entity.UserEntity;
 import org.springframework.security.core.GrantedAuthority;

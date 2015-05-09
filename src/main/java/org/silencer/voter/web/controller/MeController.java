@@ -7,7 +7,7 @@ import org.silencer.voter.entity.UserEntity;
 import org.silencer.voter.entity.VoteEntity;
 import org.silencer.voter.service.VoteService;
 import org.silencer.voter.web.model.VoteModel;
-import org.silencer.voter.web.security.SecurityContextHelper;
+import org.silencer.voter.core.security.SecurityContextHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

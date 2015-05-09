@@ -5,7 +5,7 @@ package org.silencer.voter.web.controller;
 
 import org.silencer.voter.entity.UserEntity;
 import org.silencer.voter.service.UserService;
-import org.silencer.voter.web.security.SecurityContextHelper;
+import org.silencer.voter.core.security.SecurityContextHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
