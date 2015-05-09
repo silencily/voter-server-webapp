@@ -146,4 +146,11 @@ public class Pagination implements Serializable {
         return this.notPaginated;
     }
 
+    @Override
+    public String toString() {
+        return "Pagination{" +
+                "page=" + page +
+                ", pageSize=" + pageSize +
+                '}';
+    }
 }

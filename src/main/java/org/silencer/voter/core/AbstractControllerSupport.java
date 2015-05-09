@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
  */
 public abstract class AbstractControllerSupport {
     private static final Log logger = LogFactory.getLog(AbstractControllerSupport.class);
+
     /**
      * 处理分页数据绑定
      *
@@ -29,9 +30,13 @@ public abstract class AbstractControllerSupport {
 
     @ModelAttribute
     protected void Pagination(Pagination pagination) {
-        WebContextHolder.setPagination(pagination);
-        if(logger.isDebugEnabled()){
-            logger.debug("the pagination loaded into web context holder.");
+        Pagination pagination1 = pagination;
+        if (pagination1.isNotPaginated()) {
+            pagination1 = Pagination.NOT_PAGINATED;
+        }
+        WebContextHolder.setPagination(pagination1);
+        if (logger.isDebugEnabled()) {
+            logger.debug("the pagination :[" + pagination1 + "] loaded into web context holder.");
         }
     }
 
