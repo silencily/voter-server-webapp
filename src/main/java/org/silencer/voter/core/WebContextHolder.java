@@ -28,5 +28,9 @@ public class WebContextHolder {
         pagination.set(pagination1);
     }
 
+    public static void clear(){
+        pagination.remove();
+    }
+
 
 }
