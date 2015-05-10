@@ -3,6 +3,7 @@
  */
 package org.silencer.voter.service.impl;
 
+import com.mongodb.DBObject;
 import org.silencer.voter.entity.UserEntity;
 import org.silencer.voter.entity.VoteEntity;
 import org.silencer.voter.entity.VoterEntity;
@@ -54,19 +55,22 @@ public class VoteServiceImpl implements VoteService {
     @Override
     public List<VoteEntity> initLoadVoteByUserId(String userId) {
 
-        Query query1 = new Query();
-        query1.addCriteria(Criteria.where("userId").is(userId));
-        query1.limit(initLoadPageSize);
+        Aggregation aggregationCount = Aggregation.newAggregation(Aggregation.match(Criteria.where("userId").is(userId)), Aggregation.group("voteId"),
+                Aggregation.group().count().as("count"), Aggregation.project("count").andExclude("_id"));
+        AggregationResults<DBObject> aggregationResultsCount = mongoTemplate.aggregate(aggregationCount, VoterEntity.class, DBObject.class);
+        DBObject objCount = aggregationResultsCount.getUniqueMappedResult();
+        Integer count = (Integer) objCount.get("count");
 
-        List voteIds = mongoTemplate.getCollection("voter").distinct("voteId", query1.getQueryObject());
-//        Aggregation aggregation=Aggregation.newAggregation(Aggregation.match(Criteria.where("userId").is(userId)),Aggregation.group("vote"),Aggregation.sort(new Sort(Sort.Direction.DESC,"vote.lastUpdateTime")));
+        Aggregation aggregation = Aggregation.newAggregation(Aggregation.match(Criteria.where("userId").is(userId)),
+                Aggregation.group("voteId").max("createTime").as("lastCreateTime"),
+                Aggregation.sort(Sort.Direction.DESC, "lastCreateTime"), Aggregation.limit(initLoadPageSize));
 
-//        AggregationResults<VoteEntity> aggregationResults= mongoTemplate.aggregate(aggregation, VoterEntity.class, VoteEntity.class);
-//        List<VoteEntity> voteEntities= aggregationResults.getMappedResults();
-        Query query2 = new Query();
-        query2.addCriteria(Criteria.where("id").in(voteIds));
-        query2.limit(initLoadPageSize).with(new Sort(Sort.Direction.DESC, "lastUpdateTime"));
-        List<VoteEntity> votes = mongoTemplate.find(query2, VoteEntity.class);
+        AggregationResults<DBObject> aggregationResults = mongoTemplate.aggregate(aggregation, VoterEntity.class, DBObject.class);
+        List<DBObject> voterEntities = aggregationResults.getMappedResults();
+        List<VoteEntity> votes = new ArrayList<VoteEntity>();
+        for (DBObject voterEntity : voterEntities) {
+            votes.add(voteRepository.findOne(voterEntity.get("_id").toString()));
+        }
 
         return votes;
     }
