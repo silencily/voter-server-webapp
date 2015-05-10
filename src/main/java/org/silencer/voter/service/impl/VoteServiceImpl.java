@@ -58,7 +58,7 @@ public class VoteServiceImpl implements VoteService {
         query1.addCriteria(Criteria.where("userId").is(userId));
         query1.limit(initLoadPageSize);
 
-        List voteIds = mongoTemplate.getCollection("voter").distinct("vote.$id", query1.getQueryObject());
+        List voteIds = mongoTemplate.getCollection("voter").distinct("voteId", query1.getQueryObject());
 //        Aggregation aggregation=Aggregation.newAggregation(Aggregation.match(Criteria.where("userId").is(userId)),Aggregation.group("vote"),Aggregation.sort(new Sort(Sort.Direction.DESC,"vote.lastUpdateTime")));
 
 //        AggregationResults<VoteEntity> aggregationResults= mongoTemplate.aggregate(aggregation, VoterEntity.class, VoteEntity.class);
