@@ -29,7 +29,7 @@ public abstract class AbstractControllerSupport {
     }
 
     @ModelAttribute
-    protected void Pagination(Pagination pagination) {
+    protected Pagination getPagination(Pagination pagination) {
         Pagination pagination1 = pagination;
         if (pagination1.isNotPaginated()) {
             pagination1 = Pagination.NOT_PAGINATED;
@@ -38,6 +38,7 @@ public abstract class AbstractControllerSupport {
         if (logger.isDebugEnabled()) {
             logger.debug("the pagination :[" + pagination1 + "] loaded into web context holder.");
         }
+        return pagination1;
     }
 
 }

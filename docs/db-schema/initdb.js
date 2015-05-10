@@ -50,7 +50,7 @@ function init() {
     db.voter.drop();
     db.createCollection("voter");
     db.voter.insert({"userId": db.user.findOne()._id.valueOf(),
-        "vote": new DBRef("vote",ObjectId(db.vote.findOne()._id.valueOf())),"type":0, "createTime": new Date()});
+        "voteId": db.vote.findOne()._id.valueOf(),"type":0, "createTime": new Date()});
 
 }
 

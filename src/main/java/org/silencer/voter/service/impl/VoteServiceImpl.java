@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
@@ -58,8 +59,10 @@ public class VoteServiceImpl implements VoteService {
         query1.limit(initLoadPageSize);
 
         List voteIds = mongoTemplate.getCollection("voter").distinct("vote.$id", query1.getQueryObject());
-        Aggregation aggregation=Aggregation.newAggregation(Aggregation.group("vote"));
-        //mongoTemplate.aggregate()
+//        Aggregation aggregation=Aggregation.newAggregation(Aggregation.match(Criteria.where("userId").is(userId)),Aggregation.group("vote"),Aggregation.sort(new Sort(Sort.Direction.DESC,"vote.lastUpdateTime")));
+
+//        AggregationResults<VoteEntity> aggregationResults= mongoTemplate.aggregate(aggregation, VoterEntity.class, VoteEntity.class);
+//        List<VoteEntity> voteEntities= aggregationResults.getMappedResults();
         Query query2 = new Query();
         query2.addCriteria(Criteria.where("id").in(voteIds));
         query2.limit(initLoadPageSize).with(new Sort(Sort.Direction.DESC, "lastUpdateTime"));
@@ -88,7 +91,7 @@ public class VoteServiceImpl implements VoteService {
         VoterEntity voterEntity = new VoterEntity();
         voterEntity.setType(VoterConstants.VOTER_TYPE_CREATED);
         voterEntity.setUserId(voteEntity.getCreator().getId());
-        voterEntity.setVote(voteEntity);
+        voterEntity.setVoteId(voteEntity.getId());
         voterRepository.save(voterEntity);
 
         UserEntity userEntity = voteEntity.getCreator();
@@ -117,7 +120,7 @@ public class VoteServiceImpl implements VoteService {
 
             VoterEntity voterEntity1 = new VoterEntity();
             voterEntity1.setUserId(userId);
-            voterEntity1.setVote(voteEntity);
+            voterEntity1.setVoteId(voteId);
             voterEntity1.setType(VoterConstants.VOTER_TYPE_STARRED);
             voterRepository.save(voterEntity1);
 
@@ -182,7 +185,7 @@ public class VoteServiceImpl implements VoteService {
         VoterEntity voterEntity = new VoterEntity();
         voterEntity.setType(VoterConstants.VOTER_TYPE_VOTED);
         voterEntity.setUserId(userId);
-        voterEntity.setVote(voteEntity);
+        voterEntity.setVoteId(voteId);
         voterEntity.setVotedChoices(chosenList);
         voterRepository.save(voterEntity);
         return voteEntity.getChoices();
@@ -238,9 +241,7 @@ public class VoteServiceImpl implements VoteService {
         List<VoterEntity> voterEntities = mongoTemplate.find(query1, VoterEntity.class);
         List<VoteEntity> votes = new ArrayList<VoteEntity>();
         for (VoterEntity voterEntity : voterEntities) {
-            if(voterEntity.getVote()!=null){
-                votes.add(voterEntity.getVote());
-            }
+            votes.add(voteRepository.findOne(voterEntity.getVoteId()));
         }
         return votes;
     }
@@ -254,9 +255,7 @@ public class VoteServiceImpl implements VoteService {
         List<VoterEntity> voterEntities = mongoTemplate.find(query1, VoterEntity.class);
         List<VoteEntity> votes = new ArrayList<VoteEntity>();
         for (VoterEntity voterEntity : voterEntities) {
-            if(voterEntity.getVote()!=null){
-                votes.add(voterEntity.getVote());
-            }
+            votes.add(voteRepository.findOne(voterEntity.getVoteId()));
         }
         return votes;
     }
@@ -269,9 +268,7 @@ public class VoteServiceImpl implements VoteService {
         List<VoterEntity> voterEntities = mongoTemplate.find(query1, VoterEntity.class);
         List<VoteEntity> votes = new ArrayList<VoteEntity>();
         for (VoterEntity voterEntity : voterEntities) {
-            if(voterEntity.getVote()!=null){
-                votes.add(voterEntity.getVote());
-            }
+            votes.add(voteRepository.findOne(voterEntity.getVoteId()));
         }
         return votes;
     }

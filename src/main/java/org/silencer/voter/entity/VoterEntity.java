@@ -20,8 +20,7 @@ public class VoterEntity extends AbstractEntity {
     @Id
     private String id;
     private String userId;
-    @DBRef
-    private VoteEntity vote;
+    private String voteId;
     private int type;
     @CreatedDate
     private Date createTime;
@@ -42,6 +41,14 @@ public class VoterEntity extends AbstractEntity {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getVoteId() {
+        return voteId;
+    }
+
+    public void setVoteId(String voteId) {
+        this.voteId = voteId;
     }
 
     public int getType() {
@@ -68,11 +75,4 @@ public class VoterEntity extends AbstractEntity {
         this.votedChoices = votedChoices;
     }
 
-    public VoteEntity getVote() {
-        return vote;
-    }
-
-    public void setVote(VoteEntity vote) {
-        this.vote = vote;
-    }
 }
