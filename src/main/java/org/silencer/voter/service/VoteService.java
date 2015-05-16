@@ -13,13 +13,12 @@ import java.util.List;
  */
 public interface VoteService {
     /**
-     * 根据用户加载投票<br>
-     * 初始加载按照系统<code>system.pagesize.initload</code>设置限制查询数量
+     * 查询home页面投票
      *
      * @param userId 用户
      * @return 投票集合
      */
-    public List<VoteEntity> initLoadVoteByUserId(String userId);
+    public List<VoteEntity> queryHomeVotes(String userId);
 
     /**
      * 新增vote

@@ -5,6 +5,8 @@ package org.silencer.voter.core;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.silencer.voter.core.security.SecurityContextHelper;
+import org.silencer.voter.entity.UserEntity;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -30,15 +32,19 @@ public abstract class AbstractControllerSupport {
 
     @ModelAttribute
     protected Pagination getPagination(Pagination pagination) {
-        Pagination pagination1 = pagination;
-        if (pagination1.isNotPaginated()) {
-            pagination1 = Pagination.NOT_PAGINATED;
-        }
-        WebContextHolder.setPagination(pagination1);
+        WebContextHolder.setPagination(pagination);
         if (logger.isDebugEnabled()) {
-            logger.debug("the pagination :[" + pagination1 + "] loaded into web context holder.");
+            logger.debug("the pagination :[" + pagination + "] loaded into web context holder.");
         }
-        return pagination1;
+        return pagination;
+    }
+
+    /**
+     * 获取当前登录用户
+     * @return 当前登录用户
+     */
+    protected UserEntity obtainCurrentUser(){
+        return SecurityContextHelper.obtainCurrentSecurityUser().getUserEntity();
     }
 
 }

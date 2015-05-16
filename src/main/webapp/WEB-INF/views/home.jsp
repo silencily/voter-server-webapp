@@ -421,9 +421,12 @@
 </div>
 </div>
 </c:forEach>
-<div class="row">
-    <div class="panel-footer">Auto loading...</div>
-</div>
+<c:if test="${pagination.nextPageAvailable}">
+    <div class="row" style="padding: 5px 10px;">
+        <input type="hidden" value="${pagination.page}"/>
+        <a href="${ctx}/home/index/${pagination.page+1}" class="btn btn-default btn-block vote-more">More</a>
+    </div>
+</c:if>
 </div>
 </div>
 </div>
@@ -561,6 +564,17 @@
                 });
 
             });
+        });
+        //加载更多方法
+        $('.vote-more').click(function () {
+            var $this = $(this);
+            var href = $this.attr("href");
+            $.post(href, {
+                "pagination.page": 1
+            }, function (data) {
+                alert(data);
+            });
+            return false;
         });
     });
     function showError(err) {

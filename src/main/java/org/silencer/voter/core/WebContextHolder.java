@@ -18,7 +18,7 @@ public class WebContextHolder {
     public static Pagination getPagination() {
         Pagination pagination1 = pagination.get();
         if (pagination1 == null) {
-            pagination1 = Pagination.NOT_PAGINATED;
+            pagination1 = new Pagination();
             pagination.set(pagination1);
         }
         return pagination1;

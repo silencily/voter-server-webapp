@@ -14,21 +14,14 @@ import java.io.Serializable;
  * @since 2015-05-09
  */
 public class Pagination implements Serializable {
-    /**
-     * 当不需要分页时返回这个实例
-     */
-    public static final Pagination NOT_PAGINATED = new Pagination() {
-        public String toString() {
-            return "not paginated";
-        }
-    };
 
-    public static final int DEFAULT_PAGE_SIZE = 14;
+    private static final int DEFAULT_PAGE_SIZE = 20;
+    private static final String CONFIG_PAGESIZE_KEY = "system.pagesize";
 
     /**
      * 每页行数, 通常在页面中可以修改这个参数
      */
-    private int pageSize = DEFAULT_PAGE_SIZE;
+    private int pageSize = ConfigurationContainer.getContainer().getInteger(CONFIG_PAGESIZE_KEY, DEFAULT_PAGE_SIZE);
 
     /**
      * 当前是第几页, 从<b>0</b>开始计算
@@ -149,8 +142,10 @@ public class Pagination implements Serializable {
     @Override
     public String toString() {
         return "Pagination{" +
-                "page=" + page +
-                ", pageSize=" + pageSize +
+                "pageSize=" + pageSize +
+                ", page=" + page +
+                ", count=" + count +
+                ", notPaginated=" + notPaginated +
                 '}';
     }
 }

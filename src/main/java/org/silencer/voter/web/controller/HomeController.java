@@ -4,6 +4,8 @@
 package org.silencer.voter.web.controller;
 
 import org.silencer.voter.core.AbstractControllerSupport;
+import org.silencer.voter.core.Pagination;
+import org.silencer.voter.core.WebContextHolder;
 import org.silencer.voter.entity.UserEntity;
 import org.silencer.voter.entity.VoteEntity;
 import org.silencer.voter.service.VoteService;
@@ -13,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +31,11 @@ public class HomeController extends AbstractControllerSupport {
     @Autowired
     private VoteService voteService;
 
-    @RequestMapping(value = "home")
+    @RequestMapping(value = {"home", "home/index/*"}, method = RequestMethod.GET)
     public String home(Model model) {
-        UserEntity userEntity = SecurityContextHelper.obtainCurrentSecurityUser().getUserEntity();
+        UserEntity userEntity = obtainCurrentUser();
         model.addAttribute("currentUser", userEntity);
-        List<VoteEntity> voteEntities = voteService.initLoadVoteByUserId(userEntity.getId());
+        List<VoteEntity> voteEntities = voteService.queryHomeVotes(userEntity.getId());
         List<VoteModel> votes = new ArrayList<VoteModel>();
         for (VoteEntity voteEntity : voteEntities) {
             VoteModel vote = new VoteModel();
@@ -61,5 +65,11 @@ public class HomeController extends AbstractControllerSupport {
         model.addAttribute("votes", votes);
         return "home";
     }
+    @ResponseBody
+    @RequestMapping(value = "home/index/*",method = RequestMethod.POST)
+    public String home(){
+        return "hello world";
+    }
+
 
 }

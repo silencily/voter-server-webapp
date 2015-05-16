@@ -312,3 +312,8 @@ body {
     border-bottom: 5px solid #fff;
     color: #fff;
 }
+
+.vote-more,.vote-more:hover {
+    font-weight: bold;
+    color: #4183c4;
+}

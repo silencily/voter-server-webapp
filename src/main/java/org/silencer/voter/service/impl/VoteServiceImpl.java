@@ -4,6 +4,8 @@
 package org.silencer.voter.service.impl;
 
 import com.mongodb.DBObject;
+import org.silencer.voter.core.Pagination;
+import org.silencer.voter.core.WebContextHolder;
 import org.silencer.voter.entity.UserEntity;
 import org.silencer.voter.entity.VoteEntity;
 import org.silencer.voter.entity.VoterEntity;
@@ -49,11 +51,12 @@ public class VoteServiceImpl implements VoteService {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    @Value("${system.pagesize.initload}")
-    private int initLoadPageSize;
-
     @Override
-    public List<VoteEntity> initLoadVoteByUserId(String userId) {
+    public List<VoteEntity> queryHomeVotes(String userId) {
+
+        Pagination pagination = WebContextHolder.getPagination();
+        int page = pagination.getPage();
+        int pageSize = pagination.getPageSize();
 
         Aggregation aggregationCount = Aggregation.newAggregation(Aggregation.match(Criteria.where("userId").is(userId)), Aggregation.group("voteId"),
                 Aggregation.group().count().as("count"), Aggregation.project("count").andExclude("_id"));
@@ -61,9 +64,11 @@ public class VoteServiceImpl implements VoteService {
         DBObject objCount = aggregationResultsCount.getUniqueMappedResult();
         Integer count = (Integer) objCount.get("count");
 
+        pagination.setCount(count);
+
         Aggregation aggregation = Aggregation.newAggregation(Aggregation.match(Criteria.where("userId").is(userId)),
                 Aggregation.group("voteId").max("createTime").as("lastCreateTime"),
-                Aggregation.sort(Sort.Direction.DESC, "lastCreateTime"), Aggregation.limit(initLoadPageSize));
+                Aggregation.sort(Sort.Direction.DESC, "lastCreateTime"), Aggregation.skip(page * pageSize), Aggregation.limit(pageSize));
 
         AggregationResults<DBObject> aggregationResults = mongoTemplate.aggregate(aggregation, VoterEntity.class, DBObject.class);
         List<DBObject> voterEntities = aggregationResults.getMappedResults();
@@ -71,7 +76,6 @@ public class VoteServiceImpl implements VoteService {
         for (DBObject voterEntity : voterEntities) {
             votes.add(voteRepository.findOne(voterEntity.get("_id").toString()));
         }
-
         return votes;
     }
 
