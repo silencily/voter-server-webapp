@@ -203,7 +203,7 @@ public class VoteServiceImpl implements VoteService {
     public List<VoteEntity> discoverNewVotes(String userId) {
         Query query1 = new Query();
         query1.addCriteria(Criteria.where("userId").is(userId));
-        List voteIds = mongoTemplate.getCollection("voter").distinct("vote.$id", query1.getQueryObject());
+        List voteIds = mongoTemplate.getCollection("voter").distinct("voteId", query1.getQueryObject());
 
         Query query2 = new Query();
         query2.addCriteria(Criteria.where("_id").nin(voteIds));
@@ -217,7 +217,7 @@ public class VoteServiceImpl implements VoteService {
     public List<VoteEntity> discoverHotVotes(String userId) {
         Query query1 = new Query();
         query1.addCriteria(Criteria.where("userId").is(userId));
-        List voteIds = mongoTemplate.getCollection("voter").distinct("vote.$id", query1.getQueryObject());
+        List voteIds = mongoTemplate.getCollection("voter").distinct("voteId", query1.getQueryObject());
 
         Query query2 = new Query();
         query2.addCriteria(Criteria.where("_id").nin(voteIds));
@@ -231,7 +231,7 @@ public class VoteServiceImpl implements VoteService {
     public List<VoteEntity> discoverStarredVotes(String userId) {
         Query query1 = new Query();
         query1.addCriteria(Criteria.where("userId").is(userId));
-        List voteIds = mongoTemplate.getCollection("voter").distinct("vote.$id", query1.getQueryObject());
+        List voteIds = mongoTemplate.getCollection("voter").distinct("voteId", query1.getQueryObject());
 
         Query query2 = new Query();
         query2.addCriteria(Criteria.where("_id").nin(voteIds));

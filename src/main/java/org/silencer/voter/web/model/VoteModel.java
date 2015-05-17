@@ -3,6 +3,8 @@
  */
 package org.silencer.voter.web.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +15,7 @@ import java.util.List;
 public class VoteModel {
     private String id;
     private String title;
+    @JsonFormat(pattern = "yyyy/MM/dd HH:mm")
     private Date createTime;
     private int voted = 0;
     private int starred = 0;

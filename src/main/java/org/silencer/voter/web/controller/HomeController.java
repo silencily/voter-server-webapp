@@ -9,6 +9,7 @@ import org.silencer.voter.core.WebContextHolder;
 import org.silencer.voter.entity.UserEntity;
 import org.silencer.voter.entity.VoteEntity;
 import org.silencer.voter.service.VoteService;
+import org.silencer.voter.web.model.PageableModel;
 import org.silencer.voter.web.model.VoteModel;
 import org.silencer.voter.core.security.SecurityContextHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,10 +66,44 @@ public class HomeController extends AbstractControllerSupport {
         model.addAttribute("votes", votes);
         return "home";
     }
+
     @ResponseBody
-    @RequestMapping(value = "home/index/*",method = RequestMethod.POST)
-    public String home(){
-        return "hello world";
+    @RequestMapping(value = "home/index/*", method = RequestMethod.POST)
+    public PageableModel home() {
+        UserEntity userEntity = obtainCurrentUser();
+        List<VoteEntity> voteEntities = voteService.queryHomeVotes(userEntity.getId());
+        List<VoteModel> votes = new ArrayList<VoteModel>();
+        for (VoteEntity voteEntity : voteEntities) {
+            VoteModel vote = new VoteModel();
+            vote.setId(voteEntity.getId());
+            vote.setCreateTime(voteEntity.getCreateTime());
+            vote.setCreatorName(voteEntity.getCreator().getUsername());
+            vote.setMulti(voteEntity.isMulti());
+            vote.setStarred(voteEntity.getStarred());
+            vote.setTitle(voteEntity.getTitle());
+            vote.setVoted(voteEntity.getVoted());
+            List<Integer> votedChoices = voteService.obtainVotedChoices(voteEntity.getId(), userEntity.getId());
+            List<VoteModel.ChoiceModel> choiceModels = new ArrayList<VoteModel.ChoiceModel>();
+            for (VoteEntity.Choice choice : voteEntity.getChoices()) {
+                VoteModel.ChoiceModel choiceModel = new VoteModel.ChoiceModel();
+                choiceModel.setNo(choice.getNo());
+                choiceModel.setContent(choice.getContent());
+                choiceModel.setRatio(choice.getRatio());
+                choiceModel.setVoted(choice.getVoted());
+                choiceModel.setVotedBy(votedChoices.contains(choice.getNo()));
+                choiceModels.add(choiceModel);
+            }
+            vote.setVotedBy(votedChoices.size() > 0);
+            vote.setChoices(choiceModels);
+            vote.setStarredBy(voteService.checkStarredBy(voteEntity.getId(), userEntity.getId()));
+            votes.add(vote);
+        }
+        PageableModel<VoteModel> pageableModel = new PageableModel<VoteModel>();
+        Pagination pagination = WebContextHolder.getPagination();
+        pageableModel.setPage(pagination.getPage());
+        pageableModel.setHasNext(pagination.isNextPageAvailable());
+        pageableModel.setContent(votes);
+        return pageableModel;
     }
 
 
