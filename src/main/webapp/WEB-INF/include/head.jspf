@@ -3,3 +3,6 @@
 <%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="ctxStatic" value="${pageContext.request.contextPath}/static"/>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
+<script type="text/javascript">
+    var global = {ctx: "${ctx}"}
+</script>
