@@ -313,7 +313,11 @@ body {
     color: #fff;
 }
 
-.vote-more,.vote-more:hover {
+.vote-more, .vote-more:hover {
     font-weight: bold;
     color: #4183c4;
+}
+
+.navbar-form button {
+    height: 34px;
 }

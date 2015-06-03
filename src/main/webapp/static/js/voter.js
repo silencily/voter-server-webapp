@@ -3,6 +3,18 @@
  */
 
 +function ($) {
+    function _showError(err) {
+        $('#error-msg').text(err);
+        $('#error-msg').removeClass('hidden');
+        $('#error-msg').addClass('show');
+    }
+
+    function _clearError() {
+        $('#error-msg').text('');
+        $('#error-msg').removeClass('show');
+        $('#error-msg').addClass('hidden');
+    }
+
     function _delChoice(btn) {
         //remove the choice
         $(btn).parents('.list-group-item').remove();
@@ -20,17 +32,24 @@
             '<div class="input-group input-group-sm ">' +
             '<span class="input-group-addon">' + (lastChoiceIndex + 1) + '</span>' +
             '<input name="choice" type="text" class="form-control">' +
-            '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="_delChoice(this)"><span class="glyphicon glyphicon-trash"> </span></button></span>' +
+            '<span class="input-group-btn"><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-trash"> </span></button></span>' +
             '</div>' +
             '</div>';
         $choiceContainer.append(newChoice);
+        $choiceContainer.children(":last").find(':button').click(function () {
+            $(this).parents('.list-group-item').remove();
+            //刷新choice排序
+            $('.vote-modal .list-group').children().each(function (idx, element) {
+                $(element).find('.input-group-addon').text(idx + 1);
+            });
+        })
     };
     //发布新投票
     var _pushVote = function () {
         //获取vote数据
         var title = $('#vote-title').val();
         if (title.trim() == '') {
-            showError('The title is required.');
+            _showError('The title is required.');
             $('#vote-title').focus();
             return;
         }
@@ -40,7 +59,7 @@
         $(':text[name="choice"]').each(function (index, element) {
             var choice = $(element).val();
             if (choice.trim() == '') {
-                showError('The choice is required.');
+                _showError('The choice is required.');
                 $(element).focus();
                 vChoices = false;
                 return false;
@@ -50,7 +69,7 @@
         if (!vChoices) {
             return;
         }
-        clearError();
+        _clearError();
         //ajax post request
         $.post(global.ctx + "/vote", {
             "title": title,
@@ -115,7 +134,7 @@
             alert('please chose your vote.');
             return false;
         }
-        $.post("${ctx}/voted", {"voteId": voteId, "choices": choices}, function (data) {
+        $.post(global.ctx + "/voted", {"voteId": voteId, "choices": choices}, function (data) {
             $this.parents('.vote-panel').find("input[name$='-options-" + voteId + "']").attr("disabled", "disabled");
             $this.attr("disabled", "disabled");
             var voted = $this.parents('.vote-panel').find(".vote-actions .glyphicon-hand-up").next().text();
@@ -131,6 +150,7 @@
 
         });
     }
+
 
     $.extend({voter: {}});
     $.extend($.voter, {

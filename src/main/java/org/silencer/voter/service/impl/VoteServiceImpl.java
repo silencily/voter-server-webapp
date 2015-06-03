@@ -119,7 +119,7 @@ public class VoteServiceImpl implements VoteService {
     @Override
     public void toggleStar(String voteId, String userId) {
         Query query1 = new Query();
-        query1.addCriteria(Criteria.where("vote").is(voteId)
+        query1.addCriteria(Criteria.where("voteId").is(voteId)
                 .and("userId").is(userId).and("type").is(VoterConstants.VOTER_TYPE_STARRED));
         VoterEntity voterEntity = mongoTemplate.findOne(query1, VoterEntity.class);
         if (voterEntity == null) {
@@ -157,7 +157,7 @@ public class VoteServiceImpl implements VoteService {
     public List<Integer> obtainVotedChoices(String voteId, String userId) {
         List<Integer> choiceNos = new ArrayList<Integer>();
         Query query1 = new Query();
-        query1.addCriteria(Criteria.where("vote").is(voteId)
+        query1.addCriteria(Criteria.where("voteId").is(voteId)
                 .and("userId").is(userId).and("type").is(VoterConstants.VOTER_TYPE_VOTED));
         VoterEntity findOne = mongoTemplate.findOne(query1, VoterEntity.class);
         if (findOne != null) {
