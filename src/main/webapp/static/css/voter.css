@@ -321,3 +321,6 @@ body {
 .navbar-form button {
     height: 34px;
 }
+.setting-menu {
+    min-width: 50px;
+}

@@ -110,7 +110,7 @@ public class VoteServiceImpl implements VoteService {
     @Override
     public boolean checkStarredBy(String voteId, String userId) {
         Query query1 = new Query();
-        query1.addCriteria(Criteria.where("vote").is(voteId)
+        query1.addCriteria(Criteria.where("voteId").is(voteId)
                 .and("userId").is(userId).and("type").is(VoterConstants.VOTER_TYPE_STARRED));
         boolean findOne = mongoTemplate.exists(query1, VoterEntity.class);
         return findOne;

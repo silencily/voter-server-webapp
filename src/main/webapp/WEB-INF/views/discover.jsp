@@ -42,7 +42,15 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-bell"></span> </a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-cog"></span> </a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" ><span class="glyphicon glyphicon-cog"></span> </a>
+                    <ul class="dropdown-menu setting-menu" role="menu">
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-lock"></span> Password</a></li>
+                        <li class="divider"></li>
+                        <li><a href="${ctx}/logout"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+                    </ul>
+                </li>
                 <li><a href="#newVote" data-toggle="modal"><span class="glyphicon glyphicon-pencil"></span> </a></li>
             </ul>
             <form class="navbar-form navbar-right" role="search">
