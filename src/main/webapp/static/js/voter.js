@@ -150,6 +150,157 @@
 
         });
     }
+    //加载更多
+    var _loadMoreVote =function () {
+        var $this = $(this);
+        var href = $this.attr("href");
+        var nextPage = href.substring(href.lastIndexOf("/") + 1, href.length);
+        $.post(href, {
+            "pagination.page": nextPage
+        }, function (data) {
+            var page = data.page;
+            var hasNext = data.hasNext;
+            var content = data.content;
+            $.each(content, function (idx, element) {
+                var html = '<div class="row">' +
+                    '<div class="col-md-12 inner-col">' +
+                    '<div class="panel panel-warning vote-panel">' +
+                    '<div class="panel-heading vote-panel-heading">' +
+                    '<div class="media pull-left">' +
+                    '<a class="pull-left" href="#">' +
+                    '<img class="media-object img-circle" src="/voter/static/imgs/silencily.jpg" alt="silencily">' +
+                    '</a>' +
+                    '<div class="media-body">' +
+                    '<h5 class="media-heading vote-media-heading">' + element.creatorName + '</h5>' +
+                    '<small>' + element.createTime + '</small>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="vote-actions">' +
+                    '<span class="glyphicon glyphicon-hand-up"></span>' +
+                    '<span class="badge">' + element.voted + '</span>';
+                var starredBy = element.starredBy;
+                if (starredBy) {
+                    html += '<span class="glyphicon glyphicon-star vote-actions-star" data-voteid="' + element.id + '"></span>';
+                } else {
+                    html += '<span class="glyphicon glyphicon-star-empty vote-actions-star" data-voteid="' + element.id + '"></span>';
+                }
+                html += '<span class="badge">' + element.starred + '</span>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="panel-body vote-panel-body">' +
+                    '<h4><span class="glyphicon glyphicon-hand-right"></span> ' + element.title + '</h4>';
+
+                var multi = element.multi;
+                var votedBy = element.votedBy;
+                var choices = element.choices;
+                if (multi) {
+                    $.each(choices, function (_idx, _element) {
+                        var no = _element.no;
+                        if (no < 5) {
+                            html += '<div class="checkbox vote-checkbox">' +
+                                '<span class="vote-order">' + no + '.</span>' +
+                                '<label>';
+                        } else {
+                            //no >=5
+                            html += '<div class="checkbox vote-checkbox hidden">' +
+                                '<span class="vote-order">' + no + '.</span>' +
+                                '<label>';
+                        }
+                        var choice_votedBy = _element.votedBy;
+                        if (choice_votedBy) {
+                            if (votedBy) {
+                                html += '<input type="checkbox" name="checkbox-options-' + element.id + '" value="' + no + '" checked="checked" disabled="disabled">';
+                            } else {
+                                html += '<input type="checkbox" name="checkbox-options-' + element.id + '" value="' + no + '" checked="checked">';
+                            }
+                        } else {
+                            if (votedBy) {
+                                html += '<input type="checkbox" name="checkbox-options-' + element.id + '" value="' + no + '" disabled="disabled">';
+                            } else {
+                                html += '<input type="checkbox" name="checkbox-options-' + element.id + '" value="' + no + '">';
+                            }
+                        }
+                        html += _element.content;
+                        html += '</label>' +
+                            '</div>';
+                    });
+
+                } else {
+                    $.each(choices, function (_idx, _element) {
+                        var no = _element.no;
+                        if (no < 5) {
+                            html += '<div class="radio vote-radio">' +
+                                '<span class="vote-order">' + no + '.</span>' +
+                                '<label>';
+                        } else {
+                            //no >=5
+                            html += '<div class="radio vote-radio hidden">' +
+                                '<span class="vote-order">' + no + '.</span>' +
+                                '<label>';
+                        }
+                        var choice_votedBy = _element.votedBy;
+                        if (choice_votedBy) {
+                            if (votedBy) {
+                                html += '<input type="radio" name="radio-options-' + element.id + '" value="' + no + '" checked="checked" disabled="disabled">';
+                            } else {
+                                html += '<input type="radio" name="radio-options-' + element.id + '" value="' + no + '" checked="checked">';
+                            }
+                        } else {
+                            if (votedBy) {
+                                html += '<input type="radio" name="radio-options-' + element.id + '" value="' + no + '" disabled="disabled">';
+                            } else {
+                                html += '<input type="radio" name="radio-options-' + element.id + '" value="' + no + '">';
+                            }
+                        }
+                        html += _element.content;
+                        html += '</label>' +
+                            '</div>';
+                    });
+                }
+                html += '</div>';
+                html += '<div class="vote-panel-tools">' +
+                    '<a href="javascript:void(0)"><span class="glyphicon glyphicon-eye-open"></span>' +
+                    '<span>Expand...</span></a>' +
+                    '</div>';
+
+                html += '<div class="panel-footer vote-panel-footer hidden">' +
+                    '<h4><span class="glyphicon glyphicon-stats"></span> Result</h4>' +
+                    '<div>';
+                $.each(choices, function (idx1, element1) {
+                    var ratio = Math.round(element1.ratio * 100) + '%';
+                    html += '<div class="vote-panel-footer-result">' +
+                        '<span>' + element1.no + '.</span>' +
+                        '<div class="progress">' +
+                        '<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"' +
+                        'style="width: ' + ratio + ';">' + ratio + '</div>' +
+                        '<span class="badge  pull-right">' + element1.voted + 'v</span>' +
+                        '</div>' +
+                        '</div>';
+                });
+                html += '</div>' +
+                    '<div class="vote-panel-footer-action">';
+                if (votedBy) {
+                    html += '<button type="button" name="vote" data-voteid="' + element.id + '" class="btn btn-primary btn-block" disabled="disabled">Vote</button>';
+                } else {
+                    html += '<button type="button" name="vote" data-voteid="' + element.id + '" class="btn btn-primary btn-block">Vote</button>';
+                }
+                html += '</div>';
+                html += '</div>' + '</div>' + '</div>' + '</div>';
+                $this.parent().before(html);
+                $this.parent().prev().find('.vote-panel-tools a').click($.voter.expendVote);
+                $this.parent().prev().find('.vote-actions-star').click($.voter.starVote);
+                $this.parent().prev().find("button[name='vote']").click($.voter.voteVote);
+
+            });
+            if (hasNext) {
+                var newHref = href.substring(0, href.lastIndexOf("/") + 1) + (page + 1);
+                $this.attr("href", newHref);
+            } else {
+                $this.parent().remove();
+            }
+        });
+        return false;
+    }
 
 
     $.extend({voter: {}});
@@ -158,7 +309,8 @@
         pushVote: _pushVote,
         expendVote: _expendVote,
         starVote: _starVote,
-        voteVote: _voteVote
+        voteVote: _voteVote,
+        loadMoreVote:_loadMoreVote
     });
 
 

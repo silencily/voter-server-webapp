@@ -243,9 +243,18 @@ public class VoteServiceImpl implements VoteService {
 
     @Override
     public List<VoteEntity> queryMeVotes(String userId) {
+        Pagination pagination = WebContextHolder.getPagination();
+        int page = pagination.getPage();
+        int pageSize = pagination.getPageSize();
+
         Query query1 = new Query();
         query1.addCriteria(Criteria.where("userId").is(userId).and("type").is(VoterConstants.VOTER_TYPE_CREATED));
+        long count = mongoTemplate.count(query1, VoterEntity.class);
+        pagination.setCount((int) count);
+
         query1.with(new Sort(Sort.Direction.DESC, "createTime"));
+        query1.skip(page * pageSize);
+        query1.limit(pageSize);
         List<VoterEntity> voterEntities = mongoTemplate.find(query1, VoterEntity.class);
         List<VoteEntity> votes = new ArrayList<VoteEntity>();
         for (VoterEntity voterEntity : voterEntities) {
@@ -256,10 +265,18 @@ public class VoteServiceImpl implements VoteService {
 
     @Override
     public List<VoteEntity> queryMeVotedVotes(String userId) {
+        Pagination pagination = WebContextHolder.getPagination();
+        int page = pagination.getPage();
+        int pageSize = pagination.getPageSize();
 
         Query query1 = new Query();
         query1.addCriteria(Criteria.where("userId").is(userId).and("type").is(VoterConstants.VOTER_TYPE_VOTED));
+        long count = mongoTemplate.count(query1, VoterEntity.class);
+        pagination.setCount((int) count);
+
         query1.with(new Sort(Sort.Direction.DESC, "createTime"));
+        query1.skip(page * pageSize);
+        query1.limit(pageSize);
         List<VoterEntity> voterEntities = mongoTemplate.find(query1, VoterEntity.class);
         List<VoteEntity> votes = new ArrayList<VoteEntity>();
         for (VoterEntity voterEntity : voterEntities) {
@@ -270,9 +287,17 @@ public class VoteServiceImpl implements VoteService {
 
     @Override
     public List<VoteEntity> queryMeStarredVotes(String userId) {
+        Pagination pagination = WebContextHolder.getPagination();
+        int page = pagination.getPage();
+        int pageSize = pagination.getPageSize();
+
         Query query1 = new Query();
         query1.addCriteria(Criteria.where("userId").is(userId).and("type").is(VoterConstants.VOTER_TYPE_STARRED));
+        long count = mongoTemplate.count(query1, VoterEntity.class);
+        pagination.setCount((int) count);
         query1.with(new Sort(Sort.Direction.DESC, "createTime"));
+        query1.skip(page * pageSize);
+        query1.limit(pageSize);
         List<VoterEntity> voterEntities = mongoTemplate.find(query1, VoterEntity.class);
         List<VoteEntity> votes = new ArrayList<VoteEntity>();
         for (VoterEntity voterEntity : voterEntities) {

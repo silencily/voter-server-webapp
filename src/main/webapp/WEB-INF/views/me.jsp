@@ -43,7 +43,8 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-bell"></span> </a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" ><span class="glyphicon glyphicon-cog"></span> </a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span
+                            class="glyphicon glyphicon-cog"></span> </a>
                     <ul class="dropdown-menu setting-menu" role="menu">
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-lock"></span> Password</a></li>
@@ -187,9 +188,13 @@
 <div class="panel panel-primary">
 <div class="panel-heading me-nav">
     <ul class="nav nav-pills" role="tablist">
-        <li role="presentation" class=""><a class="<c:if test="${active eq 'me'}">in</c:if>" href="${ctx}/me">Votes <span class="badge">${currentUser.voteCounter.votes}</span></a></li>
-        <li role="presentation" class=""><a class="<c:if test="${active eq 'voted'}">in</c:if>" href="${ctx}/me/voted">Voted <span class="badge">${currentUser.voteCounter.voted}</span></a></li>
-        <li role="presentation" class=""><a class="<c:if test="${active eq 'starred'}">in</c:if>" href="${ctx}/me/starred">Starred <span class="badge">${currentUser.voteCounter.starred}</span></a></li>
+        <li role="presentation" class=""><a class="<c:if test="${active eq 'me'}">in</c:if>" href="${ctx}/me">Votes
+            <span class="badge">${currentUser.voteCounter.votes}</span></a></li>
+        <li role="presentation" class=""><a class="<c:if test="${active eq 'voted'}">in</c:if>" href="${ctx}/me/voted">Voted
+            <span class="badge">${currentUser.voteCounter.voted}</span></a></li>
+        <li role="presentation" class=""><a class="<c:if test="${active eq 'starred'}">in</c:if>"
+                                            href="${ctx}/me/starred">Starred <span
+                class="badge">${currentUser.voteCounter.starred}</span></a></li>
     </ul>
 </div>
 <div class="panel-body vote-panel-body">
@@ -417,9 +422,13 @@
 </div>
 </div>
 </c:forEach>
-<div class="row">
-    <div class="panel-footer">Auto loading...</div>
-</div>
+<c:if test="${pagination.nextPageAvailable}">
+    <div class="row" style="padding: 5px 10px;">
+        <a href="${ctx}/me/<c:if test="${active ne 'me'}">${active}/</c:if>index/1"
+           class="btn btn-default btn-block vote-more"><span
+                class="glyphicon glyphicon-plus-sign"></span> More</a>
+    </div>
+</c:if>
 </div>
 </div>
 </div>
@@ -448,6 +457,7 @@
         $('.vote-panel-tools a').click($.voter.expendVote);
         $('.vote-actions-star').click($.voter.starVote);
         $("button[name='vote']").click($.voter.voteVote);
+        $('.vote-more').click($.voter.loadMoreVote);
     });
 </script>
 </body>
