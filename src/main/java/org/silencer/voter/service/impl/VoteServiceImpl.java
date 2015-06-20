@@ -62,7 +62,7 @@ public class VoteServiceImpl implements VoteService {
                 Aggregation.group().count().as("count"), Aggregation.project("count").andExclude("_id"));
         AggregationResults<DBObject> aggregationResultsCount = mongoTemplate.aggregate(aggregationCount, VoterEntity.class, DBObject.class);
         DBObject objCount = aggregationResultsCount.getUniqueMappedResult();
-        Integer count = (Integer) objCount.get("count");
+        Integer count = objCount!=null?(Integer) objCount.get("count"):0;
 
         pagination.setCount(count);
 
@@ -201,12 +201,21 @@ public class VoteServiceImpl implements VoteService {
 
     @Override
     public List<VoteEntity> discoverNewVotes(String userId) {
+        Pagination pagination = WebContextHolder.getPagination();
+        int page = pagination.getPage();
+        int pageSize = pagination.getPageSize();
+
         Query query1 = new Query();
         query1.addCriteria(Criteria.where("userId").is(userId));
         List voteIds = mongoTemplate.getCollection("voter").distinct("voteId", query1.getQueryObject());
 
         Query query2 = new Query();
         query2.addCriteria(Criteria.where("_id").nin(voteIds));
+        long count =mongoTemplate.count(query2,VoteEntity.class);
+        pagination.setCount((int) count);
+
+        query2.skip(page * pageSize);
+        query2.limit(pageSize);
         query2.with(new Sort(Sort.Direction.DESC, "createTime"));
         List<VoteEntity> votes = mongoTemplate.find(query2, VoteEntity.class);
 
@@ -215,12 +224,21 @@ public class VoteServiceImpl implements VoteService {
 
     @Override
     public List<VoteEntity> discoverHotVotes(String userId) {
+        Pagination pagination = WebContextHolder.getPagination();
+        int page = pagination.getPage();
+        int pageSize = pagination.getPageSize();
+
         Query query1 = new Query();
         query1.addCriteria(Criteria.where("userId").is(userId));
         List voteIds = mongoTemplate.getCollection("voter").distinct("voteId", query1.getQueryObject());
 
         Query query2 = new Query();
         query2.addCriteria(Criteria.where("_id").nin(voteIds));
+        long count =mongoTemplate.count(query2,VoteEntity.class);
+        pagination.setCount((int) count);
+
+        query2.skip(page * pageSize);
+        query2.limit(pageSize);
         query2.with(new Sort(Sort.Direction.DESC, "voted"));
         List<VoteEntity> votes = mongoTemplate.find(query2, VoteEntity.class);
 
@@ -229,12 +247,21 @@ public class VoteServiceImpl implements VoteService {
 
     @Override
     public List<VoteEntity> discoverStarredVotes(String userId) {
+        Pagination pagination = WebContextHolder.getPagination();
+        int page = pagination.getPage();
+        int pageSize = pagination.getPageSize();
+
         Query query1 = new Query();
         query1.addCriteria(Criteria.where("userId").is(userId));
         List voteIds = mongoTemplate.getCollection("voter").distinct("voteId", query1.getQueryObject());
 
         Query query2 = new Query();
         query2.addCriteria(Criteria.where("_id").nin(voteIds));
+        long count =mongoTemplate.count(query2,VoteEntity.class);
+        pagination.setCount((int) count);
+
+        query2.skip(page * pageSize);
+        query2.limit(pageSize);
         query2.with(new Sort(Sort.Direction.DESC, "starred"));
         List<VoteEntity> votes = mongoTemplate.find(query2, VoteEntity.class);
 

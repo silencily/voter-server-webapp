@@ -292,9 +292,13 @@
                             </div>
                         </div>
                     </c:forEach>
-                    <div class="row">
-                        <div class="panel-footer">Auto loading...</div>
-                    </div>
+                    <c:if test="${pagination.nextPageAvailable}">
+                        <div class="row" style="padding: 5px 10px;">
+                            <a href="${ctx}/discover/<c:if test="${active ne 'new'}">${active}/</c:if>index/1"
+                               class="btn btn-default btn-block vote-more"><span
+                                    class="glyphicon glyphicon-plus-sign"></span> More</a>
+                        </div>
+                    </c:if>
                 </div>
             </div>
         </div>
@@ -323,6 +327,7 @@
         $('.vote-panel-tools a').click($.voter.expendVote);
         $('.vote-actions-star').click($.voter.starVote);
         $("button[name='vote']").click($.voter.voteVote);
+        $('.vote-more').click($.voter.loadMoreVote);
     });
 </script>
 </body>
