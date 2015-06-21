@@ -199,7 +199,8 @@
 <div class="col-md-6">
 <div class="panel panel-primary">
 <div class="panel-heading">Profile</div>
-<div class="panel-body vote-panel-body">
+<div class="panel-body">
+
 </div>
 </div>
 </div>

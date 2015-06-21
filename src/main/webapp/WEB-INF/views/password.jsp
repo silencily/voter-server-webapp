@@ -199,7 +199,38 @@
 <div class="col-md-6">
 <div class="panel panel-primary">
 <div class="panel-heading">Password</div>
-<div class="panel-body vote-panel-body">
+<div class="panel-body">
+    <form class="form-horizontal">
+        <div class="form-group" style="margin-bottom: 0px;">
+            <label for="oldPassword" class="col-sm-4 control-label">Current Password:</label>
+            <div class="col-sm-6">
+                <input type="password" class="form-control" id="oldPassword" placeholder="Current Password">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-6">
+                <a href="#">Forget your password?</a>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="newPassword" class="col-sm-4 control-label">New Password:</label>
+            <div class="col-sm-6">
+                <input type="password" class="form-control" id="newPassword" placeholder="New Password">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword" class="col-sm-4 control-label">Confirm Password:</label>
+            <div class="col-sm-6">
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+            </div>
+        </div>
+        <div class="form-group" style="margin-top: 60px;padding-top: 20px;border-top: 1px solid #ccc;">
+            <div class="col-sm-12" style="text-align: center;">
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </form>
 </div>
 </div>
 </div>
@@ -226,14 +257,7 @@
     $(document).ready(function () {
         $('#btnAddChoice').click($.voter.appendChoice);
         $('#addVote').click($.voter.pushVote);
-        $('.vote-panel-tools a').click($.voter.expendVote);
-        $('.vote-actions-star').click($.voter.starVote);
-        $("button[name='vote']").click($.voter.voteVote);
-        //加载更多方法
-        $('.vote-more').click($.voter.loadMoreVote);
     });
-
-
 </script>
 </body>
 </html>
