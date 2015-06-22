@@ -1,3 +1,4 @@
+<%@page pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -153,66 +154,128 @@
 </div>
 
 <div class="container">
-<div class="row">
-<div class="col-md-3">
-    <div class="panel panel-warning">
-        <div class="panel-heading">
-            <div class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object img-rounded vote-self-img" src="${ctxStatic}/imgs/silencily.jpg"
-                         alt="silencily">
-                </a>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-rounded vote-self-img" src="${ctxStatic}/imgs/silencily.jpg"
+                                 alt="silencily">
+                        </a>
 
-                <div class="media-body vote-self-name">
-                    <h4 class="media-heading vote-media-heading">${currentUser.fullname}</h4>
+                        <div class="media-body vote-self-name">
+                            <h4 class="media-heading vote-media-heading">${currentUser.fullname}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body vote-self-info">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="glyphicon glyphicon-user"></span> ${currentUser.username}
+                        </li>
+                        <li class="list-group-item">
+                            <span class="glyphicon glyphicon-envelope"></span> ${currentUser.email}
+                        </li>
+                        <li class="list-group-item">
+                            <span class="glyphicon glyphicon-time"></span> Joined on <fmt:setLocale value="en_US"/>
+                            <fmt:formatDate value="${currentUser.joinedDate}"/>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-footer" style="padding: 0px;">
+                    <div class="list-group" id="type-item" style="margin-bottom: 0px;">
+                        <a href="${ctx}/profile" class="list-group-item active">
+                            <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                            Profile
+                        </a>
+                        <a href="${ctx}/password" class="list-group-item">
+                            <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                            Password
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="panel-body vote-self-info">
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <span class="glyphicon glyphicon-user"></span> ${currentUser.username}
-                </li>
-                <li class="list-group-item">
-                    <span class="glyphicon glyphicon-envelope"></span> ${currentUser.email}
-                </li>
-                <li class="list-group-item">
-                    <span class="glyphicon glyphicon-time"></span> Joined on <fmt:setLocale value="en_US"/>
-                    <fmt:formatDate value="${currentUser.joinedDate}"/>
-                </li>
-            </ul>
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Profile</div>
+                <div class="panel-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="photo" class="col-sm-2 control-label">Photo:</label>
+
+                            <div class="col-sm-4">
+                                <img id="photo" src="${ctxStatic}/imgs/silencily.jpg" class="img-thumbnail"
+                                     alt="silencily" style="width:140px;height:140px;">
+                            </div>
+                            <div class="col-sm-6" style="padding-top: 30px;">
+                                <div class="btn btn-primary btn-file">
+                                    <span class="glyphicon glyphicon-folder-open"></span> &nbsp;Browse...
+                                    <input id="photoFile" type="file" accept="image/gif,image/jpeg,image/jpg,image/bmp,image/png">
+                                </div>
+                                <button type="button" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-trash"></span> Remove
+                                </button>
+                                <span class="help-block">This photo is your identity on Voter and appears with your votes. </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">Name:</label>
+
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="name" placeholder="Your Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <span class="help-block">Enter your real name, so people you know can recognize you.</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-sm-2 control-label">Email:</label>
+
+                            <div class="col-sm-6">
+                                <input type="email" class="form-control" id="email" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <span class="help-block">Email will not be publicly displayed. </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="location" class="col-sm-2 control-label">Location:</label>
+
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="location" placeholder="Location">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <span class="help-block">Where in the world are you?</span>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top: 60px;padding-top: 20px;border-top: 1px solid #ccc;">
+                            <div class="col-sm-12" style="text-align: center;">
+                                <button type="submit" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-floppy-save"></span> Save changes
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="panel-footer" style="padding: 0px;">
-            <div class="list-group" id="type-item" style="margin-bottom: 0px;">
-                <a href="${ctx}/profile" class="list-group-item active">
-                    <span class="glyphicon glyphicon-chevron-right pull-right"></span>
-                    Profile
-                </a>
-                <a href="${ctx}/password" class="list-group-item">
-                    <span class="glyphicon glyphicon-chevron-right pull-right"></span>
-                    Password
-                </a>
+        <div class="col-md-3">
+            <div class="panel panel-info">
+                <div class="panel-heading">news</div>
+                <div class="panel-body">
+                    This is a news panel.
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="col-md-6">
-<div class="panel panel-primary">
-<div class="panel-heading">Profile</div>
-<div class="panel-body">
-
-</div>
-</div>
-</div>
-<div class="col-md-3">
-    <div class="panel panel-info">
-        <div class="panel-heading">news</div>
-        <div class="panel-body">
-            This is a news panel.
-        </div>
-    </div>
-</div>
-</div>
 
 </div>
 <!-- /container -->
@@ -227,11 +290,54 @@
     $(document).ready(function () {
         $('#btnAddChoice').click($.voter.appendChoice);
         $('#addVote').click($.voter.pushVote);
-        $('.vote-panel-tools a').click($.voter.expendVote);
-        $('.vote-actions-star').click($.voter.starVote);
-        $("button[name='vote']").click($.voter.voteVote);
-        //加载更多方法
-        $('.vote-more').click($.voter.loadMoreVote);
+        var getObjectURL = function (file) {
+            var url = null;
+            if (window.createObjectURL != undefined) {
+                url = window.createObjectURL(file);
+            } else if (window.URL != undefined) {
+                url = window.URL.createObjectURL(file);
+            } else if (window.webkitURL != undefined) {
+                url = window.webkitURL.createObjectURL(file);
+            }
+            return url;
+        };
+        var imgType = ["gif", "jpeg", "jpg", "bmp", "png"];
+        $('#photoFile').change(function(){
+            alert(this.value);
+            if (this.value) {
+                if (!RegExp("\\.(" + imgType.join("|") + ")$", "i").test(this.value.toLowerCase())) {
+                    alert("选择文件错误,图片类型必须是" + imgType.join("，") + "中的一种");
+                    this.value = "";
+                    return false;
+                }
+                if (/msie/.test(navigator.userAgent.toLowerCase())) {
+                    try {
+                        $("#photo").attr('src', getObjectURL(this.files[0]));
+                    } catch (e) {
+                        var src = "";
+                        var obj = $("#photo");
+                        var div = obj.parent("div")[0];
+                        this.select();
+                        if (top != self) {
+                            window.parent.document.body.focus();
+                        } else {
+                            this.blur();
+                        }
+                        src = document.selection.createRange().text;
+                        document.selection.empty();
+                        obj.hide();
+                        obj.parent("div").css({
+                            'filter': 'progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)',
+                            'width': '140px',
+                            'height': '140px'
+                        });
+                        div.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = src
+                    }
+                } else {
+                    $("#photo").attr('src', getObjectURL(this.files[0]))
+                }
+            }
+        });
     });
 
 

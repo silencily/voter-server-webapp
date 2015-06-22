@@ -227,7 +227,9 @@
         </div>
         <div class="form-group" style="margin-top: 60px;padding-top: 20px;border-top: 1px solid #ccc;">
             <div class="col-sm-12" style="text-align: center;">
-                <button type="submit" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-floppy-save"></span> Save changes
+                </button>
             </div>
         </div>
     </form>
