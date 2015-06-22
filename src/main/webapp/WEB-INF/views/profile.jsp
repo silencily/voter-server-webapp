@@ -214,7 +214,7 @@
                                     <span class="glyphicon glyphicon-folder-open"></span> &nbsp;Browse...
                                     <input id="photoFile" type="file" accept="image/gif,image/jpeg,image/jpg,image/bmp,image/png">
                                 </div>
-                                <button type="button" class="btn btn-primary">
+                                <button id="photoRemove" type="button" class="btn btn-primary">
                                     <span class="glyphicon glyphicon-trash"></span> Remove
                                 </button>
                                 <span class="help-block">This photo is your identity on Voter and appears with your votes. </span>
@@ -303,7 +303,6 @@
         };
         var imgType = ["gif", "jpeg", "jpg", "bmp", "png"];
         $('#photoFile').change(function(){
-            alert(this.value);
             if (this.value) {
                 if (!RegExp("\\.(" + imgType.join("|") + ")$", "i").test(this.value.toLowerCase())) {
                     alert("选择文件错误,图片类型必须是" + imgType.join("，") + "中的一种");
@@ -337,6 +336,10 @@
                     $("#photo").attr('src', getObjectURL(this.files[0]))
                 }
             }
+        });
+        $('#photoRemove').click(function(){
+            $('#photoFile').val('');
+            $('#photo').attr('src','${ctxStatic}/imgs/silencily.jpg');
         });
     });
 
