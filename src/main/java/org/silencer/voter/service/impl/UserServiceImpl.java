@@ -55,5 +55,28 @@ public class UserServiceImpl implements UserService {
         return userRepository.findOne(id);
     }
 
+    @Override
+    public boolean validatePassword(String userId, String password) {
+        UserEntity userEntity = findUserById(userId);
+        String currentPassword = userEntity.getPassword();
+        Md5PasswordEncoder encoder = new Md5PasswordEncoder();
+        String encodedPassword = encoder.encodePassword(password, passwordSalt);
+        if (!currentPassword.equals(encodedPassword)) {
+            log.debug("invalid password :" + password);
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public void changePassword(String userId, String newPassword) {
+        UserEntity userEntity = findUserById(userId);
+        Md5PasswordEncoder encoder = new Md5PasswordEncoder();
+        String encodedPassword = encoder.encodePassword(newPassword, passwordSalt);
+        userEntity.setPassword(encodedPassword);
+        userRepository.save(userEntity);
+        log.debug("userId [" + userId + "] password changed");
+    }
+
 
 }

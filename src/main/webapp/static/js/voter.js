@@ -15,6 +15,12 @@
         $('#error-msg').addClass('hidden');
     }
 
+    function _alertMessage(msg) {
+        $('#message-drawer .message-text').text(msg);
+        $('#message-drawer').fadeIn(2000);
+        $('#message-drawer').delay(4000).fadeOut(2000);
+    }
+
     function _delChoice(btn) {
         //remove the choice
         $(btn).parents('.list-group-item').remove();
@@ -151,13 +157,18 @@
         });
     }
     //加载更多
-    var _loadMoreVote =function () {
+    var _loadMoreVote = function () {
         var $this = $(this);
         var href = $this.attr("href");
         var nextPage = href.substring(href.lastIndexOf("/") + 1, href.length);
-        $.post(href, {
-            "pagination.page": nextPage
-        }, function (data) {
+        var paramName = $this.data("param-name");
+        var paramValue = $this.data("param-value");
+        var postData = {"pagination.page": nextPage};
+        if (paramName != null && paramName != "") {
+            var strPostData = '{"pagination.page":' + nextPage + ', "' + paramName + '": "' + paramValue + '"}';
+            postData = $.parseJSON(strPostData);
+        }
+        $.post(href, postData, function (data) {
             var page = data.page;
             var hasNext = data.hasNext;
             var content = data.content;
@@ -305,12 +316,13 @@
 
     $.extend({voter: {}});
     $.extend($.voter, {
+        alertMessage: _alertMessage,
         appendChoice: _appendChoice,
         pushVote: _pushVote,
         expendVote: _expendVote,
         starVote: _starVote,
         voteVote: _voteVote,
-        loadMoreVote:_loadMoreVote
+        loadMoreVote: _loadMoreVote
     });
 
 

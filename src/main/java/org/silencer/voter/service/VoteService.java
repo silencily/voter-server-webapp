@@ -113,5 +113,12 @@ public interface VoteService {
      */
     public List<VoteEntity> queryMeStarredVotes(String userId);
 
+    /**
+     * 根据关键词查找投票
+     * @param key 关键词
+     * @return 投票集合
+     */
+    public List<VoteEntity> searchVotes(String key);
+
 
 }

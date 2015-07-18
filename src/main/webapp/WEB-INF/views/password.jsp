@@ -6,6 +6,7 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="${ctxStatic}/css/bootstrap.css">
     <link rel="stylesheet" href="${ctxStatic}/css/voter.css">
+    <link rel="stylesheet" href="${ctxStatic}/css/bootstrapValidator.css">
     <link rel="shortcut icon" href="${ctxStatic}/imgs/favicon.ico">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -54,10 +55,10 @@
                 </li>
                 <li><a href="#newVote" data-toggle="modal"><span class="glyphicon glyphicon-pencil"></span> </a></li>
             </ul>
-            <form class="navbar-form navbar-right" role="search">
+            <form class="navbar-form navbar-right" action="${ctx}/search" role="search">
                 <div class="form-group">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" class="form-control" name="s" placeholder="Search">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="submit"><span
                                     class="glyphicon glyphicon-search"></span></button>
@@ -200,11 +201,11 @@
 <div class="panel panel-primary">
 <div class="panel-heading">Password</div>
 <div class="panel-body">
-    <form class="form-horizontal">
+    <form id="changePasswordForm" action="${ctx}/password" class="form-horizontal" method="post">
         <div class="form-group" style="margin-bottom: 0px;">
             <label for="oldPassword" class="col-sm-4 control-label">Current Password:</label>
             <div class="col-sm-6">
-                <input type="password" class="form-control" id="oldPassword" placeholder="Current Password">
+                <input type="password" class="form-control" id="oldPassword" name="oldPassword" placeholder="Current Password">
             </div>
         </div>
         <div class="form-group">
@@ -216,13 +217,13 @@
         <div class="form-group">
             <label for="newPassword" class="col-sm-4 control-label">New Password:</label>
             <div class="col-sm-6">
-                <input type="password" class="form-control" id="newPassword" placeholder="New Password">
+                <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="New Password">
             </div>
         </div>
         <div class="form-group">
             <label for="confirmPassword" class="col-sm-4 control-label">Confirm Password:</label>
             <div class="col-sm-6">
-                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password">
             </div>
         </div>
         <div class="form-group" style="margin-top: 60px;padding-top: 20px;border-top: 1px solid #ccc;">
@@ -254,11 +255,59 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="${ctxStatic}/js/bootstrap.js"></script>
 
+<script src="${ctxStatic}/js/bootstrapValidator.js"></script>
 <script src="${ctxStatic}/js/voter.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $('#btnAddChoice').click($.voter.appendChoice);
         $('#addVote').click($.voter.pushVote);
+
+        $('#changePasswordForm').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            submitHandler: function(validator, form, submitButton) {
+                // Use Ajax to submit form data
+                $.post(form.attr('action'), form.serialize(), function(result) {
+                    $.voter.alertMessage('Change new password successful.');
+                    $('#changePasswordForm').data('bootstrapValidator').resetForm(true);
+                }, 'json');
+            },
+            fields: {
+                oldPassword: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The Current Password is required and cannot be empty'
+                        }
+                    }
+                },
+                newPassword: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The password is required and cannot be empty'
+                        },
+                        different: {
+                            field: 'oldPassword',
+                            message: 'The new password and current password cannot be the same as each other'
+                        }
+                    }
+                },
+                confirmPassword: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The password is required and cannot be empty'
+                        },
+                        identical: {
+                            field: 'newPassword',
+                            message: 'The password and its confirm are not the same'
+                        }
+                    }
+                }
+            }
+        });
     });
 </script>
 </body>

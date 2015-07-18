@@ -62,7 +62,7 @@ public class VoteServiceImpl implements VoteService {
                 Aggregation.group().count().as("count"), Aggregation.project("count").andExclude("_id"));
         AggregationResults<DBObject> aggregationResultsCount = mongoTemplate.aggregate(aggregationCount, VoterEntity.class, DBObject.class);
         DBObject objCount = aggregationResultsCount.getUniqueMappedResult();
-        Integer count = objCount!=null?(Integer) objCount.get("count"):0;
+        Integer count = objCount != null ? (Integer) objCount.get("count") : 0;
 
         pagination.setCount(count);
 
@@ -211,7 +211,7 @@ public class VoteServiceImpl implements VoteService {
 
         Query query2 = new Query();
         query2.addCriteria(Criteria.where("_id").nin(voteIds));
-        long count =mongoTemplate.count(query2,VoteEntity.class);
+        long count = mongoTemplate.count(query2, VoteEntity.class);
         pagination.setCount((int) count);
 
         query2.skip(page * pageSize);
@@ -234,7 +234,7 @@ public class VoteServiceImpl implements VoteService {
 
         Query query2 = new Query();
         query2.addCriteria(Criteria.where("_id").nin(voteIds));
-        long count =mongoTemplate.count(query2,VoteEntity.class);
+        long count = mongoTemplate.count(query2, VoteEntity.class);
         pagination.setCount((int) count);
 
         query2.skip(page * pageSize);
@@ -257,7 +257,7 @@ public class VoteServiceImpl implements VoteService {
 
         Query query2 = new Query();
         query2.addCriteria(Criteria.where("_id").nin(voteIds));
-        long count =mongoTemplate.count(query2,VoteEntity.class);
+        long count = mongoTemplate.count(query2, VoteEntity.class);
         pagination.setCount((int) count);
 
         query2.skip(page * pageSize);
@@ -330,6 +330,24 @@ public class VoteServiceImpl implements VoteService {
         for (VoterEntity voterEntity : voterEntities) {
             votes.add(voteRepository.findOne(voterEntity.getVoteId()));
         }
+        return votes;
+    }
+
+    @Override
+    public List<VoteEntity> searchVotes(String key) {
+        Pagination pagination = WebContextHolder.getPagination();
+        int page = pagination.getPage();
+        int pageSize = pagination.getPageSize();
+
+        Query query1 = new Query();
+        query1.addCriteria(Criteria.where("title").regex(key));
+        long count = mongoTemplate.count(query1, VoteEntity.class);
+        pagination.setCount((int) count);
+        query1.with(new Sort(Sort.Direction.DESC, "createTime"));
+        query1.skip(page * pageSize);
+        query1.limit(pageSize);
+        List<VoteEntity> votes = mongoTemplate.find(query1, VoteEntity.class);
+
         return votes;
     }
 }

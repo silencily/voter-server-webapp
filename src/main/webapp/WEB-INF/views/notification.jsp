@@ -54,10 +54,10 @@
                 </li>
                 <li><a href="#newVote" data-toggle="modal"><span class="glyphicon glyphicon-pencil"></span> </a></li>
             </ul>
-            <form class="navbar-form navbar-right" role="search">
+            <form class="navbar-form navbar-right" action="${ctx}/search" role="search">
                 <div class="form-group">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" class="form-control" name="s" placeholder="Search">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="submit"><span
                                     class="glyphicon glyphicon-search"></span></button>
@@ -187,8 +187,83 @@
         <div class="col-md-6">
             <div class="panel panel-primary">
                 <div class="panel-heading">Notifications</div>
-                <div class="panel-body">
-
+                <div class="panel-body vote-panel-body">
+                    <div class="row">
+                        <div class="col-md-12 inner-col">
+                            <div class="panel panel-warning vote-panel">
+                                <div class="panel-heading vote-panel-heading">
+                                    <span>System notification</span>
+                                    <small>2014/06/26 11:20</small>
+                                    <span class="pull-right">
+                                        <a href="#">Readed</a>
+                                        <a href="#">Delete</a>
+                                    </span>
+                                </div>
+                                <div class="panel-body vote-panel-body">
+                                    <div>
+                                        Hello world!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 inner-col">
+                            <div class="panel panel-warning vote-panel">
+                                <div class="panel-heading vote-panel-heading">
+                                    <span>System notification</span>
+                                    <small>2014/06/26 11:20</small>
+                                    <span class="pull-right">
+                                        <a href="#">Readed</a>
+                                        <a href="#">Delete</a>
+                                    </span>
+                                </div>
+                                <div class="panel-body vote-panel-body">
+                                    <div>
+                                        Hello world!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 inner-col">
+                            <div class="panel panel-warning vote-panel">
+                                <div class="panel-heading vote-panel-heading">
+                                    <span>System notification</span>
+                                    <small>2014/06/26 11:20</small>
+                                    <span class="pull-right">
+                                        <a href="#">Readed</a>
+                                        <a href="#">Delete</a>
+                                    </span>
+                                </div>
+                                <div class="panel-body vote-panel-body">
+                                    <div>
+                                        Hello world!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 inner-col">
+                            <div class="panel panel-warning vote-panel">
+                                <div class="panel-heading vote-panel-heading">
+                                    <span>System notification</span>
+                                    <small>2014/06/26 11:20</small>
+                                    <span class="pull-right">
+                                        <a href="#">Readed</a>
+                                        <a href="#">Delete</a>
+                                    </span>
+                                </div>
+                                <div class="panel-body vote-panel-body">
+                                    <div>
+                                        Hello world!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

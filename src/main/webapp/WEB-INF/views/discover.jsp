@@ -53,10 +53,10 @@
                 </li>
                 <li><a href="#newVote" data-toggle="modal"><span class="glyphicon glyphicon-pencil"></span> </a></li>
             </ul>
-            <form class="navbar-form navbar-right" role="search">
+            <form class="navbar-form navbar-right" action="${ctx}/search" role="search">
                 <div class="form-group">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" class="form-control" name="s" placeholder="Search">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="submit"><span
                                     class="glyphicon glyphicon-search"></span></button>

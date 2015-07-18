@@ -55,10 +55,10 @@
                 </li>
                 <li><a href="#newVote" data-toggle="modal"><span class="glyphicon glyphicon-pencil"></span> </a></li>
             </ul>
-            <form class="navbar-form navbar-right" role="search">
+            <form class="navbar-form navbar-right" action="${ctx}/search" role="search">
                 <div class="form-group">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" class="form-control" name="s" placeholder="Search">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="submit"><span
                                     class="glyphicon glyphicon-search"></span></button>
@@ -224,7 +224,7 @@
                             <label for="name" class="col-sm-2 control-label">Name:</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                <input type="text" class="form-control" id="name" value="${currentUser.fullname}" placeholder="Your Name">
                             </div>
                         </div>
                         <div class="form-group">
@@ -236,7 +236,7 @@
                             <label for="email" class="col-sm-2 control-label">Email:</label>
 
                             <div class="col-sm-6">
-                                <input type="email" class="form-control" id="email" placeholder="Email">
+                                <input type="email" class="form-control" id="email" value="${currentUser.email}" placeholder="Email">
                             </div>
                         </div>
                         <div class="form-group">
@@ -248,7 +248,7 @@
                             <label for="location" class="col-sm-2 control-label">Location:</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" id="location" placeholder="Location">
+                                <input type="text" class="form-control" id="location" value="${currentUser.location}" placeholder="Location">
                             </div>
                         </div>
                         <div class="form-group">
@@ -342,8 +342,6 @@
             $('#photo').attr('src','${ctxStatic}/imgs/silencily.jpg');
         });
     });
-
-
 </script>
 </body>
 </html>
