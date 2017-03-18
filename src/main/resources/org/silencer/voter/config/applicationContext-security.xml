@@ -10,6 +10,7 @@
     <http pattern="/static/**" security="none"/>
     <http pattern="/index.jsp" security="none"/>
     <http pattern="/signup" security="none"/>
+    <http pattern="/" security="none"/>
     <http>
         <intercept-url pattern='/**' access='IS_AUTHENTICATED_REMEMBERED'/>
         <form-login login-page="/" default-target-url="/home" always-use-default-target="true"/>

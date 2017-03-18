@@ -1,7 +1,9 @@
+<%@page pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Voter</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="${ctxStatic}/css/bootstrap.css">
@@ -40,12 +42,10 @@
     <div class="row front-welcome">
         <div class="col-md-5 col-md-offset-1">
             <div class="welcome-text">
-                <h1>Welcome to Voter.</h1>
+                <h1><spring:message code="txt.page.index.welcome.h"/> </h1>
 
                 <p>
-                    Connect with your friends — and other fascinating people. Get in-the-moment updates on the things
-                    that
-                    interest you. And watch events unfold, in real time, from every angle.
+                    <spring:message code="txt.page.index.welcome.msg"/>
                 </p>
             </div>
         </div>
@@ -113,8 +113,8 @@
 <!-- /container -->
 <nav class="navbar navbar-default navbar-fixed-bottom front-footer" role="navigation">
     <div class="container">
-        <h4>Powered by bootstrap. Thanks Twitter</h4>
-        <h5>Copyright © 2014-2015 org.silencer.silencily All rights reserved.</h5>
+        <h5 style="color: #000;">Copyright © 2014-2017 org.silencer.silencily All rights reserved.</h5>
+        <h6><a href="${ctx}/?lang=zh_CN">中文</a> <span style="color: #428bca;margin:0 5px;">|</span> <a href="${ctx}/?lang=en_US">English</a></h6>
     </div>
 </nav>
 

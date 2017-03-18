@@ -21,14 +21,24 @@ public class EntryPointController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping(value = "/")
+    public String index(HttpServletRequest request) {
+        //判断登录
+        Object securityContext = request.getSession().getAttribute(SecurityContextHelper.SPRING_SECURITY_CONTEXT_KEY);
+        if (securityContext != null) {
+            return "redirect:home";
+        }
+        return "index";
+    }
+
     @RequestMapping(value = "/signup")
-    public String signup(String fullname,String email,String password,HttpServletRequest request){
+    public String signup(String fullname, String email, String password, HttpServletRequest request) {
 
         //TODO:check the user
 
-        UserEntity userEntity= userService.registerUser(fullname, email, password);
+        UserEntity userEntity = userService.registerUser(fullname, email, password);
 
-        SecurityContextHelper.authenticate(userEntity,request);
+        SecurityContextHelper.authenticate(userEntity, request);
         return "redirect:home";
     }
 }
